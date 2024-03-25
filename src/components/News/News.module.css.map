@@ -1,0 +1,1 @@
+{"version":3,"sources":["News.module.sass","News.module.css","../../styles/helpers.sass"],"names":[],"mappings":"AAEA;EACI,iBAAA;ACDJ;;ADGA;EACI,gBAAA;EACA,mBAAA;EACA,kBAAA;ACAJ;ACGI;EFNJ;IAKQ,mBAAA;ECEN;AACF;ACCI;EFTJ;IAOQ,mBAAA;ECKN;AACF;;ADJA;EACI,mBAAA;ACOJ;;ADLA;EACI,mBAAA;ACQJ;;ADNA;EE2CI,eAAA;EACA,gBAAA;EF1CA,cEsBC;ADZL","file":"News.module.css"}

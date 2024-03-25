@@ -1,0 +1,127 @@
+.label {
+  margin-bottom: 12px;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #B1B5C3;
+}
+
+.dropdown {
+  position: relative;
+  z-index: 3;
+}
+.dropdown.active {
+  z-index: 10;
+}
+.dropdown.active .head .arrow svg {
+  transform: rotate(180deg);
+}
+.dropdown.active .body {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.head {
+  position: relative;
+  height: 48px;
+  padding: 0 48px 0 16px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 2px #E6E8EC;
+  background: #FCFCFD;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 48px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  transition: box-shadow 0.2s;
+}
+:global(.dark-mode) .head {
+  box-shadow: inset 0 0 0 2px #353945;
+  background: none;
+}
+
+.head:hover {
+  box-shadow: inset 0 0 0 2px #777E90;
+}
+
+.selection {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+.arrow svg {
+  fill: #23262F;
+  transition: transform 0.2s;
+}
+:global(.dark-mode) .arrow svg {
+  fill: #777E90;
+}
+
+.body {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  right: 0;
+  padding: 8px 0;
+  border-radius: 12px;
+  background: #FCFCFD;
+  box-shadow: inset 0 0 0 2px #E6E8EC, 0 4px 12px rgba(35, 38, 47, 0.1);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(3px);
+  transition: all 0.2s;
+}
+:global(.dark-mode) .body {
+  background: #141416;
+  box-shadow: inset 0 0 0 2px #353945, 0 4px 12px rgba(20, 20, 22, 0.1);
+}
+
+.option {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.option:hover, .option.selectioned {
+  color: #3772FF;
+}
+
+.empty .head {
+  height: 26px;
+  padding: 0 36px 0 14px;
+  box-shadow: none;
+  background: none;
+  line-height: 26px;
+}
+.empty .head:hover {
+  box-shadow: none;
+}
+.empty .arrow {
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  box-shadow: none;
+}
+.empty .option {
+  padding: 8px 14px;
+}/*# sourceMappingURL=Dropdown.module.css.map */

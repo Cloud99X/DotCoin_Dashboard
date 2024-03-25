@@ -1,0 +1,204 @@
+.settings {
+  position: relative;
+}
+@media only screen and (max-width: 767px) {
+  .settings {
+    position: static;
+  }
+}
+.settings.active .head {
+  color: #23262F;
+}
+.settings.active .head svg {
+  transform: rotate(180deg);
+  fill: #23262F;
+}
+:global(.dark-mode) .settings.active .head {
+  color: #FCFCFD;
+}
+:global(.dark-mode) .settings.active .head svg {
+  fill: #777E90;
+}
+
+.settings.active .body {
+  transform: translate(-50%, 0);
+  visibility: visible;
+  opacity: 1;
+}
+@media only screen and (max-width: 767px) {
+  .settings.active .body {
+    transform: translate(0, 0);
+  }
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  font-family: "DM Sans", sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 40px;
+  font-weight: 700;
+  color: #23262F;
+  transition: color 0.2s;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+:global(.dark-mode) .head {
+  color: #FCFCFD;
+}
+
+.head svg {
+  margin-left: 12px;
+  fill: #777E90;
+  transition: all 0.2s;
+}
+@media only screen and (max-width: 1023px) {
+  .head svg {
+    margin-left: 4px;
+  }
+}
+.head:hover svg {
+  fill: #23262F;
+}
+:global(.dark-mode) .head:hover svg {
+  fill: #777E90;
+}
+
+.body {
+  position: absolute;
+  top: calc(100% + 20px);
+  left: 50%;
+  z-index: 2;
+  transform: translate(-50%, 10px);
+  width: 365px;
+  padding: 16px;
+  box-shadow: 0px 16px 48px rgba(31, 47, 70, 0.1);
+  border-radius: 12px;
+  background: #FCFCFD;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s;
+}
+@media only screen and (max-width: 767px) {
+  .body {
+    top: 100%;
+    left: 16px;
+    right: 16px;
+    width: auto;
+    transform: translate(0, 10px);
+  }
+}
+:global(.dark-mode) .body {
+  background: #23262F;
+}
+
+.body:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  width: 24px;
+  height: 12px;
+  transform: translateX(-50%);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='9' fill='none' viewBox='0 0 24 9'%3E%3Cpath d='M6.343 2.657L0 9h24l-6.343-6.343a8 8 0 0 0-11.314 0z' fill='%23fcfcfd'/%3E%3C/svg%3E") no-repeat 50% 100%/100% auto;
+}
+@media only screen and (max-width: 767px) {
+  .body:before {
+    left: auto;
+    right: 208px;
+  }
+}
+:global(.dark-mode) .body:before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='9' fill='none' viewBox='0 0 24 9'%3E%3Cpath d='M6.343 2.657L0 9h24l-6.343-6.343a8 8 0 0 0-11.314 0z' fill='%2323262F'/%3E%3C/svg%3E");
+}
+
+.row {
+  display: flex;
+  margin: 0 -24px;
+}
+
+.col {
+  flex: 0 0 50%;
+  padding: 0 24px;
+}
+.col:first-child {
+  border-right: 1px solid #E6E8EC;
+}
+:global(.dark-mode) .col:first-child {
+  border-color: #353945;
+}
+
+.category {
+  margin-bottom: 4px;
+  font-size: 12px;
+  line-height: 1.6666666667;
+  font-weight: 500;
+  color: #777E90;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.language,
+.currency {
+  padding: 12px 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  line-height: 1.1428571429;
+  font-weight: 700;
+  color: #777E90;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.language:hover, .language.active,
+.currency:hover,
+.currency.active {
+  color: #23262F;
+}
+:global(.dark-mode) .language:hover, :global(.dark-mode) .language.active,
+:global(.dark-mode) .currency:hover,
+:global(.dark-mode) .currency.active {
+  color: #FCFCFD;
+}
+
+.language:not(:last-child),
+.currency:not(:last-child) {
+  border-bottom: 1px solid #E6E8EC;
+}
+:global(.dark-mode) .language:not(:last-child),
+:global(.dark-mode) .currency:not(:last-child) {
+  border-color: #353945;
+}
+
+.currency {
+  position: relative;
+  padding-left: 28px;
+}
+.currency:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: #E6E8EC;
+  transition: background 0.2s;
+}
+:global(.dark-mode) .currency:before {
+  background: #353945;
+}
+
+.currency:hover:before, .currency.active:before {
+  background: #23262F;
+}
+:global(.dark-mode) .currency:hover:before, :global(.dark-mode) .currency.active:before {
+  background: #FCFCFD;
+}
+
+.flag {
+  margin-right: 8px;
+}/*# sourceMappingURL=Settings.module.css.map */

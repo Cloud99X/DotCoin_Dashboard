@@ -1,0 +1,58 @@
+.scroll {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: none;
+  overflow: hidden;
+  border: 2px solid #E6E8EC;
+  transition: border-color 0.2s;
+}
+.scroll svg {
+  fill: #B1B5C3;
+  transition: fill 0.2s;
+}
+.scroll:hover {
+  border-color: #23262F;
+}
+.scroll:hover svg {
+  fill: #23262F;
+}
+:global(.dark-mode) .scroll {
+  border-color: #353945;
+}
+:global(.dark-mode) .scroll:hover {
+  border-color: #FCFCFD;
+}
+:global(.dark-mode) .scroll:hover svg {
+  fill: #FCFCFD;
+}
+
+.line {
+  display: flex;
+  flex-direction: column;
+  transform: translateY(-23px);
+  animation: arrowsDown ease-out 1.4s infinite;
+}
+.line svg:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+@keyframes arrowsDown {
+  80% {
+    transform: translateY(23px);
+  }
+  100% {
+    transform: translateY(23px);
+  }
+}
+@keyframes arrowsDownSmall {
+  80% {
+    transform: translateY(12px);
+  }
+  100% {
+    transform: translateY(12px);
+  }
+}/*# sourceMappingURL=ScrollButton.module.css.map */

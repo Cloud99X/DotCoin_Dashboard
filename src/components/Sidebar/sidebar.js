@@ -13,7 +13,7 @@ const Sidebar = ({ activeMenu }) => {
     { name: "Prediction", logo: ChartSVG, activeLogo: ActiveChartSVG },
     {
       name: "Dotcoin AI",
-      logo: ActiveDocumentSVG,
+      logo: DocumentSVG,
       activeLogo: ActiveDocumentSVG,
     },
     {

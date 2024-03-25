@@ -1,0 +1,46 @@
+.top {
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #E6E8EC;
+}
+:global(.dark-mode) .top {
+  border-color: #353945;
+}
+
+.title {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.info {
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.6666666667;
+  color: #777E90;
+}
+
+.button {
+  width: 100%;
+  margin-top: 32px;
+}
+
+.foot {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.link {
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  line-height: 1.1428571429;
+  font-weight: 700;
+  color: #23262F;
+  transition: color 0.2s;
+}
+:global(.dark-mode) .link {
+  color: #FCFCFD;
+}
+
+.link:hover {
+  color: #3772FF;
+}/*# sourceMappingURL=Form.module.css.map */

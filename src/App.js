@@ -8,6 +8,7 @@ import SignIn from "./screens/SignIn";
 import SignUp from "./screens/SignUp";
 import ForgotPassword from "./screens/ForgotPassword";
 import Markets from "./screens/Markets";
+import Prediction from "./screens/Prediction";
 
 function App() {
   return (
@@ -68,6 +69,14 @@ function App() {
           element={
             <Page headerHide footerHide>
               <Markets />
+            </Page>
+          }
+        />
+        <Route
+          path="/prediction"
+          element={
+            <Page headerHide footerHide>
+              <Prediction />
             </Page>
           }
         />

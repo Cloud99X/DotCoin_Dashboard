@@ -1,0 +1,108 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 48px;
+  border-bottom: 2px solid #E6E8EC;
+  color: #23262F;
+  transition: color 0.2s;
+}
+@media only screen and (max-width: 767px) {
+  .card {
+    padding-bottom: 0;
+    border: none;
+  }
+}
+:global(.dark-mode) .card {
+  border-color: #353945;
+  color: #FCFCFD;
+}
+
+.card:hover {
+  color: #3772FF;
+}
+.card:hover .preview img {
+  transform: scale(1.1);
+}
+
+.preview {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 48px;
+  border-radius: 12px;
+}
+@media only screen and (max-width: 767px) {
+  .preview {
+    margin-bottom: 32px;
+  }
+}
+.preview:before {
+  content: "";
+  display: block;
+  padding-bottom: 57%;
+}
+@media only screen and (max-width: 1179px) {
+  .preview:before {
+    padding-bottom: 75%;
+  }
+}
+.preview img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: transform 1s;
+}
+
+.category {
+  margin-bottom: 16px;
+}
+
+.title {
+  margin-bottom: 48px;
+  font-size: 24px;
+  line-height: 1.3333333333;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+@media only screen and (max-width: 767px) {
+  .title {
+    margin-bottom: 32px;
+  }
+}
+
+.line {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: auto;
+  font-weight: 500;
+  color: #777E90;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #58BD7D;
+}
+.avatar img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}/*# sourceMappingURL=Card.module.css.map */

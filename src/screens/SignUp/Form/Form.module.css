@@ -1,0 +1,66 @@
+.top {
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #E6E8EC;
+}
+:global(.dark-mode) .top {
+  border-color: #353945;
+}
+
+.top .info {
+  margin-bottom: 20px;
+}
+
+.title {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.info {
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.6666666667;
+  color: #777E90;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  margin: 0 -10px;
+}
+@media only screen and (max-width: 767px) {
+  .btns {
+    margin: 0 -6px;
+  }
+}
+.btns .button {
+  flex: 0 0 calc(50% - 20px);
+  margin: 0 10px;
+}
+@media only screen and (max-width: 767px) {
+  .btns .button {
+    flex: 0 0 calc(50% - 12px);
+    margin: 0 6px;
+  }
+}
+.btns .button:not(:last-child) {
+  margin-right: 12px;
+}
+@media only screen and (max-width: 767px) {
+  .btns .button:not(:last-child) {
+    margin-right: 6px;
+  }
+}
+
+.field:not(:last-child) {
+  margin-bottom: 32px;
+}
+
+.form > .button {
+  width: 100%;
+  margin-top: 32px;
+}
+
+.form > .info {
+  margin-bottom: 32px;
+}/*# sourceMappingURL=Form.module.css.map */

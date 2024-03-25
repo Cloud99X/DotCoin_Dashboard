@@ -1,0 +1,31 @@
+.title {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.info {
+  margin-bottom: 32px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.6666666667;
+  color: #777E90;
+}
+
+.variants {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio:not(:last-child) {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #E6E8EC;
+}
+:global(.dark-mode) .radio:not(:last-child) {
+  border-color: #353945;
+}
+
+.button {
+  width: 100%;
+  margin-top: 32px;
+}/*# sourceMappingURL=Confirm.module.css.map */

@@ -1,0 +1,99 @@
+.label {
+  margin-bottom: 12px;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #B1B5C3;
+}
+
+.wrap {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 2px solid #E6E8EC;
+  background: #FCFCFD;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  line-height: 1.7142857143;
+  font-weight: 500;
+  color: #23262F;
+  transition: border-color 0.2s;
+}
+:global(.dark-mode) .input {
+  border-color: #353945;
+  background: none;
+  color: #FCFCFD;
+}
+
+.input::-moz-placeholder {
+  color: #777E90;
+}
+
+.input::placeholder {
+  color: #777E90;
+}
+.input:focus {
+  border-color: #777E90;
+}
+
+.toggle,
+.preview {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 48px;
+}
+
+.toggle svg {
+  fill: #B1B5C3;
+  transition: fill 0.2s;
+}
+.toggle:hover svg {
+  fill: #777E90;
+}
+.toggle.active svg {
+  fill: #141416;
+}
+:global(.dark-mode) .toggle svg {
+  fill: #777E90;
+}
+:global(.dark-mode) .toggle:hover svg {
+  fill: #B1B5C3;
+}
+:global(.dark-mode) .toggle.active svg {
+  fill: #FCFCFD;
+}
+
+.preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.preview svg {
+  fill: #777E90;
+}
+
+.empty .input {
+  height: 26px;
+  border: none;
+}
+
+.view .input,
+.icon .input {
+  padding-right: 48px;
+}
+
+.note {
+  margin-top: 12px;
+  font-size: 10px;
+  line-height: 1.6;
+  font-weight: 500;
+  color: #777E90;
+}/*# sourceMappingURL=TextInput.module.css.map */

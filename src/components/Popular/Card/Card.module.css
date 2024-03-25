@@ -1,0 +1,42 @@
+.card {
+  width: 100%;
+  padding: 50px 32px;
+  border-radius: 20px;
+  background: #FCFCFD;
+  text-align: center;
+  transition: all 0.2s;
+}
+.card:hover {
+  box-shadow: 0px 64px 64px -48px rgba(15, 15, 15, 0.1);
+}
+:global(.dark-mode) .card {
+  background: #23262F;
+  box-shadow: inset 0 0 0 2px #23262F;
+}
+:global(.dark-mode) .card:hover {
+  background: transparent;
+}
+
+.preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 160px;
+  margin: 0 auto 32px;
+}
+.preview img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.title {
+  margin-bottom: 16px;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.content {
+  margin-bottom: 16px;
+  color: #777E90;
+}/*# sourceMappingURL=Card.module.css.map */

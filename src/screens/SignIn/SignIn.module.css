@@ -1,0 +1,47 @@
+.top {
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #E6E8EC;
+}
+:global(.dark-mode) .top {
+  border-color: #353945;
+}
+
+.title {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.info {
+  margin-bottom: 12px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.6666666667;
+  color: #777E90;
+}
+
+.correct {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  padding: 0 24px;
+  background: #F4F5F6;
+  border-radius: 20px;
+  font-weight: 500;
+  color: #58BD7D;
+}
+:global(.dark-mode) .correct {
+  background: #353945;
+}
+
+.correct svg {
+  margin-right: 4px;
+  fill: #58BD7D;
+}
+.correct span {
+  color: #23262F;
+}
+:global(.dark-mode) .correct span {
+  color: #FCFCFD;
+}/*# sourceMappingURL=SignIn.module.css.map */

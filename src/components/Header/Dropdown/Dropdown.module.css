@@ -1,0 +1,210 @@
+.dropdown {
+  position: relative;
+}
+.dropdown.active .head {
+  color: #23262F;
+}
+.dropdown.active .head svg {
+  transform: rotate(180deg);
+  fill: #23262F;
+}
+:global(.dark-mode) .dropdown.active .head {
+  color: #FCFCFD;
+}
+:global(.dark-mode) .dropdown.active .head svg {
+  fill: #FCFCFD;
+}
+
+.dropdown.active .body {
+  transform: translate(-50%, 0);
+  visibility: visible;
+  opacity: 1;
+}
+@media only screen and (max-width: 767px) {
+  .dropdown.active .body {
+    display: block;
+    transform: translate(0);
+  }
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  line-height: 40px;
+  font-weight: 700;
+  color: #777E90;
+  transition: color 0.2s;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+@media only screen and (max-width: 767px) {
+  .head {
+    width: 100%;
+    padding: 0 22px;
+    border-left: 2px solid transparent;
+    font-family: "Poppins", sans-serif;
+    font-size: 24px;
+    line-height: 64px;
+    font-weight: 600;
+  }
+}
+.head svg {
+  margin-left: 4px;
+  fill: #777E90;
+  transition: all 0.2s;
+}
+@media only screen and (max-width: 767px) {
+  .head svg {
+    width: 32px;
+    height: 32px;
+    margin-left: auto;
+  }
+}
+.head:hover {
+  color: #23262F;
+}
+.head:hover svg {
+  fill: #23262F;
+}
+:global(.dark-mode) .head:hover {
+  color: #FCFCFD;
+}
+:global(.dark-mode) .head:hover svg {
+  fill: #FCFCFD;
+}
+
+.body {
+  position: absolute;
+  top: calc(100% + 20px);
+  left: 50%;
+  transform: translate(-50%, 10px);
+  width: 256px;
+  padding: 0 16px;
+  box-shadow: 0px 16px 48px rgba(31, 47, 70, 0.1);
+  border-radius: 12px;
+  background: #FCFCFD;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s;
+}
+@media only screen and (max-width: 767px) {
+  .body {
+    position: static;
+    display: none;
+    width: 100%;
+    padding: 0 24px;
+    box-shadow: none;
+    visibility: visible;
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+:global(.dark-mode) .body {
+  background: #23262F;
+}
+@media only screen and (max-width: 767px) {
+  :global(.dark-mode) .body {
+    background: none;
+  }
+}
+
+.body:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  width: 24px;
+  height: 12px;
+  transform: translateX(-50%);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='9' fill='none' viewBox='0 0 24 9'%3E%3Cpath d='M6.343 2.657L0 9h24l-6.343-6.343a8 8 0 0 0-11.314 0z' fill='%23fcfcfd'/%3E%3C/svg%3E") no-repeat 50% 100%/100% auto;
+}
+@media only screen and (max-width: 767px) {
+  .body:before {
+    display: none;
+  }
+}
+:global(.dark-mode) .body:before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='9' fill='none' viewBox='0 0 24 9'%3E%3Cpath d='M6.343 2.657L0 9h24l-6.343-6.343a8 8 0 0 0-11.314 0z' fill='%2323262F'/%3E%3C/svg%3E");
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  padding: 16px 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  line-height: 1.1428571429;
+  font-weight: 700;
+  color: #353945;
+  transition: color 0.2s;
+}
+@media only screen and (max-width: 767px) {
+  .link {
+    height: 56px;
+    padding: 0 16px;
+    border-radius: 8px;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+:global(.dark-mode) .link {
+  color: #777E90;
+}
+@media only screen and (max-width: 767px) {
+  :global(.dark-mode) .link {
+    color: #FCFCFD;
+  }
+}
+
+.link svg {
+  flex-shrink: 0;
+  margin-right: 8px;
+  fill: #777E90;
+  transition: fill 0.2s;
+}
+@media only screen and (max-width: 767px) {
+  .link svg {
+    margin-right: 12px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .link:hover, .link.active {
+    background: #F4F5F6;
+  }
+}
+.link:hover svg, .link.active svg {
+  fill: #353945;
+}
+@media only screen and (max-width: 767px) {
+  .link:hover svg, .link.active svg {
+    fill: #777E90;
+  }
+}
+:global(.dark-mode) .link:hover, :global(.dark-mode) .link.active {
+  color: #FCFCFD;
+}
+:global(.dark-mode) .link:hover svg, :global(.dark-mode) .link.active svg {
+  fill: #FCFCFD;
+}
+@media only screen and (max-width: 767px) {
+  :global(.dark-mode) .link:hover, :global(.dark-mode) .link.active {
+    background: #353945;
+  }
+  :global(.dark-mode) .link:hover svg, :global(.dark-mode) .link.active svg {
+    fill: #FCFCFD;
+  }
+}
+
+.link:not(:last-child) {
+  border-bottom: 1px solid #E6E8EC;
+}
+@media only screen and (max-width: 767px) {
+  .link:not(:last-child) {
+    border: none;
+  }
+}
+:global(.dark-mode) .link:not(:last-child) {
+  border-color: #353945;
+}/*# sourceMappingURL=Dropdown.module.css.map */

@@ -1,0 +1,17 @@
+.form {
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.title {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.field:not(:last-child) {
+  margin-bottom: 32px;
+}
+
+.button {
+  width: 100%;
+}/*# sourceMappingURL=Form.module.css.map */

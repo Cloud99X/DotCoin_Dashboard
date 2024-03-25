@@ -1,0 +1,304 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.head {
+  padding: 40px 0;
+  border-bottom: 1px solid #F1F2F4;
+}
+@media only screen and (max-width: 767px) {
+  .head {
+    padding: 16px 0 32px;
+  }
+}
+:global(.dark-mode) .head {
+  border-color: #23262F;
+}
+
+.head .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+@media only screen and (max-width: 1179px) {
+  .head .container {
+    padding: 0 40px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .head .container {
+    display: block;
+    padding: 0 32px;
+  }
+}
+
+.title {
+  margin-right: auto;
+}
+@media only screen and (max-width: 1179px) {
+  .title {
+    font-size: 40px;
+    line-height: 48px;
+    letter-spacing: -0.01em;
+  }
+}
+@media only screen and (max-width: 1023px) {
+  .title {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+.breadcrumbs {
+  margin-left: 40px;
+}
+@media only screen and (max-width: 767px) {
+  .breadcrumbs {
+    margin: 16px 0 0;
+  }
+}
+
+.body {
+  flex-grow: 1;
+  padding: 80px 0;
+  background: #F8F8F9;
+}
+@media only screen and (max-width: 1179px) {
+  .body {
+    padding-top: 64px;
+  }
+}
+@media only screen and (max-width: 1023px) {
+  .body {
+    padding-top: 40px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .body {
+    padding: 16px 0;
+  }
+}
+:global(.dark-mode) .body {
+  background: none;
+}
+
+.body .container {
+  display: flex;
+  align-items: flex-start;
+}
+@media only screen and (max-width: 1179px) {
+  .body .container {
+    padding: 0 40px;
+  }
+}
+@media only screen and (max-width: 1023px) {
+  .body .container {
+    display: block;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .body .container {
+    padding: 0 16px;
+  }
+}
+
+.sidebar {
+  flex-shrink: 0;
+  width: 288px;
+  margin-right: 80px;
+}
+@media only screen and (max-width: 1339px) {
+  .sidebar {
+    margin-right: 48px;
+  }
+}
+@media only screen and (max-width: 1179px) {
+  .sidebar {
+    width: 224px;
+    margin-right: 32px;
+  }
+}
+@media only screen and (max-width: 1023px) {
+  .sidebar {
+    width: 100%;
+    margin-bottom: 32px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .sidebar {
+    margin-bottom: 24px;
+  }
+}
+
+.wrapper {
+  flex-grow: 1;
+  padding: 40px;
+  border-radius: 16px;
+  background: #FCFCFD;
+  box-shadow: 0px 64px 64px -48px rgba(15, 15, 15, 0.1);
+}
+@media only screen and (max-width: 1023px) {
+  .wrapper {
+    padding: 40px 32px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .wrapper {
+    padding: 16px;
+  }
+}
+:global(.dark-mode) .wrapper {
+  background: #18191D;
+}
+
+@media only screen and (max-width: 1023px) {
+  .dropdown {
+    position: relative;
+    z-index: 5;
+  }
+  .dropdown.active .top:after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+  .dropdown.active .group {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.top {
+  display: none;
+}
+@media only screen and (max-width: 1023px) {
+  .top {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding: 0 64px 0 16px;
+    border-radius: 24px;
+    background: #FCFCFD;
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    line-height: 1.1428571429;
+    font-weight: 700;
+  }
+  :global(.dark-mode) .top {
+    background: #23262F;
+  }
+  .top svg {
+    margin-right: 8px;
+    fill: #23262F;
+  }
+  :global(.dark-mode) .top svg {
+    fill: #FCFCFD;
+  }
+  .top:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+    transform: translateY(-50%);
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M16.207 9.793a1 1 0 0 0-1.414 0L12 12.586 9.207 9.793a1 1 0 0 0-1.414 1.414l3.5 3.5a1 1 0 0 0 1.414 0l3.5-3.5a1 1 0 0 0 0-1.414z' fill='%23777e91'/%3E%3C/svg%3E") no-repeat 50% 50%/100% auto;
+    transition: transform 0.2s;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .group {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    z-index: 2;
+    padding: 16px;
+    background: #FCFCFD;
+    border-radius: 24px;
+    box-shadow: 0px 40px 32px -24px rgba(15, 15, 15, 0.12);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.2s;
+  }
+  :global(.dark-mode) .group {
+    background: #23262F;
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 16px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  line-height: 1.1428571429;
+  font-weight: 700;
+  color: #777E90;
+  transition: color 0.2s;
+}
+@media only screen and (max-width: 1179px) {
+  .link {
+    padding: 0;
+  }
+}
+.link svg {
+  margin-right: 8px;
+  fill: #777E90;
+  transition: fill 0.2s;
+}
+.link:hover, .link.active {
+  color: #23262F;
+}
+.link:hover svg, .link.active svg {
+  fill: #23262F;
+}
+:global(.dark-mode) .link:hover, :global(.dark-mode) .link.active {
+  color: #FCFCFD;
+}
+:global(.dark-mode) .link:hover svg, :global(.dark-mode) .link.active svg {
+  fill: #FCFCFD;
+}
+
+.link:not(:last-child) {
+  margin-bottom: 12px;
+}
+@media only screen and (max-width: 1023px) {
+  .link:not(:last-child) {
+    margin-bottom: 4px;
+  }
+}
+.link:not(:last-child).separator {
+  position: relative;
+  margin-bottom: 25px;
+}
+@media only screen and (max-width: 1023px) {
+  .link:not(:last-child).separator {
+    margin-bottom: 4px;
+  }
+}
+.link:not(:last-child).separator:after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: calc(100% + 12px);
+  height: 1px;
+  background: #E6E8EC;
+}
+@media only screen and (max-width: 1179px) {
+  .link:not(:last-child).separator:after {
+    left: 0;
+    right: 0;
+  }
+}
+@media only screen and (max-width: 1023px) {
+  .link:not(:last-child).separator:after {
+    display: none;
+  }
+}
+:global(.dark-mode) .link:not(:last-child).separator:after {
+  background: #23262F;
+}/*# sourceMappingURL=Profile.module.css.map */

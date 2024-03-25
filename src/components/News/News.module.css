@@ -1,0 +1,33 @@
+.container {
+  max-width: 1132px;
+}
+
+.head {
+  max-width: 545px;
+  margin: 0 auto 80px;
+  text-align: center;
+}
+@media only screen and (max-width: 1023px) {
+  .head {
+    margin-bottom: 48px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .head {
+    margin-bottom: 24px;
+  }
+}
+
+.logo {
+  margin-bottom: 16px;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.info {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #777E90;
+}/*# sourceMappingURL=News.module.css.map */

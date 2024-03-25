@@ -1,0 +1,142 @@
+.cards {
+  display: flex;
+  padding: 24px 8px;
+  border-radius: 24px;
+  background: #F4F5F6;
+}
+@media only screen and (max-width: 1023px) {
+  .cards {
+    margin: 0 -20px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .cards {
+    display: block;
+    margin: -32px -16px 0;
+    padding: 24px;
+  }
+}
+:global(.dark-mode) .cards {
+  background: #23262F;
+}
+
+.card {
+  flex: 0 0 calc(25% - 32px);
+  width: calc(25% - 32px);
+  margin: 0 16px;
+  padding: 32px;
+  border-radius: 16px;
+  color: #23262F;
+  transition: all 0.2s;
+}
+@media only screen and (max-width: 1179px) {
+  .card {
+    padding: 24px 16px;
+  }
+}
+@media only screen and (max-width: 1023px) {
+  .card {
+    padding: 16px 0;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .card {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 16px 24px;
+  }
+}
+:global(.dark-mode) .card {
+  color: #FCFCFD;
+}
+
+.card:hover {
+  box-shadow: 0px 64px 64px -48px rgba(15, 15, 15, 0.1);
+  background: #FCFCFD;
+}
+@media only screen and (max-width: 1023px) {
+  .card:hover {
+    box-shadow: none;
+    background: none;
+  }
+}
+:global(.dark-mode) .card:hover {
+  background: #353945;
+}
+@media only screen and (max-width: 1023px) {
+  :global(.dark-mode) .card:hover {
+    background: none;
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin-bottom: 16px;
+}
+@media only screen and (max-width: 767px) {
+  .icon {
+    flex-shrink: 0;
+    width: 40px;
+    margin: 0 16px 0 0;
+  }
+}
+.icon img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+@media only screen and (max-width: 767px) {
+  .details {
+    flex-grow: 1;
+  }
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+  font-size: 12px;
+  line-height: 1.6666666667;
+  font-weight: 600;
+}
+
+.title {
+  margin-right: 12px;
+  color: #777E90;
+}
+
+.positive,
+.negative {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  line-height: 1.6666666667;
+  font-weight: 600;
+  color: #FCFCFD;
+}
+
+.positive {
+  background: #58BD7D;
+}
+
+.negative {
+  background: #FF6838;
+}
+
+.price {
+  margin-bottom: 4px;
+  font-size: 24px;
+  line-height: 1.3333333333;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.money {
+  font-size: 12px;
+  line-height: 1.6666666667;
+}/*# sourceMappingURL=Cards.module.css.map */

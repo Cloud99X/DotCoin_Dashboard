@@ -1,0 +1,58 @@
+.box {
+  display: flex;
+  margin-top: 32px;
+  background: #F4F5F6;
+  border-radius: 16px;
+}
+@media only screen and (max-width: 767px) {
+  .box {
+    margin-bottom: -32px;
+    background: none;
+  }
+}
+:global(.dark-mode) .box {
+  background: #23262F;
+}
+@media only screen and (max-width: 767px) {
+  :global(.dark-mode) .box {
+    background: none;
+  }
+}
+
+.details {
+  max-width: 256px;
+  margin: 64px auto 0;
+  padding: 32px 48px;
+  border-radius: 32px 32px 0 0;
+  background: #FCFCFD;
+}
+@media only screen and (max-width: 767px) {
+  .details {
+    margin-top: 0;
+    background: #F4F5F6;
+  }
+}
+:global(.dark-mode) .details {
+  background: #353945;
+}
+
+.code {
+  padding: 16px;
+  border-radius: 8px;
+  border: 2px dashed #3772FF;
+}
+.code img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.button {
+  width: 100%;
+  margin-top: 48px;
+}
+:global(.dark-mode) .button {
+  box-shadow: inset 0 0 0 2px #777E90;
+}
+:global(.dark-mode) .button:hover {
+  box-shadow: inset 0 0 0 2px #B1B5C3;
+}/*# sourceMappingURL=Scan.module.css.map */

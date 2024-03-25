@@ -1,0 +1,56 @@
+@media only screen and (max-width: 1179px) {
+  .container {
+    padding: 0 40px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .container {
+    padding: 0 32px;
+  }
+}
+
+.head {
+  max-width: 455px;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+@media only screen and (max-width: 767px) {
+  .head {
+    margin-bottom: 48px;
+    text-align: left;
+  }
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.info {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #777E90;
+}
+
+.wrapper {
+  margin: 0 -12px;
+}
+@media only screen and (max-width: 767px) {
+  .wrapper {
+    margin: 0 -4px;
+  }
+}
+
+.btns {
+  margin-top: 64px;
+  text-align: center;
+}
+@media only screen and (max-width: 1023px) {
+  .btns {
+    margin-top: 40px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .btns .button {
+    width: 100%;
+  }
+}/*# sourceMappingURL=Popular.module.css.map */

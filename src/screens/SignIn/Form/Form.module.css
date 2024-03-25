@@ -1,0 +1,85 @@
+.nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+.nav .link {
+  display: flex;
+  padding: 6px 12px;
+  border-radius: 14px;
+  background: none;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  line-height: 1.1428571429;
+  font-weight: 700;
+  color: #777E90;
+  transition: all 0.2s;
+}
+.nav .link:hover {
+  color: #353945;
+}
+:global(.dark-mode) .nav .link:hover {
+  color: #FCFCFD;
+}
+
+.nav .link.active {
+  background: #353945;
+  color: #FCFCFD;
+}
+:global(.dark-mode) .nav .link.active {
+  background: #353945;
+  color: #FCFCFD;
+}
+
+.nav .link:not(:last-child) {
+  margin-right: 24px;
+}
+
+.container {
+  margin-bottom: 32px;
+}
+
+.line {
+  display: flex;
+  align-items: flex-end;
+}
+.line .field:first-child {
+  flex-shrink: 0;
+  width: 128px;
+  margin-right: 8px;
+}
+.line .field:nth-child(2) {
+  flex-grow: 1;
+}
+
+.foot {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-size: 12px;
+  line-height: 1.6666666667;
+  font-weight: 600;
+}
+.foot .link {
+  color: #3772FF;
+  transition: color 0.2s;
+}
+.foot .link:hover {
+  color: #044eff;
+}
+
+.scan {
+  font-size: 12px;
+  line-height: 1.6666666667;
+  font-weight: 600;
+  color: #777E90;
+  transition: color 0.2s;
+}
+.scan:hover {
+  color: #23262F;
+}
+
+.button {
+  width: 100%;
+  margin-top: 32px;
+}/*# sourceMappingURL=Form.module.css.map */

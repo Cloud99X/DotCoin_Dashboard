@@ -1,0 +1,40 @@
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  line-height: 1.1428571429;
+  font-weight: 700;
+  color: #23262F;
+}
+:global(.dark-mode) .item {
+  color: #FCFCFD;
+}
+
+.item:not(:last-child) {
+  margin-right: 16px;
+}
+.item:not(:last-child):after {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 9px;
+  margin-left: 16px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='10' fill='none' viewBox='0 0 6 10'%3E%3Cpath fill-rule='evenodd' d='M.793.793a1 1 0 0 0 0 1.414L3.586 5 .793 7.793a1 1 0 0 0 1.414 1.414l3.5-3.5a1 1 0 0 0 0-1.414l-3.5-3.5a1 1 0 0 0-1.414 0z' fill='%23777E90'/%3E%3C/svg%3E") no-repeat 50% 50%/100% auto;
+}
+@media only screen and (max-width: 767px) {
+  .item:not(:last-child):not(:nth-last-child(2)) {
+    display: none;
+  }
+}
+
+.link {
+  color: #777E90;
+  transition: color 0.2s;
+}
+.link:hover {
+  color: #3772FF;
+}/*# sourceMappingURL=Breadcrumbs.module.css.map */
