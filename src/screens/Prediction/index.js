@@ -253,6 +253,14 @@ const Prediction = () => {
                 />
               )}
             </div>
+            <div className="flex justify-center mt-10">
+            <button
+              className="bg-[#355DFF] hover:bg-blue-700 text-white font-bold w-5/6 h-16 rounded-lg "
+              onClick={() => handleMiniChartClick("ETHUSD")}
+            >
+              Predict
+            </button>
+            </div>
           </div>
 
           <div className="flex flex-col mb-2 mt-2 gap-5">
