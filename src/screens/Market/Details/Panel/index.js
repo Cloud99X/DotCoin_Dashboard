@@ -189,9 +189,9 @@ const Panel = () => {
         </div>
         <Link
           className={cn("button-stroke button-small", styles.button)}
-          to="/exchange"
+          to="/wallet"
         >
-          Trade
+          Wallet
         </Link>
         <Dropdown
           className={styles.dropdown}
