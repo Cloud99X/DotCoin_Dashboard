@@ -72,11 +72,17 @@ const Markets = () => {
       up: true,
     },
   ];
+
   return (
     <PageLayout activeMenu={"Markets"}>
       <div>
         <div className="flex gap-5 mb-10">
-          <SingleTicker colorTheme="dark" autosize={true} symbol="BTCUSD" />
+          <SingleTicker
+            colorTheme="dark"
+            autosize={true}
+            symbol="BTCUSD"
+            largeChartUrl=""
+          />
           <SingleTicker colorTheme="dark" autosize={true} symbol="ETHUSD" />
           <SingleTicker colorTheme="dark" autosize={true} symbol="SOLUSD" />
           <SingleTicker colorTheme="dark" autosize={true} symbol="XRPUSD" />
@@ -145,33 +151,6 @@ const Markets = () => {
               </tbody>
             </table>
           </div>
-          {/* <table className="mt-10 table-auto text-left">
-            <thead className="text-[#808191] text-sm">
-              <tr className="bg-[#242731]">
-                <th className="py-5 pl-5">TOKEN</th>
-                <th>SYMBOL</th>
-                <th>PRICE</th>
-                <th>24H</th>
-                <th>MARKET CAP</th>
-                <th>VOLUME</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currencies.map((curr, index) => (
-                <tr className="even:bg-[#242731] even:rounded-md" key={index}>
-                  <td className="flex gap-3 items-center">
-                    <img src={curr.logo} />
-                    {curr.token}
-                  </td>
-                  <td>{curr.symbol}</td>
-                  <td>${curr.price}</td>
-                  <td>${curr.hours24}</td>
-                  <td>${curr.marketCap}</td>
-                  <td>${curr.volume}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table> */}
         </div>
       </div>
     </PageLayout>
