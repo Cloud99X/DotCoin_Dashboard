@@ -7,12 +7,12 @@ import { AreaChart, Area, ResponsiveContainer } from "recharts";
 
 const navigation = [
   "All",
-  "DeFi",
-  "Innovation",
-  "POS",
-  "NFT",
-  "POW",
-  "Storage",
+  // "DeFi",
+  // "Innovation",
+  // "POS",
+  // "NFT",
+  // "POW",
+  // "Storage",
 ];
 
 const items = [
