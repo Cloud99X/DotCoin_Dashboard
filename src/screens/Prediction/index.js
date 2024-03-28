@@ -14,6 +14,9 @@ import steem_logo from "../../assets/svg/steem_logo.svg";
 import UBQ_logo from "../../assets/svg/UBQ.svg";
 import tbx_logo from "../../assets/svg/tbx.svg";
 import divider from "../../assets/svg/Divider.svg";
+import upGreenIcon from "../../assets/svg/upGreen.svg";
+import downRedIcon from "../../assets/svg/downRed.svg";
+
 
 const Prediction = () => {
   const [symbolData, setSymbolData] = useState({
@@ -49,9 +52,12 @@ const Prediction = () => {
                       <h4 className="font-bold text-sm">Share</h4>
                     </button>
                   </div>
+                  <div className="flex items-center gap-3">
                   <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
                     19,761.52 USD
                   </h1>
+                   <h6 className="text-sm font-medium text-[#4FBF67]">+0.92%</h6>
+                   </div>
                 </div>
               )}
               {/* ETH main part */}
@@ -73,9 +79,12 @@ const Prediction = () => {
                       <h4 className="font-bold text-sm">Share</h4>
                     </button>
                   </div>
+                  <div className="flex items-center gap-3">
                   <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
                     5,761.52 USD
                   </h1>
+                  <h6 className="text-sm font-medium text-[#4FBF67]">+0.69%</h6>
+                  </div>
                 </div>
               )}
               {/* STE main part */}
@@ -97,9 +106,12 @@ const Prediction = () => {
                     <h4 className="font-bold text-sm">Share</h4>
                   </button>
                 </div>
+                <div className="flex items-center gap-3">
                 <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
                     2,342.52 USD
                   </h1>
+                  <h6 className="text-sm font-medium text-[#4FBF67]">+0.63%</h6>
+                  </div>
                 </div>
               )}
               {/* Ubiq main part */}
@@ -121,9 +133,12 @@ const Prediction = () => {
                     <h4 className="font-bold text-sm">Share</h4>
                   </button>
                 </div>
+                <div className="flex items-center gap-3">
                 <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
                     5,461.52 USD
                   </h1>
+                  <h6 className="text-sm font-medium text-[#4FBF67]">+0.22%</h6>
+                  </div>
                 </div>
               )}
               {/* TBX main part */}
@@ -145,9 +160,12 @@ const Prediction = () => {
                     <h4 className="font-bold text-sm">Share</h4>
                   </button>
                 </div>
+                <div className="flex items-center gap-3">
                 <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
                     3,761.52 USD
                   </h1>
+                  <h6 className="text-sm font-medium text-[#4FBF67]">+0.54%</h6>
+                  </div>
                 </div>
               )}
             </div>
@@ -159,7 +177,7 @@ const Prediction = () => {
                 <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
                   <div className="flex flex-row  border-b border-solid border-[#808191]">
                     <div className="flex items-center justify-center w-80 h-28 ">
-                      <div className="flex flex-row gap-5">
+                      <div className="flex flex-row gap-5 w-[250px]">
                         <img
                           src={ghost_circle_icon}
                           alt="SVG"
@@ -185,7 +203,7 @@ const Prediction = () => {
                     </div>
 
                     <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                      <div className="flex flex-row gap-5">
+                      <div className="flex flex-row gap-5 w-[250px]">
                         <img
                           src={ghost_circle_icon2}
                           alt="SVG"
@@ -212,7 +230,7 @@ const Prediction = () => {
                   </div>
                   <div className="flex flex-row">
                     <div className="flex items-center justify-center w-80 h-28 ">
-                      <div className="flex flex-row gap-5">
+                      <div className="flex flex-row gap-5 w-[250px]">
                         <img
                           src={ghost_circle_icon3}
                           alt="SVG"
@@ -238,7 +256,7 @@ const Prediction = () => {
                     </div>
 
                     <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                      <div className="flex flex-row gap-5">
+                      <div className="flex flex-row gap-5 w-[250px]">
                         <img
                           src={ghost_circle_icon4}
                           alt="SVG"
@@ -271,7 +289,7 @@ const Prediction = () => {
                 <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
                   <div className="flex flex-row  border-b border-solid border-[#808191]">
                     <div className="flex items-center justify-center w-80 h-28 ">
-                      <div className="flex flex-row gap-5">
+                      <div className="flex flex-row gap-5 w-[250px]">
                         <img
                           src={ghost_circle_icon}
                           alt="SVG"
@@ -297,7 +315,7 @@ const Prediction = () => {
                     </div>
 
                     <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                      <div className="flex flex-row gap-5">
+                      <div className="flex flex-row gap-5 w-[250px]">
                         <img
                           src={ghost_circle_icon2}
                           alt="SVG"
@@ -324,7 +342,7 @@ const Prediction = () => {
                   </div>
                   <div className="flex flex-row">
                     <div className="flex items-center justify-center w-80 h-28 ">
-                      <div className="flex flex-row gap-5">
+                      <div className="flex flex-row gap-5 w-[250px]">
                         <img
                           src={ghost_circle_icon3}
                           alt="SVG"
@@ -350,7 +368,7 @@ const Prediction = () => {
                     </div>
 
                     <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                      <div className="flex flex-row gap-5">
+                      <div className="flex flex-row gap-5 w-[250px]">
                         <img
                           src={ghost_circle_icon4}
                           alt="SVG"
@@ -383,7 +401,7 @@ const Prediction = () => {
                 <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
                   <div className="flex flex-row  border-b border-solid border-[#808191]">
                     <div className="flex items-center justify-center w-80 h-28 ">
-                      <div className="flex flex-row gap-5">
+                      <div className="flex flex-row gap-5 w-[250px]">
                         <img
                           src={ghost_circle_icon}
                           alt="SVG"
@@ -409,7 +427,7 @@ const Prediction = () => {
                     </div>
 
                     <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                      <div className="flex flex-row gap-5">
+                      <div className="flex flex-row gap-5 w-[250px]">
                         <img
                           src={ghost_circle_icon2}
                           alt="SVG"
@@ -436,7 +454,7 @@ const Prediction = () => {
                   </div>
                   <div className="flex flex-row">
                     <div className="flex items-center justify-center w-80 h-28 ">
-                      <div className="flex flex-row gap-5">
+                      <div className="flex flex-row gap-5 w-[250px]">
                         <img
                           src={ghost_circle_icon3}
                           alt="SVG"
@@ -462,7 +480,7 @@ const Prediction = () => {
                     </div>
 
                     <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                      <div className="flex flex-row gap-5">
+                      <div className="flex flex-row gap-5 w-[250px]">
                         <img
                           src={ghost_circle_icon4}
                           alt="SVG"
@@ -495,7 +513,7 @@ const Prediction = () => {
                 <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
                   <div className="flex flex-row  border-b border-solid border-[#808191]">
                     <div className="flex items-center justify-center w-80 h-28 ">
-                      <div className="flex flex-row gap-5">
+                      <div className="flex flex-row gap-5 w-[250px]">
                         <img
                           src={ghost_circle_icon}
                           alt="SVG"
@@ -521,7 +539,7 @@ const Prediction = () => {
                     </div>
 
                     <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                      <div className="flex flex-row gap-5">
+                      <div className="flex flex-row gap-5 w-[250px]">
                         <img
                           src={ghost_circle_icon2}
                           alt="SVG"
@@ -548,7 +566,7 @@ const Prediction = () => {
                   </div>
                   <div className="flex flex-row">
                     <div className="flex items-center justify-center w-80 h-28 ">
-                      <div className="flex flex-row gap-5">
+                      <div className="flex flex-row gap-5 w-[250px]">
                         <img
                           src={ghost_circle_icon3}
                           alt="SVG"
@@ -574,7 +592,7 @@ const Prediction = () => {
                     </div>
 
                     <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                      <div className="flex flex-row gap-5">
+                      <div className="flex flex-row gap-5 w-[250px]">
                         <img
                           src={ghost_circle_icon4}
                           alt="SVG"
@@ -607,7 +625,7 @@ const Prediction = () => {
                 <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
                   <div className="flex flex-row  border-b border-solid border-[#808191]">
                     <div className="flex items-center justify-center w-80 h-28 ">
-                      <div className="flex flex-row gap-5">
+                      <div className="flex flex-row gap-5 w-[250px]">
                         <img
                           src={ghost_circle_icon}
                           alt="SVG"
@@ -633,7 +651,7 @@ const Prediction = () => {
                     </div>
 
                     <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                      <div className="flex flex-row gap-5">
+                      <div className="flex flex-row gap-5 w-[250px]">
                         <img
                           src={ghost_circle_icon2}
                           alt="SVG"
@@ -660,7 +678,7 @@ const Prediction = () => {
                   </div>
                   <div className="flex flex-row">
                     <div className="flex items-center justify-center w-80 h-28 ">
-                      <div className="flex flex-row gap-5">
+                      <div className="flex flex-row gap-5 w-[250px]">
                         <img
                           src={ghost_circle_icon3}
                           alt="SVG"
@@ -686,7 +704,7 @@ const Prediction = () => {
                     </div>
 
                     <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                      <div className="flex flex-row gap-5">
+                      <div className="flex flex-row gap-5 w-[250px]">
                         <img
                           src={ghost_circle_icon4}
                           alt="SVG"
@@ -807,16 +825,17 @@ const Prediction = () => {
               }`}
               onClick={() => handleMiniChartClick("BTCUSD")}
             >
-              <div className="flex mb-40 gap-10 flex-row m-3">
+              <div className="flex mb-40 gap-12 flex-row m-3">
                 <div className="flex gap-2 ">
                   <img src={BTC_logo} alt="SVG" className="h-12 w-12" />
-                  <div className="flex flex-col ">
+                  <div className="flex flex-col items-start ">
                     <h6 className="text-lg font-medium ">Bitcoin</h6>
                     <h6 className="text-xs font-medium text-[#808191]">BTC</h6>
                   </div>
                 </div>
-                <div className="flex flex-col ">
-                  <h6 className="text-sm font-semibold text-[#4FBF67]">2.5%</h6>
+                <div className="flex flex-col items-end">
+                  {/* <h6 className="text-sm font-semibold text-[#4FBF67]">2.5%</h6> */}
+                  <img src={upGreenIcon} alt="SVG" className="h-6 w-16" />
                   <h6 className="text-base font-semibold">18,245.4 USD</h6>
                 </div>
               </div>
@@ -833,15 +852,16 @@ const Prediction = () => {
               <div className="flex mb-40 gap-10 flex-row m-5">
                 <div className="flex gap-2 ">
                   <img src={E_logo} alt="SVG" className="h-12 w-12" />
-                  <div className="flex flex-col ">
+                  <div className="flex flex-col items-start ">
                     <h6 className="text-lg font-medium ">Ethereum</h6>
                     <h6 className="text-xs font-medium text-[#808191]">ETH</h6>
                   </div>
                 </div>
-                <div className="flex flex-col ">
-                  <h6 className="text-sm font-semibold text-[#FF7A68]">
+                <div className="flex flex-col items-end ">
+                  {/* <h6 className="text-sm font-semibold text-[#FF7A68]">
                     2.05%
-                  </h6>
+                  </h6> */}
+                  <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
                   <h6 className="text-base font-semibold">0.56687654</h6>
                 </div>
               </div>
@@ -855,16 +875,17 @@ const Prediction = () => {
               }`}
               onClick={() => handleMiniChartClick("STE")}
             >
-              <div className="flex gap-10 mb-40 flex-row m-3">
+              <div className="flex gap-12 mb-40 flex-row m-3 ">
                 <div className="flex gap-2 ">
                   <img src={steem_logo} alt="SVG" className="h-12 w-12" />
-                  <div className="flex flex-col ">
-                    <h6 className="text-lg font-medium ">Steem</h6>
+                  <div className="flex flex-col items-start">
+                    <h6 className="text-lg font-medium">Steem</h6>
                     <h6 className="text-xs font-medium text-[#808191]">STE</h6>
                   </div>
                 </div>
-                <div className="flex flex-col ">
-                  <h6 className="text-sm font-semibold text-[#4FBF67]">2.5%</h6>
+                <div className="flex flex-col items-end ">
+                  {/* <h6 className="text-sm font-semibold text-[#4FBF67]">2.5%</h6> */}
+                  <img src={upGreenIcon} alt="SVG" className="h-6 w-16" />
                   <h6 className="text-base font-semibold">18,245.4 USD</h6>
                 </div>
               </div>
@@ -878,17 +899,18 @@ const Prediction = () => {
               }`}
               onClick={() => handleMiniChartClick("UBQ")}
             >
-              <div className="flex mb-40 gap-10 flex-row m-3">
-                <div className="flex gap-2 ">
+              <div className="flex mb-40 gap-20 flex-row m-3 ">
+                <div className="flex gap-2">
                   <img src={UBQ_logo} alt="SVG" className="h-12 w-12" />
-                  <div className="flex flex-col ">
+                  <div className="flex flex-col items-start">
                     <h6 className="text-lg font-medium ">Ubiq</h6>
                     <h6 className="text-xs font-medium text-[#808191]">UBQ</h6>
                   </div>
                 </div>
-                <div className="flex flex-col ">
-                  <h6 className="text-sm font-semibold text-[#FF7A68]">2.5%</h6>
-                  <h6 className="text-base font-semibold">18,245.4 USD</h6>
+                <div className="flex flex-col items-end  ">
+                  {/* <h6 className="text-sm font-semibold text-[#FF7A68]">2.5%</h6> */}
+                  <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
+                  <h6 className="text-base font-semibold">18,245 USD</h6>
                 </div>
               </div>
             </button>
@@ -904,13 +926,14 @@ const Prediction = () => {
               <div className="flex mb-40 gap-10 flex-row m-3">
                 <div className="flex gap-2 ">
                   <img src={tbx_logo} alt="SVG" className="h-12 w-12" />
-                  <div className="flex flex-col ">
+                  <div className="flex flex-col items-start ">
                     <h6 className="text-lg font-medium ">Tokenbox</h6>
                     <h6 className="text-xs font-medium text-[#808191]">TBX</h6>
                   </div>
                 </div>
-                <div className="flex flex-col ">
-                  <h6 className="text-sm font-semibold text-[#4FBF67]">2.5%</h6>
+                <div className="flex flex-col items-end ">
+                  {/* <h6 className="text-sm font-semibold text-[#4FBF67]">2.5%</h6> */}
+                  <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
                   <h6 className="text-base font-semibold">18,245 USD</h6>
                 </div>
               </div>
