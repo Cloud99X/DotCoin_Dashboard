@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PageLayout from "../../components/PageLayout/PageLayout";
 import BTC_logo from "../../assets/svg/BTC.svg";
 import two_lines from "../../assets/svg/dark.svg";
@@ -16,16 +16,33 @@ import tbx_logo from "../../assets/svg/tbx.svg";
 import divider from "../../assets/svg/Divider.svg";
 import upGreenIcon from "../../assets/svg/upGreen.svg";
 import downRedIcon from "../../assets/svg/downRed.svg";
-
+import axios from "axios";
 
 const Prediction = () => {
   const [symbolData, setSymbolData] = useState({
     symbol: "BTCUSD",
   });
 
+  const [cryptoData, setCryptoData] = useState();
   const handleMiniChartClick = (symbol) => {
     setSymbolData({ symbol });
   };
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/get-crypto-data`
+        );
+        console.log(response.data);
+        setCryptoData(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getData();
+  }, []);
 
   return (
     <PageLayout activeMenu={"Prediction"}>
@@ -53,11 +70,13 @@ const Prediction = () => {
                     </button>
                   </div>
                   <div className="flex items-center gap-3">
-                  <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
-                    19,761.52 USD
-                  </h1>
-                   <h6 className="text-sm font-medium text-[#4FBF67]">+0.92%</h6>
-                   </div>
+                    <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
+                      19,761.52 USD
+                    </h1>
+                    <h6 className="text-sm font-medium text-[#4FBF67]">
+                      +0.92%
+                    </h6>
+                  </div>
                 </div>
               )}
               {/* ETH main part */}
@@ -80,91 +99,99 @@ const Prediction = () => {
                     </button>
                   </div>
                   <div className="flex items-center gap-3">
-                  <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
-                    5,761.52 USD
-                  </h1>
-                  <h6 className="text-sm font-medium text-[#4FBF67]">+0.69%</h6>
+                    <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
+                      5,761.52 USD
+                    </h1>
+                    <h6 className="text-sm font-medium text-[#4FBF67]">
+                      +0.69%
+                    </h6>
                   </div>
                 </div>
               )}
               {/* STE main part */}
-              {symbolData.symbol === "STE" && (
+              {symbolData.symbol === "SOL" && (
                 <div className="flex flex-col">
-                <div className="flex items-center gap-20 m-5">
-                  <div className="flex items-center gap-2">
-                    <img src={steem_logo} alt="SVG" className="h-14 w-14" />
-                    <div className="flex flex-col">
-                      <h4 className="text-2xl font-medium">Steem</h4>
-                      <h4 className="text-lg text-[#808191] font-medium">
-                        STE
-                      </h4>
+                  <div className="flex items-center gap-20 m-5">
+                    <div className="flex items-center gap-2">
+                      <img src={steem_logo} alt="SVG" className="h-14 w-14" />
+                      <div className="flex flex-col">
+                        <h4 className="text-2xl font-medium">Solana</h4>
+                        <h4 className="text-lg text-[#808191] font-medium">
+                          ETH
+                        </h4>
+                      </div>
                     </div>
+                    <img src={two_lines} alt="SVG" className="h-5 w-5" />
+                    <button className="flex items-center gap-2 justify-center flex-row w-28 h-12 border border-solid border-[#808191] rounded-xl">
+                      <img src={upload_logo} alt="SVG" className="h-4 w-4" />
+                      <h4 className="font-bold text-sm">Share</h4>
+                    </button>
                   </div>
-                  <img src={two_lines} alt="SVG" className="h-5 w-5" />
-                  <button className="flex items-center gap-2 justify-center flex-row w-28 h-12 border border-solid border-[#808191] rounded-xl">
-                    <img src={upload_logo} alt="SVG" className="h-4 w-4" />
-                    <h4 className="font-bold text-sm">Share</h4>
-                  </button>
-                </div>
-                <div className="flex items-center gap-3">
-                <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
-                    2,342.52 USD
-                  </h1>
-                  <h6 className="text-sm font-medium text-[#4FBF67]">+0.63%</h6>
+                  <div className="flex items-center gap-3">
+                    <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
+                      2,342.52 USD
+                    </h1>
+                    <h6 className="text-sm font-medium text-[#4FBF67]">
+                      +0.63%
+                    </h6>
                   </div>
                 </div>
               )}
               {/* Ubiq main part */}
-              {symbolData.symbol === "UBQ" && (
+              {symbolData.symbol === "XRP" && (
                 <div className="flex flex-col">
-                <div className="flex items-center gap-20 m-5">
-                  <div className="flex items-center gap-2">
-                    <img src={UBQ_logo} alt="SVG" className="h-14 w-14" />
-                    <div className="flex flex-col">
-                      <h4 className="text-2xl font-medium">Ubiq</h4>
-                      <h4 className="text-lg text-[#808191] font-medium">
-                        UBQ
-                      </h4>
+                  <div className="flex items-center gap-20 m-5">
+                    <div className="flex items-center gap-2">
+                      <img src={UBQ_logo} alt="SVG" className="h-14 w-14" />
+                      <div className="flex flex-col">
+                        <h4 className="text-2xl font-medium">XRP</h4>
+                        <h4 className="text-lg text-[#808191] font-medium">
+                          ETH
+                        </h4>
+                      </div>
                     </div>
+                    <img src={two_lines} alt="SVG" className="h-5 w-5" />
+                    <button className="flex items-center gap-2 justify-center flex-row w-28 h-12 border border-solid border-[#808191] rounded-xl">
+                      <img src={upload_logo} alt="SVG" className="h-4 w-4" />
+                      <h4 className="font-bold text-sm">Share</h4>
+                    </button>
                   </div>
-                  <img src={two_lines} alt="SVG" className="h-5 w-5" />
-                  <button className="flex items-center gap-2 justify-center flex-row w-28 h-12 border border-solid border-[#808191] rounded-xl">
-                    <img src={upload_logo} alt="SVG" className="h-4 w-4" />
-                    <h4 className="font-bold text-sm">Share</h4>
-                  </button>
-                </div>
-                <div className="flex items-center gap-3">
-                <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
-                    5,461.52 USD
-                  </h1>
-                  <h6 className="text-sm font-medium text-[#4FBF67]">+0.22%</h6>
+                  <div className="flex items-center gap-3">
+                    <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
+                      5,461.52 USD
+                    </h1>
+                    <h6 className="text-sm font-medium text-[#4FBF67]">
+                      +0.22%
+                    </h6>
                   </div>
                 </div>
               )}
               {/* TBX main part */}
-              {symbolData.symbol === "TBX" && (
+              {symbolData.symbol === "DOGE" && (
                 <div className="flex flex-col">
-                <div className="flex items-center gap-20 m-5">
-                  <div className="flex items-center gap-2">
-                    <img src={tbx_logo} alt="SVG" className="h-14 w-14" />
-                    <div className="flex flex-col">
-                      <h4 className="text-2xl font-medium">Tokenbox</h4>
-                      <h4 className="text-lg text-[#808191] font-medium">
-                        TBX
-                      </h4>
+                  <div className="flex items-center gap-20 m-5">
+                    <div className="flex items-center gap-2">
+                      <img src={tbx_logo} alt="SVG" className="h-14 w-14" />
+                      <div className="flex flex-col">
+                        <h4 className="text-2xl font-medium">Dogecoin</h4>
+                        <h4 className="text-lg text-[#808191] font-medium">
+                          ETH
+                        </h4>
+                      </div>
                     </div>
+                    <img src={two_lines} alt="SVG" className="h-5 w-5" />
+                    <button className="flex items-center gap-2 justify-center flex-row w-28 h-12 border border-solid border-[#808191] rounded-xl">
+                      <img src={upload_logo} alt="SVG" className="h-4 w-4" />
+                      <h4 className="font-bold text-sm">Share</h4>
+                    </button>
                   </div>
-                  <img src={two_lines} alt="SVG" className="h-5 w-5" />
-                  <button className="flex items-center gap-2 justify-center flex-row w-28 h-12 border border-solid border-[#808191] rounded-xl">
-                    <img src={upload_logo} alt="SVG" className="h-4 w-4" />
-                    <h4 className="font-bold text-sm">Share</h4>
-                  </button>
-                </div>
-                <div className="flex items-center gap-3">
-                <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
-                    3,761.52 USD
-                  </h1>
-                  <h6 className="text-sm font-medium text-[#4FBF67]">+0.54%</h6>
+                  <div className="flex items-center gap-3">
+                    <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
+                      3,761.52 USD
+                    </h1>
+                    <h6 className="text-sm font-medium text-[#4FBF67]">
+                      +0.54%
+                    </h6>
                   </div>
                 </div>
               )}
@@ -196,7 +223,7 @@ const Prediction = () => {
                           </div>
 
                           <h6 className="text-lg font-medium">
-                            329,553,878,671 USD
+                            {cryptoData.BTC[0].quote.USD.market_cap}
                           </h6>
                         </div>
                       </div>
@@ -222,7 +249,7 @@ const Prediction = () => {
                           </div>
 
                           <h6 className="text-lg font-medium">
-                            49,097,123,995 USD
+                            {cryptoData.BTC[0].quote.USD.volume_24h}
                           </h6>
                         </div>
                       </div>
@@ -249,7 +276,7 @@ const Prediction = () => {
                           </div>
 
                           <h6 className="text-lg font-medium">
-                            18,554,987 BTC
+                            {cryptoData.BTC[0].circulating_supply}
                           </h6>
                         </div>
                       </div>
@@ -275,7 +302,7 @@ const Prediction = () => {
                           </div>
 
                           <h6 className="text-lg font-medium">
-                            18,554,381 BTC
+                            {cryptoData.BTC[0].total_supply}
                           </h6>
                         </div>
                       </div>
@@ -308,7 +335,7 @@ const Prediction = () => {
                           </div>
 
                           <h6 className="text-lg font-medium">
-                            329,553,132,671 USD
+                            {cryptoData.ETH[0].quote.USD.market_cap}
                           </h6>
                         </div>
                       </div>
@@ -334,7 +361,7 @@ const Prediction = () => {
                           </div>
 
                           <h6 className="text-lg font-medium">
-                            49,097,908,995 USD
+                            {cryptoData.ETH[0].quote.USD.volume_24h}
                           </h6>
                         </div>
                       </div>
@@ -361,7 +388,7 @@ const Prediction = () => {
                           </div>
 
                           <h6 className="text-lg font-medium">
-                            18,554,786 BTC
+                            {cryptoData.ETH[0].circulating_supply}
                           </h6>
                         </div>
                       </div>
@@ -387,7 +414,7 @@ const Prediction = () => {
                           </div>
 
                           <h6 className="text-lg font-medium">
-                            18,554,381 BTC
+                            {cryptoData.ETH[0].total_supply}
                           </h6>
                         </div>
                       </div>
@@ -396,8 +423,8 @@ const Prediction = () => {
                 </div>
               )}
 
-              {/* STE values */}
-              {symbolData.symbol === "STE" && (
+              {/* Solana values */}
+              {symbolData.symbol === "SOL" && (
                 <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
                   <div className="flex flex-row  border-b border-solid border-[#808191]">
                     <div className="flex items-center justify-center w-80 h-28 ">
@@ -420,7 +447,7 @@ const Prediction = () => {
                           </div>
 
                           <h6 className="text-lg font-medium">
-                            329,553,243,671 USD
+                            {cryptoData.SOL[0].quote.USD.market_cap} USD
                           </h6>
                         </div>
                       </div>
@@ -446,7 +473,7 @@ const Prediction = () => {
                           </div>
 
                           <h6 className="text-lg font-medium">
-                            49,097,756,995 USD
+                            {cryptoData.SOL[0].quote.USD.volume_24h} USD
                           </h6>
                         </div>
                       </div>
@@ -473,7 +500,7 @@ const Prediction = () => {
                           </div>
 
                           <h6 className="text-lg font-medium">
-                            18,554,786 BTC
+                            {cryptoData.SOL[0].circulating_supply}
                           </h6>
                         </div>
                       </div>
@@ -499,7 +526,7 @@ const Prediction = () => {
                           </div>
 
                           <h6 className="text-lg font-medium">
-                            18,554,381 BTC
+                            {cryptoData.SOL[0].total_supply}
                           </h6>
                         </div>
                       </div>
@@ -508,8 +535,8 @@ const Prediction = () => {
                 </div>
               )}
 
-              {/* UBQ values */}
-              {symbolData.symbol === "UBQ" && (
+              {/* xrp values */}
+              {symbolData.symbol === "XRP" && (
                 <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
                   <div className="flex flex-row  border-b border-solid border-[#808191]">
                     <div className="flex items-center justify-center w-80 h-28 ">
@@ -620,8 +647,8 @@ const Prediction = () => {
                 </div>
               )}
 
-              {/* TBX values */}
-              {symbolData.symbol === "TBX" && (
+              {/* dogecoin values */}
+              {symbolData.symbol === "DOGE" && (
                 <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
                   <div className="flex flex-row  border-b border-solid border-[#808191]">
                     <div className="flex items-center justify-center w-80 h-28 ">
@@ -759,9 +786,9 @@ const Prediction = () => {
                   </p>
                 </div>
               )}
-              {symbolData.symbol === "STE" && (
+              {symbolData.symbol === "SOL" && (
                 <div className="flex flex-col gap-5 m-5">
-                  <h6 className="text-lg font-medium">About Steem</h6>
+                  <h6 className="text-lg font-medium">About Solana</h6>
                   <p className="text-left text-sm font-normal w-[282px] text-[#808191]">
                     The world’s first cryptocurrency, Steem is stored and
                     exchanged securely on the internet through a digital ledger
@@ -771,9 +798,9 @@ const Prediction = () => {
                   </p>
                 </div>
               )}
-              {symbolData.symbol === "UBQ" && (
+              {symbolData.symbol === "XRP" && (
                 <div className="flex flex-col gap-5 m-5">
-                  <h6 className="text-lg font-medium">About Ubiq</h6>
+                  <h6 className="text-lg font-medium">About XRP</h6>
                   <p className="text-left text-sm font-normal w-[282px] text-[#808191]">
                     The world’s first cryptocurrency, Ubiq is stored and
                     exchanged securely on the internet through a digital ledger
@@ -783,9 +810,9 @@ const Prediction = () => {
                   </p>
                 </div>
               )}
-              {symbolData.symbol === "TBX" && (
+              {symbolData.symbol === "DOGE" && (
                 <div className="flex flex-col gap-5 m-5">
-                  <h6 className="text-lg font-medium">About Tokenbox</h6>
+                  <h6 className="text-lg font-medium">About Dogecoin</h6>
                   <p className="text-left text-sm font-normal w-[282px] text-[#808191]">
                     The world’s first cryptocurrency, Tokenbox is stored and
                     exchanged securely on the internet through a digital ledger
@@ -869,18 +896,18 @@ const Prediction = () => {
 
             <button
               className={`bg-[#242731] rounded-2xl w-[299px] h-[176px] ${
-                symbolData.symbol === "STE"
+                symbolData.symbol === "SOL"
                   ? "border border-solid border-[#355DFF]"
                   : ""
               }`}
-              onClick={() => handleMiniChartClick("STE")}
+              onClick={() => handleMiniChartClick("SOL")}
             >
               <div className="flex gap-12 mb-40 flex-row m-3 ">
                 <div className="flex gap-2 ">
                   <img src={steem_logo} alt="SVG" className="h-12 w-12" />
                   <div className="flex flex-col items-start">
-                    <h6 className="text-lg font-medium">Steem</h6>
-                    <h6 className="text-xs font-medium text-[#808191]">STE</h6>
+                    <h6 className="text-lg font-medium">Solana</h6>
+                    <h6 className="text-xs font-medium text-[#808191]">SOL</h6>
                   </div>
                 </div>
                 <div className="flex flex-col items-end ">
@@ -893,18 +920,18 @@ const Prediction = () => {
 
             <button
               className={`bg-[#242731] rounded-2xl w-[299px] h-[176px] ${
-                symbolData.symbol === "UBQ"
+                symbolData.symbol === "XRP"
                   ? "border border-solid border-[#355DFF]"
                   : ""
               }`}
-              onClick={() => handleMiniChartClick("UBQ")}
+              onClick={() => handleMiniChartClick("XRP")}
             >
               <div className="flex mb-40 gap-20 flex-row m-3 ">
                 <div className="flex gap-2">
                   <img src={UBQ_logo} alt="SVG" className="h-12 w-12" />
                   <div className="flex flex-col items-start">
-                    <h6 className="text-lg font-medium ">Ubiq</h6>
-                    <h6 className="text-xs font-medium text-[#808191]">UBQ</h6>
+                    <h6 className="text-lg font-medium ">XRP</h6>
+                    <h6 className="text-xs font-medium text-[#808191]">XRP</h6>
                   </div>
                 </div>
                 <div className="flex flex-col items-end  ">
@@ -917,18 +944,18 @@ const Prediction = () => {
 
             <button
               className={`bg-[#242731] rounded-2xl w-[299px] h-[176px] ${
-                symbolData.symbol === "TBX"
+                symbolData.symbol === "DOGE"
                   ? "border border-solid border-[#355DFF]"
                   : ""
               }`}
-              onClick={() => handleMiniChartClick("TBX")}
+              onClick={() => handleMiniChartClick("DOGE")}
             >
               <div className="flex mb-40 gap-10 flex-row m-3">
                 <div className="flex gap-2 ">
                   <img src={tbx_logo} alt="SVG" className="h-12 w-12" />
                   <div className="flex flex-col items-start ">
-                    <h6 className="text-lg font-medium ">Tokenbox</h6>
-                    <h6 className="text-xs font-medium text-[#808191]">TBX</h6>
+                    <h6 className="text-lg font-medium ">Dogecoin</h6>
+                    <h6 className="text-xs font-medium text-[#808191]">DOGE</h6>
                   </div>
                 </div>
                 <div className="flex flex-col items-end ">
