@@ -15,7 +15,6 @@ app.get("/get-crypto-data", (req, res) => {
       "X-CMC_PRO_API_KEY": process.env.REACT_APP_MARKET_CAP_KEY,
     },
     params: {
-      //slug: "bitcoin,ethereum,solana,xrp,doge",
       symbol: "BTC,ETH,SOL,XRP,DOGE",
       //convert_id: "1,2781",
     },

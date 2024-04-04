@@ -10,9 +10,9 @@ import ghost_circle_icon2 from "../../assets/svg/ghost circle icon2.svg";
 import ghost_circle_icon3 from "../../assets/svg/ghost circle icon3.svg";
 import ghost_circle_icon4 from "../../assets/svg/ghost circle icon4.svg";
 import E_logo from "../../assets/svg/IconE.svg";
-import steem_logo from "../../assets/svg/steem_logo.svg";
-import UBQ_logo from "../../assets/svg/UBQ.svg";
-import tbx_logo from "../../assets/svg/tbx.svg";
+import solana_logo from "../../assets/svg/solana-sol-logo.svg";
+import UBQ_logo from "../../assets/svg/XRP.svg";
+import tbx_logo from "../../assets/svg/dogecoin.svg";
 import divider from "../../assets/svg/Divider.svg";
 import upGreenIcon from "../../assets/svg/upGreen.svg";
 import downRedIcon from "../../assets/svg/downRed.svg";
@@ -108,12 +108,12 @@ const Prediction = () => {
                   </div>
                 </div>
               )}
-              {/* STE main part */}
+              {/* Solana main part */}
               {symbolData.symbol === "SOL" && (
                 <div className="flex flex-col">
                   <div className="flex items-center gap-20 m-5">
                     <div className="flex items-center gap-2">
-                      <img src={steem_logo} alt="SVG" className="h-14 w-14" />
+                      <img src={solana_logo} alt="SVG" className="h-14 w-14" />
                       <div className="flex flex-col">
                         <h4 className="text-2xl font-medium">Solana</h4>
                         <h4 className="text-lg text-[#808191] font-medium">
@@ -200,563 +200,567 @@ const Prediction = () => {
             {/* ============ values section ============= */}
             {/* BTC values */}
             <div className="mt-60">
-              {symbolData.symbol === "BTCUSD" && (
-                <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
-                  <div className="flex flex-row  border-b border-solid border-[#808191]">
-                    <div className="flex items-center justify-center w-80 h-28 ">
-                      <div className="flex flex-row gap-5 w-[250px]">
-                        <img
-                          src={ghost_circle_icon}
-                          alt="SVG"
-                          className="h-10 w-10"
-                        />
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2 flex-row">
-                            <h6 className="text-xs font-medium text-[#808191]">
-                              Market Cap
-                            </h6>
+              {cryptoData && (
+                <>
+                  {symbolData.symbol === "BTCUSD" && (
+                    <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
+                      <div className="flex flex-row  border-b border-solid border-[#808191]">
+                        <div className="flex items-center justify-center w-80 h-28 ">
+                          <div className="flex flex-row gap-5 w-[250px]">
                             <img
-                              src={info_logo}
+                              src={ghost_circle_icon}
                               alt="SVG"
-                              className="h-3 w-3"
+                              className="h-10 w-10"
                             />
-                          </div>
+                            <div className="flex flex-col">
+                              <div className="flex items-center gap-2 flex-row">
+                                <h6 className="text-xs font-medium text-[#808191]">
+                                  Market Cap
+                                </h6>
+                                <img
+                                  src={info_logo}
+                                  alt="SVG"
+                                  className="h-3 w-3"
+                                />
+                              </div>
 
-                          <h6 className="text-lg font-medium">
-                            {cryptoData.BTC[0].quote.USD.market_cap}
-                          </h6>
+                              <h6 className="text-lg font-medium">
+                                {cryptoData.BTC[0].quote.USD.market_cap} USD
+                              </h6>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
+                          <div className="flex flex-row gap-5 w-[250px]">
+                            <img
+                              src={ghost_circle_icon2}
+                              alt="SVG"
+                              className="h-10 w-10"
+                            />
+                            <div className="flex flex-col">
+                              <div className="flex items-center gap-2 flex-row">
+                                <h6 className="text-xs font-medium text-[#808191]">
+                                  Volume (24h)
+                                </h6>
+                                <img
+                                  src={info_logo}
+                                  alt="SVG"
+                                  className="h-3 w-3"
+                                />
+                              </div>
+
+                              <h6 className="text-lg font-medium">
+                                {cryptoData.BTC[0].quote.USD.volume_24h} USD
+                              </h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-row">
+                        <div className="flex items-center justify-center w-80 h-28 ">
+                          <div className="flex flex-row gap-5 w-[250px]">
+                            <img
+                              src={ghost_circle_icon3}
+                              alt="SVG"
+                              className="h-10 w-10"
+                            />
+                            <div className="flex flex-col">
+                              <div className="flex items-center gap-2 flex-row">
+                                <h6 className="text-xs font-medium text-[#808191]">
+                                  Circulating Supply
+                                </h6>
+                                <img
+                                  src={info_logo}
+                                  alt="SVG"
+                                  className="h-3 w-3"
+                                />
+                              </div>
+
+                              <h6 className="text-lg font-medium">
+                                {cryptoData.BTC[0].circulating_supply}
+                              </h6>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
+                          <div className="flex flex-row gap-5 w-[250px]">
+                            <img
+                              src={ghost_circle_icon4}
+                              alt="SVG"
+                              className="h-10 w-10"
+                            />
+                            <div className="flex flex-col">
+                              <div className="flex items-center gap-2 flex-row">
+                                <h6 className="text-xs font-medium text-[#808191]">
+                                  Total Supply
+                                </h6>
+                                <img
+                                  src={info_logo}
+                                  alt="SVG"
+                                  className="h-3 w-3"
+                                />
+                              </div>
+
+                              <h6 className="text-lg font-medium">
+                                {cryptoData.BTC[0].total_supply}
+                              </h6>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
+                  )}
 
-                    <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                      <div className="flex flex-row gap-5 w-[250px]">
-                        <img
-                          src={ghost_circle_icon2}
-                          alt="SVG"
-                          className="h-10 w-10"
-                        />
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2 flex-row">
-                            <h6 className="text-xs font-medium text-[#808191]">
-                              Volume (24h)
-                            </h6>
+                  {/* ETH values */}
+                  {symbolData.symbol === "ETHUSD" && (
+                    <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
+                      <div className="flex flex-row  border-b border-solid border-[#808191]">
+                        <div className="flex items-center justify-center w-80 h-28 ">
+                          <div className="flex flex-row gap-5 w-[250px]">
                             <img
-                              src={info_logo}
+                              src={ghost_circle_icon}
                               alt="SVG"
-                              className="h-3 w-3"
+                              className="h-10 w-10"
                             />
-                          </div>
+                            <div className="flex flex-col">
+                              <div className="flex items-center gap-2 flex-row">
+                                <h6 className="text-xs font-medium text-[#808191]">
+                                  Market Cap
+                                </h6>
+                                <img
+                                  src={info_logo}
+                                  alt="SVG"
+                                  className="h-3 w-3"
+                                />
+                              </div>
 
-                          <h6 className="text-lg font-medium">
-                            {cryptoData.BTC[0].quote.USD.volume_24h}
-                          </h6>
+                              <h6 className="text-lg font-medium">
+                                {cryptoData.ETH[0].quote.USD.market_cap} USD
+                              </h6>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
+                          <div className="flex flex-row gap-5 w-[250px]">
+                            <img
+                              src={ghost_circle_icon2}
+                              alt="SVG"
+                              className="h-10 w-10"
+                            />
+                            <div className="flex flex-col">
+                              <div className="flex items-center gap-2 flex-row">
+                                <h6 className="text-xs font-medium text-[#808191]">
+                                  Volume (24h)
+                                </h6>
+                                <img
+                                  src={info_logo}
+                                  alt="SVG"
+                                  className="h-3 w-3"
+                                />
+                              </div>
+
+                              <h6 className="text-lg font-medium">
+                                {cryptoData.ETH[0].quote.USD.volume_24h} USD
+                              </h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-row">
+                        <div className="flex items-center justify-center w-80 h-28 ">
+                          <div className="flex flex-row gap-5 w-[250px]">
+                            <img
+                              src={ghost_circle_icon3}
+                              alt="SVG"
+                              className="h-10 w-10"
+                            />
+                            <div className="flex flex-col">
+                              <div className="flex items-center gap-2 flex-row">
+                                <h6 className="text-xs font-medium text-[#808191]">
+                                  Circulating Supply
+                                </h6>
+                                <img
+                                  src={info_logo}
+                                  alt="SVG"
+                                  className="h-3 w-3"
+                                />
+                              </div>
+
+                              <h6 className="text-lg font-medium">
+                                {cryptoData.ETH[0].circulating_supply}
+                              </h6>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
+                          <div className="flex flex-row gap-5 w-[250px]">
+                            <img
+                              src={ghost_circle_icon4}
+                              alt="SVG"
+                              className="h-10 w-10"
+                            />
+                            <div className="flex flex-col">
+                              <div className="flex items-center gap-2 flex-row">
+                                <h6 className="text-xs font-medium text-[#808191]">
+                                  Total Supply
+                                </h6>
+                                <img
+                                  src={info_logo}
+                                  alt="SVG"
+                                  className="h-3 w-3"
+                                />
+                              </div>
+
+                              <h6 className="text-lg font-medium">
+                                {cryptoData.ETH[0].total_supply}
+                              </h6>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="flex flex-row">
-                    <div className="flex items-center justify-center w-80 h-28 ">
-                      <div className="flex flex-row gap-5 w-[250px]">
-                        <img
-                          src={ghost_circle_icon3}
-                          alt="SVG"
-                          className="h-10 w-10"
-                        />
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2 flex-row">
-                            <h6 className="text-xs font-medium text-[#808191]">
-                              Circulating Supply
-                            </h6>
-                            <img
-                              src={info_logo}
-                              alt="SVG"
-                              className="h-3 w-3"
-                            />
-                          </div>
+                  )}
 
-                          <h6 className="text-lg font-medium">
-                            {cryptoData.BTC[0].circulating_supply}
-                          </h6>
+                  {/* Solana values */}
+                  {symbolData.symbol === "SOL" && (
+                    <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
+                      <div className="flex flex-row  border-b border-solid border-[#808191]">
+                        <div className="flex items-center justify-center w-80 h-28 ">
+                          <div className="flex flex-row gap-5 w-[250px]">
+                            <img
+                              src={ghost_circle_icon}
+                              alt="SVG"
+                              className="h-10 w-10"
+                            />
+                            <div className="flex flex-col">
+                              <div className="flex items-center gap-2 flex-row">
+                                <h6 className="text-xs font-medium text-[#808191]">
+                                  Market Cap
+                                </h6>
+                                <img
+                                  src={info_logo}
+                                  alt="SVG"
+                                  className="h-3 w-3"
+                                />
+                              </div>
+
+                              <h6 className="text-lg font-medium">
+                                {cryptoData.SOL[0].quote.USD.market_cap} USD
+                              </h6>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
+                          <div className="flex flex-row gap-5 w-[250px]">
+                            <img
+                              src={ghost_circle_icon2}
+                              alt="SVG"
+                              className="h-10 w-10"
+                            />
+                            <div className="flex flex-col">
+                              <div className="flex items-center gap-2 flex-row">
+                                <h6 className="text-xs font-medium text-[#808191]">
+                                  Volume (24h)
+                                </h6>
+                                <img
+                                  src={info_logo}
+                                  alt="SVG"
+                                  className="h-3 w-3"
+                                />
+                              </div>
+
+                              <h6 className="text-lg font-medium">
+                                {cryptoData.SOL[0].quote.USD.volume_24h} USD
+                              </h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-row">
+                        <div className="flex items-center justify-center w-80 h-28 ">
+                          <div className="flex flex-row gap-5 w-[250px]">
+                            <img
+                              src={ghost_circle_icon3}
+                              alt="SVG"
+                              className="h-10 w-10"
+                            />
+                            <div className="flex flex-col">
+                              <div className="flex items-center gap-2 flex-row">
+                                <h6 className="text-xs font-medium text-[#808191]">
+                                  Circulating Supply
+                                </h6>
+                                <img
+                                  src={info_logo}
+                                  alt="SVG"
+                                  className="h-3 w-3"
+                                />
+                              </div>
+
+                              <h6 className="text-lg font-medium">
+                                {cryptoData.SOL[0].circulating_supply}
+                              </h6>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
+                          <div className="flex flex-row gap-5 w-[250px]">
+                            <img
+                              src={ghost_circle_icon4}
+                              alt="SVG"
+                              className="h-10 w-10"
+                            />
+                            <div className="flex flex-col">
+                              <div className="flex items-center gap-2 flex-row">
+                                <h6 className="text-xs font-medium text-[#808191]">
+                                  Total Supply
+                                </h6>
+                                <img
+                                  src={info_logo}
+                                  alt="SVG"
+                                  className="h-3 w-3"
+                                />
+                              </div>
+
+                              <h6 className="text-lg font-medium">
+                                {cryptoData.SOL[0].total_supply}
+                              </h6>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
+                  )}
 
-                    <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                      <div className="flex flex-row gap-5 w-[250px]">
-                        <img
-                          src={ghost_circle_icon4}
-                          alt="SVG"
-                          className="h-10 w-10"
-                        />
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2 flex-row">
-                            <h6 className="text-xs font-medium text-[#808191]">
-                              Total Supply
-                            </h6>
+                  {/* xrp values */}
+                  {symbolData.symbol === "XRP" && (
+                    <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
+                      <div className="flex flex-row  border-b border-solid border-[#808191]">
+                        <div className="flex items-center justify-center w-80 h-28 ">
+                          <div className="flex flex-row gap-5 w-[250px]">
                             <img
-                              src={info_logo}
+                              src={ghost_circle_icon}
                               alt="SVG"
-                              className="h-3 w-3"
+                              className="h-10 w-10"
                             />
-                          </div>
+                            <div className="flex flex-col">
+                              <div className="flex items-center gap-2 flex-row">
+                                <h6 className="text-xs font-medium text-[#808191]">
+                                  Market Cap
+                                </h6>
+                                <img
+                                  src={info_logo}
+                                  alt="SVG"
+                                  className="h-3 w-3"
+                                />
+                              </div>
 
-                          <h6 className="text-lg font-medium">
-                            {cryptoData.BTC[0].total_supply}
-                          </h6>
+                              <h6 className="text-lg font-medium">
+                                {cryptoData.XRP[0].quote.USD.market_cap} USD
+                              </h6>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
+                          <div className="flex flex-row gap-5 w-[250px]">
+                            <img
+                              src={ghost_circle_icon2}
+                              alt="SVG"
+                              className="h-10 w-10"
+                            />
+                            <div className="flex flex-col">
+                              <div className="flex items-center gap-2 flex-row">
+                                <h6 className="text-xs font-medium text-[#808191]">
+                                  Volume (24h)
+                                </h6>
+                                <img
+                                  src={info_logo}
+                                  alt="SVG"
+                                  className="h-3 w-3"
+                                />
+                              </div>
+
+                              <h6 className="text-lg font-medium">
+                                {cryptoData.XRP[0].quote.USD.volume_24h} USD
+                              </h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-row">
+                        <div className="flex items-center justify-center w-80 h-28 ">
+                          <div className="flex flex-row gap-5 w-[250px]">
+                            <img
+                              src={ghost_circle_icon3}
+                              alt="SVG"
+                              className="h-10 w-10"
+                            />
+                            <div className="flex flex-col">
+                              <div className="flex items-center gap-2 flex-row">
+                                <h6 className="text-xs font-medium text-[#808191]">
+                                  Circulating Supply
+                                </h6>
+                                <img
+                                  src={info_logo}
+                                  alt="SVG"
+                                  className="h-3 w-3"
+                                />
+                              </div>
+
+                              <h6 className="text-lg font-medium">
+                                {cryptoData.XRP[0].circulating_supply}
+                              </h6>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
+                          <div className="flex flex-row gap-5 w-[250px]">
+                            <img
+                              src={ghost_circle_icon4}
+                              alt="SVG"
+                              className="h-10 w-10"
+                            />
+                            <div className="flex flex-col">
+                              <div className="flex items-center gap-2 flex-row">
+                                <h6 className="text-xs font-medium text-[#808191]">
+                                  Total Supply
+                                </h6>
+                                <img
+                                  src={info_logo}
+                                  alt="SVG"
+                                  className="h-3 w-3"
+                                />
+                              </div>
+
+                              <h6 className="text-lg font-medium">
+                                {cryptoData.XRP[0].total_supply}
+                              </h6>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              )}
+                  )}
 
-              {/* ETH values */}
-              {symbolData.symbol === "ETHUSD" && (
-                <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
-                  <div className="flex flex-row  border-b border-solid border-[#808191]">
-                    <div className="flex items-center justify-center w-80 h-28 ">
-                      <div className="flex flex-row gap-5 w-[250px]">
-                        <img
-                          src={ghost_circle_icon}
-                          alt="SVG"
-                          className="h-10 w-10"
-                        />
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2 flex-row">
-                            <h6 className="text-xs font-medium text-[#808191]">
-                              Market Cap
-                            </h6>
+                  {/* dogecoin values */}
+                  {symbolData.symbol === "DOGE" && (
+                    <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
+                      <div className="flex flex-row  border-b border-solid border-[#808191]">
+                        <div className="flex items-center justify-center w-80 h-28 ">
+                          <div className="flex flex-row gap-5 w-[250px]">
                             <img
-                              src={info_logo}
+                              src={ghost_circle_icon}
                               alt="SVG"
-                              className="h-3 w-3"
+                              className="h-10 w-10"
                             />
-                          </div>
+                            <div className="flex flex-col">
+                              <div className="flex items-center gap-2 flex-row">
+                                <h6 className="text-xs font-medium text-[#808191]">
+                                  Market Cap
+                                </h6>
+                                <img
+                                  src={info_logo}
+                                  alt="SVG"
+                                  className="h-3 w-3"
+                                />
+                              </div>
 
-                          <h6 className="text-lg font-medium">
-                            {cryptoData.ETH[0].quote.USD.market_cap}
-                          </h6>
+                              <h6 className="text-lg font-medium">
+                                {cryptoData.DOGE[0].quote.USD.market_cap} USD
+                              </h6>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
+                          <div className="flex flex-row gap-5 w-[250px]">
+                            <img
+                              src={ghost_circle_icon2}
+                              alt="SVG"
+                              className="h-10 w-10"
+                            />
+                            <div className="flex flex-col">
+                              <div className="flex items-center gap-2 flex-row">
+                                <h6 className="text-xs font-medium text-[#808191]">
+                                  Volume (24h)
+                                </h6>
+                                <img
+                                  src={info_logo}
+                                  alt="SVG"
+                                  className="h-3 w-3"
+                                />
+                              </div>
+
+                              <h6 className="text-lg font-medium">
+                                {cryptoData.DOGE[0].quote.USD.volume_24h} USD
+                              </h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-row">
+                        <div className="flex items-center justify-center w-80 h-28 ">
+                          <div className="flex flex-row gap-5 w-[250px]">
+                            <img
+                              src={ghost_circle_icon3}
+                              alt="SVG"
+                              className="h-10 w-10"
+                            />
+                            <div className="flex flex-col">
+                              <div className="flex items-center gap-2 flex-row">
+                                <h6 className="text-xs font-medium text-[#808191]">
+                                  Circulating Supply
+                                </h6>
+                                <img
+                                  src={info_logo}
+                                  alt="SVG"
+                                  className="h-3 w-3"
+                                />
+                              </div>
+
+                              <h6 className="text-lg font-medium">
+                                {cryptoData.DOGE[0].circulating_supply}
+                              </h6>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
+                          <div className="flex flex-row gap-5 w-[250px]">
+                            <img
+                              src={ghost_circle_icon4}
+                              alt="SVG"
+                              className="h-10 w-10"
+                            />
+                            <div className="flex flex-col">
+                              <div className="flex items-center gap-2 flex-row">
+                                <h6 className="text-xs font-medium text-[#808191]">
+                                  Total Supply
+                                </h6>
+                                <img
+                                  src={info_logo}
+                                  alt="SVG"
+                                  className="h-3 w-3"
+                                />
+                              </div>
+
+                              <h6 className="text-lg font-medium">
+                                {cryptoData.DOGE[0].total_supply}
+                              </h6>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
-
-                    <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                      <div className="flex flex-row gap-5 w-[250px]">
-                        <img
-                          src={ghost_circle_icon2}
-                          alt="SVG"
-                          className="h-10 w-10"
-                        />
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2 flex-row">
-                            <h6 className="text-xs font-medium text-[#808191]">
-                              Volume (24h)
-                            </h6>
-                            <img
-                              src={info_logo}
-                              alt="SVG"
-                              className="h-3 w-3"
-                            />
-                          </div>
-
-                          <h6 className="text-lg font-medium">
-                            {cryptoData.ETH[0].quote.USD.volume_24h}
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-row">
-                    <div className="flex items-center justify-center w-80 h-28 ">
-                      <div className="flex flex-row gap-5 w-[250px]">
-                        <img
-                          src={ghost_circle_icon3}
-                          alt="SVG"
-                          className="h-10 w-10"
-                        />
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2 flex-row">
-                            <h6 className="text-xs font-medium text-[#808191]">
-                              Circulating Supply
-                            </h6>
-                            <img
-                              src={info_logo}
-                              alt="SVG"
-                              className="h-3 w-3"
-                            />
-                          </div>
-
-                          <h6 className="text-lg font-medium">
-                            {cryptoData.ETH[0].circulating_supply}
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                      <div className="flex flex-row gap-5 w-[250px]">
-                        <img
-                          src={ghost_circle_icon4}
-                          alt="SVG"
-                          className="h-10 w-10"
-                        />
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2 flex-row">
-                            <h6 className="text-xs font-medium text-[#808191]">
-                              Total Supply
-                            </h6>
-                            <img
-                              src={info_logo}
-                              alt="SVG"
-                              className="h-3 w-3"
-                            />
-                          </div>
-
-                          <h6 className="text-lg font-medium">
-                            {cryptoData.ETH[0].total_supply}
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Solana values */}
-              {symbolData.symbol === "SOL" && (
-                <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
-                  <div className="flex flex-row  border-b border-solid border-[#808191]">
-                    <div className="flex items-center justify-center w-80 h-28 ">
-                      <div className="flex flex-row gap-5 w-[250px]">
-                        <img
-                          src={ghost_circle_icon}
-                          alt="SVG"
-                          className="h-10 w-10"
-                        />
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2 flex-row">
-                            <h6 className="text-xs font-medium text-[#808191]">
-                              Market Cap
-                            </h6>
-                            <img
-                              src={info_logo}
-                              alt="SVG"
-                              className="h-3 w-3"
-                            />
-                          </div>
-
-                          <h6 className="text-lg font-medium">
-                            {cryptoData.SOL[0].quote.USD.market_cap} USD
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                      <div className="flex flex-row gap-5 w-[250px]">
-                        <img
-                          src={ghost_circle_icon2}
-                          alt="SVG"
-                          className="h-10 w-10"
-                        />
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2 flex-row">
-                            <h6 className="text-xs font-medium text-[#808191]">
-                              Volume (24h)
-                            </h6>
-                            <img
-                              src={info_logo}
-                              alt="SVG"
-                              className="h-3 w-3"
-                            />
-                          </div>
-
-                          <h6 className="text-lg font-medium">
-                            {cryptoData.SOL[0].quote.USD.volume_24h} USD
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-row">
-                    <div className="flex items-center justify-center w-80 h-28 ">
-                      <div className="flex flex-row gap-5 w-[250px]">
-                        <img
-                          src={ghost_circle_icon3}
-                          alt="SVG"
-                          className="h-10 w-10"
-                        />
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2 flex-row">
-                            <h6 className="text-xs font-medium text-[#808191]">
-                              Circulating Supply
-                            </h6>
-                            <img
-                              src={info_logo}
-                              alt="SVG"
-                              className="h-3 w-3"
-                            />
-                          </div>
-
-                          <h6 className="text-lg font-medium">
-                            {cryptoData.SOL[0].circulating_supply}
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                      <div className="flex flex-row gap-5 w-[250px]">
-                        <img
-                          src={ghost_circle_icon4}
-                          alt="SVG"
-                          className="h-10 w-10"
-                        />
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2 flex-row">
-                            <h6 className="text-xs font-medium text-[#808191]">
-                              Total Supply
-                            </h6>
-                            <img
-                              src={info_logo}
-                              alt="SVG"
-                              className="h-3 w-3"
-                            />
-                          </div>
-
-                          <h6 className="text-lg font-medium">
-                            {cryptoData.SOL[0].total_supply}
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* xrp values */}
-              {symbolData.symbol === "XRP" && (
-                <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
-                  <div className="flex flex-row  border-b border-solid border-[#808191]">
-                    <div className="flex items-center justify-center w-80 h-28 ">
-                      <div className="flex flex-row gap-5 w-[250px]">
-                        <img
-                          src={ghost_circle_icon}
-                          alt="SVG"
-                          className="h-10 w-10"
-                        />
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2 flex-row">
-                            <h6 className="text-xs font-medium text-[#808191]">
-                              Market Cap
-                            </h6>
-                            <img
-                              src={info_logo}
-                              alt="SVG"
-                              className="h-3 w-3"
-                            />
-                          </div>
-
-                          <h6 className="text-lg font-medium">
-                            329,553,663,671 USD
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                      <div className="flex flex-row gap-5 w-[250px]">
-                        <img
-                          src={ghost_circle_icon2}
-                          alt="SVG"
-                          className="h-10 w-10"
-                        />
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2 flex-row">
-                            <h6 className="text-xs font-medium text-[#808191]">
-                              Volume (24h)
-                            </h6>
-                            <img
-                              src={info_logo}
-                              alt="SVG"
-                              className="h-3 w-3"
-                            />
-                          </div>
-
-                          <h6 className="text-lg font-medium">
-                            49,097,949,995 USD
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-row">
-                    <div className="flex items-center justify-center w-80 h-28 ">
-                      <div className="flex flex-row gap-5 w-[250px]">
-                        <img
-                          src={ghost_circle_icon3}
-                          alt="SVG"
-                          className="h-10 w-10"
-                        />
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2 flex-row">
-                            <h6 className="text-xs font-medium text-[#808191]">
-                              Circulating Supply
-                            </h6>
-                            <img
-                              src={info_logo}
-                              alt="SVG"
-                              className="h-3 w-3"
-                            />
-                          </div>
-
-                          <h6 className="text-lg font-medium">
-                            18,554,381 BTC
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                      <div className="flex flex-row gap-5 w-[250px]">
-                        <img
-                          src={ghost_circle_icon4}
-                          alt="SVG"
-                          className="h-10 w-10"
-                        />
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2 flex-row">
-                            <h6 className="text-xs font-medium text-[#808191]">
-                              Total Supply
-                            </h6>
-                            <img
-                              src={info_logo}
-                              alt="SVG"
-                              className="h-3 w-3"
-                            />
-                          </div>
-
-                          <h6 className="text-lg font-medium">
-                            18,554,381 BTC
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* dogecoin values */}
-              {symbolData.symbol === "DOGE" && (
-                <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
-                  <div className="flex flex-row  border-b border-solid border-[#808191]">
-                    <div className="flex items-center justify-center w-80 h-28 ">
-                      <div className="flex flex-row gap-5 w-[250px]">
-                        <img
-                          src={ghost_circle_icon}
-                          alt="SVG"
-                          className="h-10 w-10"
-                        />
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2 flex-row">
-                            <h6 className="text-xs font-medium text-[#808191]">
-                              Market Cap
-                            </h6>
-                            <img
-                              src={info_logo}
-                              alt="SVG"
-                              className="h-3 w-3"
-                            />
-                          </div>
-
-                          <h6 className="text-lg font-medium">
-                            329,553,663,671 USD
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                      <div className="flex flex-row gap-5 w-[250px]">
-                        <img
-                          src={ghost_circle_icon2}
-                          alt="SVG"
-                          className="h-10 w-10"
-                        />
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2 flex-row">
-                            <h6 className="text-xs font-medium text-[#808191]">
-                              Volume (24h)
-                            </h6>
-                            <img
-                              src={info_logo}
-                              alt="SVG"
-                              className="h-3 w-3"
-                            />
-                          </div>
-
-                          <h6 className="text-lg font-medium">
-                            49,097,949,995 USD
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-row">
-                    <div className="flex items-center justify-center w-80 h-28 ">
-                      <div className="flex flex-row gap-5 w-[250px]">
-                        <img
-                          src={ghost_circle_icon3}
-                          alt="SVG"
-                          className="h-10 w-10"
-                        />
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2 flex-row">
-                            <h6 className="text-xs font-medium text-[#808191]">
-                              Circulating Supply
-                            </h6>
-                            <img
-                              src={info_logo}
-                              alt="SVG"
-                              className="h-3 w-3"
-                            />
-                          </div>
-
-                          <h6 className="text-lg font-medium">
-                            18,554,381 BTC
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                      <div className="flex flex-row gap-5 w-[250px]">
-                        <img
-                          src={ghost_circle_icon4}
-                          alt="SVG"
-                          className="h-10 w-10"
-                        />
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2 flex-row">
-                            <h6 className="text-xs font-medium text-[#808191]">
-                              Total Supply
-                            </h6>
-                            <img
-                              src={info_logo}
-                              alt="SVG"
-                              className="h-3 w-3"
-                            />
-                          </div>
-
-                          <h6 className="text-lg font-medium">
-                            18,554,381 BTC
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  )}
+                </>
               )}
             </div>
 
@@ -904,7 +908,7 @@ const Prediction = () => {
             >
               <div className="flex gap-12 mb-40 flex-row m-3 ">
                 <div className="flex gap-2 ">
-                  <img src={steem_logo} alt="SVG" className="h-12 w-12" />
+                  <img src={solana_logo} alt="SVG" className="h-12 w-12" />
                   <div className="flex flex-col items-start">
                     <h6 className="text-lg font-medium">Solana</h6>
                     <h6 className="text-xs font-medium text-[#808191]">SOL</h6>
