@@ -69,14 +69,40 @@ const Prediction = () => {
                       <h4 className="font-bold text-sm">Share</h4>
                     </button>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
-                      19,761.52 USD
-                    </h1>
-                    <h6 className="text-sm font-medium text-[#4FBF67]">
-                      +0.92%
-                    </h6>
-                  </div>
+                  {cryptoData.BTC &&
+                    cryptoData.BTC[0] &&
+                    cryptoData.BTC[0].quote.USD.price &&
+                    cryptoData.BTC[0].quote.USD.percent_change_24h !==
+                      undefined && (
+                      <div className="flex items-center gap-3">
+                        <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
+                          {Number(cryptoData.BTC[0].quote.USD.price)
+                            .toLocaleString("en-US", {
+                              style: "currency",
+                              currency: "USD",
+                              minimumFractionDigits: 2,
+                              maximumFractionDigits: 2,
+                            })
+                            .replace("$", "")}{" "}
+                          USD
+                        </h1>
+                        <h6
+                          className={`text-sm font-medium ${
+                            cryptoData.BTC[0].quote.USD.percent_change_24h >= 0
+                              ? "text-green-500"
+                              : "text-red-500"
+                          }`}
+                        >
+                          {cryptoData.BTC[0].quote.USD.percent_change_24h >= 0
+                            ? "+"
+                            : "-"}
+                          {Math.abs(
+                            cryptoData.BTC[0].quote.USD.percent_change_24h
+                          ).toFixed(2)}
+                          %
+                        </h6>
+                      </div>
+                    )}
                 </div>
               )}
               {/* ETH main part */}
@@ -98,14 +124,34 @@ const Prediction = () => {
                       <h4 className="font-bold text-sm">Share</h4>
                     </button>
                   </div>
-                  <div className="flex items-center gap-3">
+                  {/* <div className="flex items-center gap-3">
                     <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
-                      5,761.52 USD
+                      {Number(cryptoData.ETH[0].quote.USD.price)
+                        .toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })
+                        .replace("$", "")}{" "}
+                      USD
                     </h1>
-                    <h6 className="text-sm font-medium text-[#4FBF67]">
-                      +0.69%
+                    <h6
+                      className={`text-sm font-medium ${
+                        cryptoData.ETH[0].quote.USD.percent_change_24h >= 0
+                          ? "text-green-500"
+                          : "text-red-500"
+                      }`}
+                    >
+                      {cryptoData.ETH[0].quote.USD.percent_change_24h >= 0
+                        ? "+"
+                        : "-"}
+                      {Math.abs(
+                        cryptoData.ETH[0].quote.USD.percent_change_24h
+                      ).toFixed(2)}
+                      %
                     </h6>
-                  </div>
+                  </div> */}
                 </div>
               )}
               {/* Solana main part */}
@@ -127,14 +173,34 @@ const Prediction = () => {
                       <h4 className="font-bold text-sm">Share</h4>
                     </button>
                   </div>
-                  <div className="flex items-center gap-3">
+                  {/* <div className="flex items-center gap-3">
                     <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
-                      2,342.52 USD
+                      {Number(cryptoData.SOL[0].quote.USD.price)
+                        .toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })
+                        .replace("$", "")}{" "}
+                      USD
                     </h1>
-                    <h6 className="text-sm font-medium text-[#4FBF67]">
-                      +0.63%
+                    <h6
+                      className={`text-sm font-medium ${
+                        cryptoData.SOL[0].quote.USD.percent_change_24h >= 0
+                          ? "text-green-500"
+                          : "text-red-500"
+                      }`}
+                    >
+                      {cryptoData.SOL[0].quote.USD.percent_change_24h >= 0
+                        ? "+"
+                        : "-"}
+                      {Math.abs(
+                        cryptoData.SOL[0].quote.USD.percent_change_24h
+                      ).toFixed(2)}
+                      %
                     </h6>
-                  </div>
+                  </div> */}
                 </div>
               )}
               {/* Ubiq main part */}
@@ -156,14 +222,34 @@ const Prediction = () => {
                       <h4 className="font-bold text-sm">Share</h4>
                     </button>
                   </div>
-                  <div className="flex items-center gap-3">
+                  {/* <div className="flex items-center gap-3">
                     <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
-                      5,461.52 USD
+                      {Number(cryptoData.XRP[0].quote.USD.price)
+                        .toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })
+                        .replace("$", "")}{" "}
+                      USD
                     </h1>
-                    <h6 className="text-sm font-medium text-[#4FBF67]">
-                      +0.22%
+                    <h6
+                      className={`text-sm font-medium ${
+                        cryptoData.XRP[0].quote.USD.percent_change_24h >= 0
+                          ? "text-green-500"
+                          : "text-red-500"
+                      }`}
+                    >
+                      {cryptoData.XRP[0].quote.USD.percent_change_24h >= 0
+                        ? "+"
+                        : "-"}
+                      {Math.abs(
+                        cryptoData.XRP[0].quote.USD.percent_change_24h
+                      ).toFixed(2)}
+                      %
                     </h6>
-                  </div>
+                  </div> */}
                 </div>
               )}
               {/* TBX main part */}
@@ -185,14 +271,34 @@ const Prediction = () => {
                       <h4 className="font-bold text-sm">Share</h4>
                     </button>
                   </div>
-                  <div className="flex items-center gap-3">
+                  {/* <div className="flex items-center gap-3">
                     <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
-                      3,761.52 USD
+                      {Number(cryptoData.DOGE[0].quote.USD.price)
+                        .toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })
+                        .replace("$", "")}{" "}
+                      USD
                     </h1>
-                    <h6 className="text-sm font-medium text-[#4FBF67]">
-                      +0.54%
+                    <h6
+                      className={`text-sm font-medium ${
+                        cryptoData.DOGE[0].quote.USD.percent_change_24h >= 0
+                          ? "text-green-500"
+                          : "text-red-500"
+                      }`}
+                    >
+                      {cryptoData.DOGE[0].quote.USD.percent_change_24h >= 0
+                        ? "+"
+                        : "-"}
+                      {Math.abs(
+                        cryptoData.DOGE[0].quote.USD.percent_change_24h
+                      ).toFixed(2)}
+                      %
                     </h6>
-                  </div>
+                  </div> */}
                 </div>
               )}
             </div>
@@ -225,7 +331,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.BTC[0].quote.USD.market_cap} USD
+                                {/* {cryptoData.BTC[0].quote.USD.market_cap} USD */}
                               </h6>
                             </div>
                           </div>
@@ -251,7 +357,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.BTC[0].quote.USD.volume_24h} USD
+                                {/* {cryptoData.BTC[0].quote.USD.volume_24h} USD */}
                               </h6>
                             </div>
                           </div>
@@ -278,7 +384,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.BTC[0].circulating_supply}
+                                {/* {cryptoData.BTC[0].circulating_supply} */}
                               </h6>
                             </div>
                           </div>
@@ -304,7 +410,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.BTC[0].total_supply}
+                                {/* {cryptoData.BTC[0].total_supply} */}
                               </h6>
                             </div>
                           </div>
@@ -337,7 +443,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.ETH[0].quote.USD.market_cap} USD
+                                {/* {cryptoData.ETH[0].quote.USD.market_cap} USD */}
                               </h6>
                             </div>
                           </div>
@@ -363,7 +469,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.ETH[0].quote.USD.volume_24h} USD
+                                {/* {cryptoData.ETH[0].quote.USD.volume_24h} USD */}
                               </h6>
                             </div>
                           </div>
@@ -390,7 +496,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.ETH[0].circulating_supply}
+                                {/* {cryptoData.ETH[0].circulating_supply} */}
                               </h6>
                             </div>
                           </div>
@@ -416,7 +522,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.ETH[0].total_supply}
+                                {/* {cryptoData.ETH[0].total_supply} */}
                               </h6>
                             </div>
                           </div>
@@ -449,7 +555,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.SOL[0].quote.USD.market_cap} USD
+                                {/* {cryptoData.SOL[0].quote.USD.market_cap} USD */}
                               </h6>
                             </div>
                           </div>
@@ -475,7 +581,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.SOL[0].quote.USD.volume_24h} USD
+                                {/* {cryptoData.SOL[0].quote.USD.volume_24h} USD */}
                               </h6>
                             </div>
                           </div>
@@ -502,7 +608,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.SOL[0].circulating_supply}
+                                {/* {cryptoData.SOL[0].circulating_supply} */}
                               </h6>
                             </div>
                           </div>
@@ -528,7 +634,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.SOL[0].total_supply}
+                                {/* {cryptoData.SOL[0].total_supply} */}
                               </h6>
                             </div>
                           </div>
@@ -561,7 +667,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.XRP[0].quote.USD.market_cap} USD
+                                {/* {cryptoData.XRP[0].quote.USD.market_cap} USD */}
                               </h6>
                             </div>
                           </div>
@@ -587,7 +693,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.XRP[0].quote.USD.volume_24h} USD
+                                {/* {cryptoData.XRP[0].quote.USD.volume_24h} USD */}
                               </h6>
                             </div>
                           </div>
@@ -614,7 +720,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.XRP[0].circulating_supply}
+                                {/* {cryptoData.XRP[0].circulating_supply} */}
                               </h6>
                             </div>
                           </div>
@@ -640,7 +746,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.XRP[0].total_supply}
+                                {/* {cryptoData.XRP[0].total_supply} */}
                               </h6>
                             </div>
                           </div>
@@ -673,7 +779,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.DOGE[0].quote.USD.market_cap} USD
+                                {/* {cryptoData.DOGE[0].quote.USD.market_cap} USD */}
                               </h6>
                             </div>
                           </div>
@@ -699,7 +805,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.DOGE[0].quote.USD.volume_24h} USD
+                                {/* {cryptoData.DOGE[0].quote.USD.volume_24h} USD */}
                               </h6>
                             </div>
                           </div>
@@ -726,7 +832,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.DOGE[0].circulating_supply}
+                                {/* {cryptoData.DOGE[0].circulating_supply} */}
                               </h6>
                             </div>
                           </div>
@@ -752,7 +858,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.DOGE[0].total_supply}
+                                {/* {cryptoData.DOGE[0].total_supply} */}
                               </h6>
                             </div>
                           </div>
@@ -864,11 +970,28 @@ const Prediction = () => {
                     <h6 className="text-xs font-medium text-[#808191]">BTC</h6>
                   </div>
                 </div>
-                <div className="flex flex-col items-end">
-                  {/* <h6 className="text-sm font-semibold text-[#4FBF67]">2.5%</h6> */}
-                  <img src={upGreenIcon} alt="SVG" className="h-6 w-16" />
-                  <h6 className="text-base font-semibold">18,245.4 USD</h6>
-                </div>
+                {/* <div className="flex flex-col items-end"> */}
+                {/* <h6 className="text-sm font-semibold text-[#4FBF67]">2.5%</h6> */}
+                {/* <img src={upGreenIcon} alt="SVG" className="h-6 w-16" />
+                  <h6 className="text-base font-semibold">18,245.4 USD</h6> */}
+                {/* </div> */}
+
+                {/* <div className="flex flex-col items-end w-[150px]">
+                  <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
+                  {cryptoData.BTC[0]?.quote?.USD?.price && (
+                    <h6 className="text-base font-semibold">
+                      {Number(cryptoData.BTC[0].quote.USD.price)
+                        .toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })
+                        .replace("$", "")}{" "}
+                      USD
+                    </h6>
+                  )}
+                </div> */}
               </div>
             </button>
 
@@ -888,13 +1011,27 @@ const Prediction = () => {
                     <h6 className="text-xs font-medium text-[#808191]">ETH</h6>
                   </div>
                 </div>
-                <div className="flex flex-col items-end ">
-                  {/* <h6 className="text-sm font-semibold text-[#FF7A68]">
-                    2.05%
-                  </h6> */}
+                {/* <div className="flex flex-col items-end ">
                   <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
                   <h6 className="text-base font-semibold">0.56687654</h6>
-                </div>
+                </div> */}
+
+                {/* <div className="flex flex-col items-end w-[150px]">
+                  <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
+                  {cryptoData.ETH[0]?.quote?.USD?.price && (
+                    <h6 className="text-base font-semibold">
+                      {Number(cryptoData.ETH[0].quote.USD.price)
+                        .toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })
+                        .replace("$", "")}{" "}
+                      USD
+                    </h6>
+                  )}
+                </div> */}
               </div>
             </button>
 
@@ -914,11 +1051,28 @@ const Prediction = () => {
                     <h6 className="text-xs font-medium text-[#808191]">SOL</h6>
                   </div>
                 </div>
-                <div className="flex flex-col items-end ">
-                  {/* <h6 className="text-sm font-semibold text-[#4FBF67]">2.5%</h6> */}
-                  <img src={upGreenIcon} alt="SVG" className="h-6 w-16" />
-                  <h6 className="text-base font-semibold">18,245.4 USD</h6>
-                </div>
+                {/* <div className="flex flex-col items-end "> */}
+                {/* <h6 className="text-sm font-semibold text-[#4FBF67]">2.5%</h6> */}
+                {/* <img src={upGreenIcon} alt="SVG" className="h-6 w-16" />
+                  <h6 className="text-base font-semibold">18,245.4 USD</h6> */}
+                {/* </div> */}
+
+                {/* <div className="flex flex-col items-end w-[150px]">
+                  <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
+                  {cryptoData.SOL[0]?.quote?.USD?.price && (
+                    <h6 className="text-base font-semibold">
+                      {Number(cryptoData.SOL[0].quote.USD.price)
+                        .toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })
+                        .replace("$", "")}{" "}
+                      USD
+                    </h6>
+                  )}
+                </div> */}
               </div>
             </button>
 
@@ -938,11 +1092,28 @@ const Prediction = () => {
                     <h6 className="text-xs font-medium text-[#808191]">XRP</h6>
                   </div>
                 </div>
-                <div className="flex flex-col items-end  ">
-                  {/* <h6 className="text-sm font-semibold text-[#FF7A68]">2.5%</h6> */}
+                {/* <div className="flex flex-col items-end  "> */}
+                {/* <h6 className="text-sm font-semibold text-[#FF7A68]">2.5%</h6> */}
+                {/* <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
+                  <h6 className="text-base font-semibold">18,245 USD</h6> */}
+                {/* </div> */}
+
+                {/* <div className="flex flex-col items-end w-[150px]">
                   <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
-                  <h6 className="text-base font-semibold">18,245 USD</h6>
-                </div>
+                  {cryptoData.XRP[0]?.quote?.USD?.price && (
+                    <h6 className="text-base font-semibold">
+                      {Number(cryptoData.XRP[0].quote.USD.price)
+                        .toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })
+                        .replace("$", "")}{" "}
+                      USD
+                    </h6>
+                  )}
+                </div> */}
               </div>
             </button>
 
