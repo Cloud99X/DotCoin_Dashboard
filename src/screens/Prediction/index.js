@@ -14,8 +14,8 @@ import solana_logo from "../../assets/svg/solana-sol-logo.svg";
 import UBQ_logo from "../../assets/svg/XRP.svg";
 import tbx_logo from "../../assets/svg/dogecoin.svg";
 import divider from "../../assets/svg/Divider.svg";
-import upGreenIcon from "../../assets/svg/upGreen.svg";
-import downRedIcon from "../../assets/svg/downRed.svg";
+import upGreenIcon from "../../assets/svg/upGreenIcon.svg";
+import downRedIcon from "../../assets/svg/downRedIcon.svg";
 import axios from "axios";
 
 const Prediction = () => {
@@ -1043,7 +1043,33 @@ const Prediction = () => {
                   {/* </div> */}
 
                   <div className="flex flex-col items-end w-[150px]">
-                    <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
+                    <h6
+                      className={`text-sm font-semibold flex items-center ${
+                        cryptoData.BTC[0]?.quote?.USD?.percent_change_24h >= 0
+                          ? "text-green-500"
+                          : "text-red-500"
+                      }`}
+                    >
+                      {cryptoData.BTC[0]?.quote?.USD?.percent_change_24h >=
+                      0 ? (
+                        <img
+                          src={upGreenIcon}
+                          alt="Green Up Arrow"
+                          className="h-4 w-4 mr-1"
+                        />
+                      ) : (
+                        <img
+                          src={downRedIcon}
+                          alt="Red Down Arrow"
+                          className="h-4 w-4 mr-1"
+                        />
+                      )}
+                      {Math.abs(
+                        cryptoData.BTC[0]?.quote?.USD?.percent_change_24h ?? 0
+                      ).toFixed(2)}
+                      %
+                    </h6>
+
                     {cryptoData.BTC[0]?.quote?.USD?.price && (
                       <h6 className="text-base font-semibold">
                         {Number(cryptoData.BTC[0].quote.USD.price)
@@ -1085,7 +1111,34 @@ const Prediction = () => {
                   </div> */}
 
                   <div className="flex flex-col items-end w-[150px]">
-                    <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
+                    {/* <img src={downRedIcon} alt="SVG" className="h-6 w-16" /> */}
+                    <h6
+                      className={`text-sm font-semibold flex items-center ${
+                        cryptoData.ETH[0]?.quote?.USD?.percent_change_24h >= 0
+                          ? "text-green-500"
+                          : "text-red-500"
+                      }`}
+                    >
+                      {cryptoData.ETH[0]?.quote?.USD?.percent_change_24h >=
+                      0 ? (
+                        <img
+                          src={upGreenIcon}
+                          alt="Green Up Arrow"
+                          className="h-4 w-4 mr-1"
+                        />
+                      ) : (
+                        <img
+                          src={downRedIcon}
+                          alt="Red Down Arrow"
+                          className="h-4 w-4 mr-1"
+                        />
+                      )}
+                      {Math.abs(
+                        cryptoData.ETH[0]?.quote?.USD?.percent_change_24h ?? 0
+                      ).toFixed(2)}
+                      %
+                    </h6>
+
                     {cryptoData.ETH[0]?.quote?.USD?.price && (
                       <h6 className="text-base font-semibold">
                         {Number(cryptoData.ETH[0].quote.USD.price)
@@ -1128,7 +1181,33 @@ const Prediction = () => {
                   {/* </div> */}
 
                   <div className="flex flex-col items-end w-[150px]">
-                    <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
+                    {/* <img src={downRedIcon} alt="SVG" className="h-6 w-16" /> */}
+                    <h6
+                      className={`text-sm font-semibold flex items-center ${
+                        cryptoData.SOL[0]?.quote?.USD?.percent_change_24h >= 0
+                          ? "text-green-500"
+                          : "text-red-500"
+                      }`}
+                    >
+                      {cryptoData.SOL[0]?.quote?.USD?.percent_change_24h >=
+                      0 ? (
+                        <img
+                          src={upGreenIcon}
+                          alt="Green Up Arrow"
+                          className="h-4 w-4 mr-1"
+                        />
+                      ) : (
+                        <img
+                          src={downRedIcon}
+                          alt="Red Down Arrow"
+                          className="h-4 w-4 mr-1"
+                        />
+                      )}
+                      {Math.abs(
+                        cryptoData.SOL[0]?.quote?.USD?.percent_change_24h ?? 0
+                      ).toFixed(2)}
+                      %
+                    </h6>
                     {cryptoData.SOL[0]?.quote?.USD?.price && (
                       <h6 className="text-base font-semibold">
                         {Number(cryptoData.SOL[0].quote.USD.price)
@@ -1171,7 +1250,33 @@ const Prediction = () => {
                   {/* </div> */}
 
                   <div className="flex flex-col items-end w-[150px]">
-                    <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
+                    {/* <img src={downRedIcon} alt="SVG" className="h-6 w-16" /> */}
+                    <h6
+                      className={`text-sm font-semibold flex items-center ${
+                        cryptoData.XRP[0]?.quote?.USD?.percent_change_24h >= 0
+                          ? "text-green-500"
+                          : "text-red-500"
+                      }`}
+                    >
+                      {cryptoData.XRP[0]?.quote?.USD?.percent_change_24h >=
+                      0 ? (
+                        <img
+                          src={upGreenIcon}
+                          alt="Green Up Arrow"
+                          className="h-4 w-4 mr-1"
+                        />
+                      ) : (
+                        <img
+                          src={downRedIcon}
+                          alt="Red Down Arrow"
+                          className="h-4 w-4 mr-1"
+                        />
+                      )}
+                      {Math.abs(
+                        cryptoData.XRP[0]?.quote?.USD?.percent_change_24h ?? 0
+                      ).toFixed(2)}
+                      %
+                    </h6>
                     {cryptoData.XRP[0]?.quote?.USD?.price && (
                       <h6 className="text-base font-semibold">
                         {Number(cryptoData.XRP[0].quote.USD.price)
@@ -1213,7 +1318,33 @@ const Prediction = () => {
                     <h6 className="text-base font-semibold">18,245 USD</h6>
                   </div> */}
                   <div className="flex flex-col items-end w-[150px]">
-                    <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
+                    {/* <img src={downRedIcon} alt="SVG" className="h-6 w-16" /> */}
+                    <h6
+                      className={`text-sm font-semibold flex items-center ${
+                        cryptoData.DOGE[0]?.quote?.USD?.percent_change_24h >= 0
+                          ? "text-green-500"
+                          : "text-red-500"
+                      }`}
+                    >
+                      {cryptoData.DOGE[0]?.quote?.USD?.percent_change_24h >=
+                      0 ? (
+                        <img
+                          src={upGreenIcon}
+                          alt="Green Up Arrow"
+                          className="h-4 w-4 mr-1"
+                        />
+                      ) : (
+                        <img
+                          src={downRedIcon}
+                          alt="Red Down Arrow"
+                          className="h-4 w-4 mr-1"
+                        />
+                      )}
+                      {Math.abs(
+                        cryptoData.DOGE[0]?.quote?.USD?.percent_change_24h ?? 0
+                      ).toFixed(2)}
+                      %
+                    </h6>
                     {cryptoData.DOGE[0]?.quote?.USD?.price && (
                       <h6 className="text-base font-semibold">
                         {Number(cryptoData.XRP[0].quote.USD.price)
