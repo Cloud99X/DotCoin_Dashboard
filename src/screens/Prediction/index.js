@@ -24,6 +24,9 @@ const Prediction = () => {
   });
 
   const [cryptoData, setCryptoData] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+
+  //
   const handleMiniChartClick = (symbol) => {
     setSymbolData({ symbol });
   };
@@ -35,6 +38,7 @@ const Prediction = () => {
           `http://localhost:8080/get-crypto-data`
         );
         console.log(response.data);
+        console.log(response.data.data);
         setCryptoData(response.data.data);
       } catch (error) {
         console.log(error);
@@ -51,25 +55,61 @@ const Prediction = () => {
           <div className="bg-[#242731] flex flex-col gap-8 text-white mr-10 font-bold rounded-2xl">
             <div className="mb-20">
               {/* BTC main part */}
-              {symbolData.symbol === "BTCUSD" && (
-                <div className="flex flex-col">
-                  <div className="flex flex-row items-center gap-20 m-5">
-                    <div className="flex items-center gap-2">
-                      <img src={BTC_logo} alt="SVG" className="h-14 w-14" />
-                      <div className="flex flex-col">
-                        <h4 className="text-2xl font-medium">Bitcoin</h4>
-                        <h4 className="text-lg text-[#808191] font-medium">
-                          BTC
-                        </h4>
+              {cryptoData && (
+                <>
+                  {symbolData.symbol === "BTCUSD" && (
+                    <div className="flex flex-col">
+                      <div className="flex flex-row items-center gap-20 m-5">
+                        <div className="flex items-center gap-2">
+                          <img src={BTC_logo} alt="SVG" className="h-14 w-14" />
+                          <div className="flex flex-col">
+                            <h4 className="text-2xl font-medium">Bitcoin</h4>
+                            <h4 className="text-lg text-[#808191] font-medium">
+                              BTC
+                            </h4>
+                          </div>
+                        </div>
+                        <img src={two_lines} alt="SVG" className="h-5 w-5" />
+                        <button className="flex items-center gap-2 justify-center flex-row w-28 h-12 border border-solid border-[#808191] rounded-xl">
+                          <img
+                            src={upload_logo}
+                            alt="SVG"
+                            className="h-4 w-4"
+                          />
+                          <h4 className="font-bold text-sm">Share</h4>
+                        </button>
                       </div>
-                    </div>
-                    <img src={two_lines} alt="SVG" className="h-5 w-5" />
-                    <button className="flex items-center gap-2 justify-center flex-row w-28 h-12 border border-solid border-[#808191] rounded-xl">
-                      <img src={upload_logo} alt="SVG" className="h-4 w-4" />
-                      <h4 className="font-bold text-sm">Share</h4>
-                    </button>
-                  </div>
-                  {cryptoData.BTC &&
+
+                      <div className="flex items-center gap-3">
+                        <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
+                          {Number(cryptoData.BTC[0].quote.USD.price)
+                            .toLocaleString("en-US", {
+                              style: "currency",
+                              currency: "USD",
+                              minimumFractionDigits: 2,
+                              maximumFractionDigits: 2,
+                            })
+                            .replace("$", "")}{" "}
+                          USD
+                        </h1>
+                        <h6
+                          className={`text-sm font-medium ${
+                            cryptoData.BTC[0].quote.USD.percent_change_24h >= 0
+                              ? "text-green-500"
+                              : "text-red-500"
+                          }`}
+                        >
+                          {cryptoData.BTC[0].quote.USD.percent_change_24h >= 0
+                            ? "+"
+                            : "-"}
+                          {Math.abs(
+                            cryptoData.BTC[0].quote.USD.percent_change_24h
+                          ).toFixed(2)}
+                          %
+                        </h6>
+                      </div>
+
+                      {/* {cryptoData.BTC &&
                     cryptoData.BTC[0] &&
                     cryptoData.BTC[0].quote.USD.price &&
                     cryptoData.BTC[0].quote.USD.percent_change_24h !==
@@ -102,204 +142,226 @@ const Prediction = () => {
                           %
                         </h6>
                       </div>
-                    )}
-                </div>
-              )}
-              {/* ETH main part */}
-              {symbolData.symbol === "ETHUSD" && (
-                <div className="flex flex-col">
-                  <div className="flex items-center gap-20 m-5">
-                    <div className="flex items-center gap-2">
-                      <img src={E_logo} alt="SVG" className="h-14 w-14" />
-                      <div className="flex flex-col">
-                        <h4 className="text-2xl font-medium">Ethereum</h4>
-                        <h4 className="text-lg text-[#808191] font-medium">
-                          ETH
-                        </h4>
+                    )} */}
+                    </div>
+                  )}
+                  {/* ETH main part */}
+                  {symbolData.symbol === "ETHUSD" && (
+                    <div className="flex flex-col">
+                      <div className="flex items-center gap-20 m-5">
+                        <div className="flex items-center gap-2">
+                          <img src={E_logo} alt="SVG" className="h-14 w-14" />
+                          <div className="flex flex-col">
+                            <h4 className="text-2xl font-medium">Ethereum</h4>
+                            <h4 className="text-lg text-[#808191] font-medium">
+                              ETH
+                            </h4>
+                          </div>
+                        </div>
+                        <img src={two_lines} alt="SVG" className="h-5 w-5" />
+                        <button className="flex items-center gap-2 justify-center flex-row w-28 h-12 border border-solid border-[#808191] rounded-xl">
+                          <img
+                            src={upload_logo}
+                            alt="SVG"
+                            className="h-4 w-4"
+                          />
+                          <h4 className="font-bold text-sm">Share</h4>
+                        </button>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
+                          {Number(cryptoData.ETH[0].quote.USD.price)
+                            .toLocaleString("en-US", {
+                              style: "currency",
+                              currency: "USD",
+                              minimumFractionDigits: 2,
+                              maximumFractionDigits: 2,
+                            })
+                            .replace("$", "")}{" "}
+                          USD
+                        </h1>
+                        <h6
+                          className={`text-sm font-medium ${
+                            cryptoData.ETH[0].quote.USD.percent_change_24h >= 0
+                              ? "text-green-500"
+                              : "text-red-500"
+                          }`}
+                        >
+                          {cryptoData.ETH[0].quote.USD.percent_change_24h >= 0
+                            ? "+"
+                            : "-"}
+                          {Math.abs(
+                            cryptoData.ETH[0].quote.USD.percent_change_24h
+                          ).toFixed(2)}
+                          %
+                        </h6>
                       </div>
                     </div>
-                    <img src={two_lines} alt="SVG" className="h-5 w-5" />
-                    <button className="flex items-center gap-2 justify-center flex-row w-28 h-12 border border-solid border-[#808191] rounded-xl">
-                      <img src={upload_logo} alt="SVG" className="h-4 w-4" />
-                      <h4 className="font-bold text-sm">Share</h4>
-                    </button>
-                  </div>
-                  {/* <div className="flex items-center gap-3">
-                    <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
-                      {Number(cryptoData.ETH[0].quote.USD.price)
-                        .toLocaleString("en-US", {
-                          style: "currency",
-                          currency: "USD",
-                          minimumFractionDigits: 2,
-                          maximumFractionDigits: 2,
-                        })
-                        .replace("$", "")}{" "}
-                      USD
-                    </h1>
-                    <h6
-                      className={`text-sm font-medium ${
-                        cryptoData.ETH[0].quote.USD.percent_change_24h >= 0
-                          ? "text-green-500"
-                          : "text-red-500"
-                      }`}
-                    >
-                      {cryptoData.ETH[0].quote.USD.percent_change_24h >= 0
-                        ? "+"
-                        : "-"}
-                      {Math.abs(
-                        cryptoData.ETH[0].quote.USD.percent_change_24h
-                      ).toFixed(2)}
-                      %
-                    </h6>
-                  </div> */}
-                </div>
-              )}
-              {/* Solana main part */}
-              {symbolData.symbol === "SOL" && (
-                <div className="flex flex-col">
-                  <div className="flex items-center gap-20 m-5">
-                    <div className="flex items-center gap-2">
-                      <img src={solana_logo} alt="SVG" className="h-14 w-14" />
-                      <div className="flex flex-col">
-                        <h4 className="text-2xl font-medium">Solana</h4>
-                        <h4 className="text-lg text-[#808191] font-medium">
-                          ETH
-                        </h4>
+                  )}
+                  {/* Solana main part */}
+                  {symbolData.symbol === "SOL" && (
+                    <div className="flex flex-col">
+                      <div className="flex items-center gap-20 m-5">
+                        <div className="flex items-center gap-2">
+                          <img
+                            src={solana_logo}
+                            alt="SVG"
+                            className="h-14 w-14"
+                          />
+                          <div className="flex flex-col">
+                            <h4 className="text-2xl font-medium">Solana</h4>
+                            <h4 className="text-lg text-[#808191] font-medium">
+                              ETH
+                            </h4>
+                          </div>
+                        </div>
+                        <img src={two_lines} alt="SVG" className="h-5 w-5" />
+                        <button className="flex items-center gap-2 justify-center flex-row w-28 h-12 border border-solid border-[#808191] rounded-xl">
+                          <img
+                            src={upload_logo}
+                            alt="SVG"
+                            className="h-4 w-4"
+                          />
+                          <h4 className="font-bold text-sm">Share</h4>
+                        </button>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
+                          {Number(cryptoData.SOL[0].quote.USD.price)
+                            .toLocaleString("en-US", {
+                              style: "currency",
+                              currency: "USD",
+                              minimumFractionDigits: 2,
+                              maximumFractionDigits: 2,
+                            })
+                            .replace("$", "")}{" "}
+                          USD
+                        </h1>
+                        <h6
+                          className={`text-sm font-medium ${
+                            cryptoData.SOL[0].quote.USD.percent_change_24h >= 0
+                              ? "text-green-500"
+                              : "text-red-500"
+                          }`}
+                        >
+                          {cryptoData.SOL[0].quote.USD.percent_change_24h >= 0
+                            ? "+"
+                            : "-"}
+                          {Math.abs(
+                            cryptoData.SOL[0].quote.USD.percent_change_24h
+                          ).toFixed(2)}
+                          %
+                        </h6>
                       </div>
                     </div>
-                    <img src={two_lines} alt="SVG" className="h-5 w-5" />
-                    <button className="flex items-center gap-2 justify-center flex-row w-28 h-12 border border-solid border-[#808191] rounded-xl">
-                      <img src={upload_logo} alt="SVG" className="h-4 w-4" />
-                      <h4 className="font-bold text-sm">Share</h4>
-                    </button>
-                  </div>
-                  {/* <div className="flex items-center gap-3">
-                    <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
-                      {Number(cryptoData.SOL[0].quote.USD.price)
-                        .toLocaleString("en-US", {
-                          style: "currency",
-                          currency: "USD",
-                          minimumFractionDigits: 2,
-                          maximumFractionDigits: 2,
-                        })
-                        .replace("$", "")}{" "}
-                      USD
-                    </h1>
-                    <h6
-                      className={`text-sm font-medium ${
-                        cryptoData.SOL[0].quote.USD.percent_change_24h >= 0
-                          ? "text-green-500"
-                          : "text-red-500"
-                      }`}
-                    >
-                      {cryptoData.SOL[0].quote.USD.percent_change_24h >= 0
-                        ? "+"
-                        : "-"}
-                      {Math.abs(
-                        cryptoData.SOL[0].quote.USD.percent_change_24h
-                      ).toFixed(2)}
-                      %
-                    </h6>
-                  </div> */}
-                </div>
-              )}
-              {/* Ubiq main part */}
-              {symbolData.symbol === "XRP" && (
-                <div className="flex flex-col">
-                  <div className="flex items-center gap-20 m-5">
-                    <div className="flex items-center gap-2">
-                      <img src={UBQ_logo} alt="SVG" className="h-14 w-14" />
-                      <div className="flex flex-col">
-                        <h4 className="text-2xl font-medium">XRP</h4>
-                        <h4 className="text-lg text-[#808191] font-medium">
-                          ETH
-                        </h4>
+                  )}
+                  {/* Ubiq main part */}
+                  {symbolData.symbol === "XRP" && (
+                    <div className="flex flex-col">
+                      <div className="flex items-center gap-20 m-5">
+                        <div className="flex items-center gap-2">
+                          <img src={UBQ_logo} alt="SVG" className="h-14 w-14" />
+                          <div className="flex flex-col">
+                            <h4 className="text-2xl font-medium">XRP</h4>
+                            <h4 className="text-lg text-[#808191] font-medium">
+                              ETH
+                            </h4>
+                          </div>
+                        </div>
+                        <img src={two_lines} alt="SVG" className="h-5 w-5" />
+                        <button className="flex items-center gap-2 justify-center flex-row w-28 h-12 border border-solid border-[#808191] rounded-xl">
+                          <img
+                            src={upload_logo}
+                            alt="SVG"
+                            className="h-4 w-4"
+                          />
+                          <h4 className="font-bold text-sm">Share</h4>
+                        </button>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
+                          {Number(cryptoData.XRP[0].quote.USD.price)
+                            .toLocaleString("en-US", {
+                              style: "currency",
+                              currency: "USD",
+                              minimumFractionDigits: 2,
+                              maximumFractionDigits: 2,
+                            })
+                            .replace("$", "")}{" "}
+                          USD
+                        </h1>
+                        <h6
+                          className={`text-sm font-medium ${
+                            cryptoData.XRP[0].quote.USD.percent_change_24h >= 0
+                              ? "text-green-500"
+                              : "text-red-500"
+                          }`}
+                        >
+                          {cryptoData.XRP[0].quote.USD.percent_change_24h >= 0
+                            ? "+"
+                            : "-"}
+                          {Math.abs(
+                            cryptoData.XRP[0].quote.USD.percent_change_24h
+                          ).toFixed(2)}
+                          %
+                        </h6>
                       </div>
                     </div>
-                    <img src={two_lines} alt="SVG" className="h-5 w-5" />
-                    <button className="flex items-center gap-2 justify-center flex-row w-28 h-12 border border-solid border-[#808191] rounded-xl">
-                      <img src={upload_logo} alt="SVG" className="h-4 w-4" />
-                      <h4 className="font-bold text-sm">Share</h4>
-                    </button>
-                  </div>
-                  {/* <div className="flex items-center gap-3">
-                    <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
-                      {Number(cryptoData.XRP[0].quote.USD.price)
-                        .toLocaleString("en-US", {
-                          style: "currency",
-                          currency: "USD",
-                          minimumFractionDigits: 2,
-                          maximumFractionDigits: 2,
-                        })
-                        .replace("$", "")}{" "}
-                      USD
-                    </h1>
-                    <h6
-                      className={`text-sm font-medium ${
-                        cryptoData.XRP[0].quote.USD.percent_change_24h >= 0
-                          ? "text-green-500"
-                          : "text-red-500"
-                      }`}
-                    >
-                      {cryptoData.XRP[0].quote.USD.percent_change_24h >= 0
-                        ? "+"
-                        : "-"}
-                      {Math.abs(
-                        cryptoData.XRP[0].quote.USD.percent_change_24h
-                      ).toFixed(2)}
-                      %
-                    </h6>
-                  </div> */}
-                </div>
-              )}
-              {/* TBX main part */}
-              {symbolData.symbol === "DOGE" && (
-                <div className="flex flex-col">
-                  <div className="flex items-center gap-20 m-5">
-                    <div className="flex items-center gap-2">
-                      <img src={tbx_logo} alt="SVG" className="h-14 w-14" />
-                      <div className="flex flex-col">
-                        <h4 className="text-2xl font-medium">Dogecoin</h4>
-                        <h4 className="text-lg text-[#808191] font-medium">
-                          ETH
-                        </h4>
+                  )}
+                  {/* TBX main part */}
+                  {symbolData.symbol === "DOGE" && (
+                    <div className="flex flex-col">
+                      <div className="flex items-center gap-20 m-5">
+                        <div className="flex items-center gap-2">
+                          <img src={tbx_logo} alt="SVG" className="h-14 w-14" />
+                          <div className="flex flex-col">
+                            <h4 className="text-2xl font-medium">Dogecoin</h4>
+                            <h4 className="text-lg text-[#808191] font-medium">
+                              ETH
+                            </h4>
+                          </div>
+                        </div>
+                        <img src={two_lines} alt="SVG" className="h-5 w-5" />
+                        <button className="flex items-center gap-2 justify-center flex-row w-28 h-12 border border-solid border-[#808191] rounded-xl">
+                          <img
+                            src={upload_logo}
+                            alt="SVG"
+                            className="h-4 w-4"
+                          />
+                          <h4 className="font-bold text-sm">Share</h4>
+                        </button>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
+                          {Number(cryptoData.DOGE[0].quote.USD.price)
+                            .toLocaleString("en-US", {
+                              style: "currency",
+                              currency: "USD",
+                              minimumFractionDigits: 2,
+                              maximumFractionDigits: 2,
+                            })
+                            .replace("$", "")}{" "}
+                          USD
+                        </h1>
+                        <h6
+                          className={`text-sm font-medium ${
+                            cryptoData.DOGE[0].quote.USD.percent_change_24h >= 0
+                              ? "text-green-500"
+                              : "text-red-500"
+                          }`}
+                        >
+                          {cryptoData.DOGE[0].quote.USD.percent_change_24h >= 0
+                            ? "+"
+                            : "-"}
+                          {Math.abs(
+                            cryptoData.DOGE[0].quote.USD.percent_change_24h
+                          ).toFixed(2)}
+                          %
+                        </h6>
                       </div>
                     </div>
-                    <img src={two_lines} alt="SVG" className="h-5 w-5" />
-                    <button className="flex items-center gap-2 justify-center flex-row w-28 h-12 border border-solid border-[#808191] rounded-xl">
-                      <img src={upload_logo} alt="SVG" className="h-4 w-4" />
-                      <h4 className="font-bold text-sm">Share</h4>
-                    </button>
-                  </div>
-                  {/* <div className="flex items-center gap-3">
-                    <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
-                      {Number(cryptoData.DOGE[0].quote.USD.price)
-                        .toLocaleString("en-US", {
-                          style: "currency",
-                          currency: "USD",
-                          minimumFractionDigits: 2,
-                          maximumFractionDigits: 2,
-                        })
-                        .replace("$", "")}{" "}
-                      USD
-                    </h1>
-                    <h6
-                      className={`text-sm font-medium ${
-                        cryptoData.DOGE[0].quote.USD.percent_change_24h >= 0
-                          ? "text-green-500"
-                          : "text-red-500"
-                      }`}
-                    >
-                      {cryptoData.DOGE[0].quote.USD.percent_change_24h >= 0
-                        ? "+"
-                        : "-"}
-                      {Math.abs(
-                        cryptoData.DOGE[0].quote.USD.percent_change_24h
-                      ).toFixed(2)}
-                      %
-                    </h6>
-                  </div> */}
-                </div>
+                  )}
+                </>
               )}
             </div>
 
@@ -331,7 +393,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {/* {cryptoData.BTC[0].quote.USD.market_cap} USD */}
+                                {cryptoData.BTC[0].quote.USD.market_cap} USD
                               </h6>
                             </div>
                           </div>
@@ -357,7 +419,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {/* {cryptoData.BTC[0].quote.USD.volume_24h} USD */}
+                                {cryptoData.BTC[0].quote.USD.volume_24h} USD
                               </h6>
                             </div>
                           </div>
@@ -384,7 +446,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {/* {cryptoData.BTC[0].circulating_supply} */}
+                                {cryptoData.BTC[0].circulating_supply}
                               </h6>
                             </div>
                           </div>
@@ -410,7 +472,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {/* {cryptoData.BTC[0].total_supply} */}
+                                {cryptoData.BTC[0].total_supply}
                               </h6>
                             </div>
                           </div>
@@ -443,7 +505,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {/* {cryptoData.ETH[0].quote.USD.market_cap} USD */}
+                                {cryptoData.ETH[0].quote.USD.market_cap} USD
                               </h6>
                             </div>
                           </div>
@@ -469,7 +531,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {/* {cryptoData.ETH[0].quote.USD.volume_24h} USD */}
+                                {cryptoData.ETH[0].quote.USD.volume_24h} USD
                               </h6>
                             </div>
                           </div>
@@ -496,7 +558,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {/* {cryptoData.ETH[0].circulating_supply} */}
+                                {cryptoData.ETH[0].circulating_supply}
                               </h6>
                             </div>
                           </div>
@@ -522,7 +584,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {/* {cryptoData.ETH[0].total_supply} */}
+                                {cryptoData.ETH[0].total_supply}
                               </h6>
                             </div>
                           </div>
@@ -555,7 +617,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {/* {cryptoData.SOL[0].quote.USD.market_cap} USD */}
+                                {cryptoData.SOL[0].quote.USD.market_cap} USD
                               </h6>
                             </div>
                           </div>
@@ -581,7 +643,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {/* {cryptoData.SOL[0].quote.USD.volume_24h} USD */}
+                                {cryptoData.SOL[0].quote.USD.volume_24h} USD
                               </h6>
                             </div>
                           </div>
@@ -608,7 +670,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {/* {cryptoData.SOL[0].circulating_supply} */}
+                                {cryptoData.SOL[0].circulating_supply}
                               </h6>
                             </div>
                           </div>
@@ -634,7 +696,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {/* {cryptoData.SOL[0].total_supply} */}
+                                {cryptoData.SOL[0].total_supply}
                               </h6>
                             </div>
                           </div>
@@ -667,7 +729,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {/* {cryptoData.XRP[0].quote.USD.market_cap} USD */}
+                                {cryptoData.XRP[0].quote.USD.market_cap} USD
                               </h6>
                             </div>
                           </div>
@@ -693,7 +755,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {/* {cryptoData.XRP[0].quote.USD.volume_24h} USD */}
+                                {cryptoData.XRP[0].quote.USD.volume_24h} USD
                               </h6>
                             </div>
                           </div>
@@ -720,7 +782,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {/* {cryptoData.XRP[0].circulating_supply} */}
+                                {cryptoData.XRP[0].circulating_supply}
                               </h6>
                             </div>
                           </div>
@@ -746,7 +808,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {/* {cryptoData.XRP[0].total_supply} */}
+                                {cryptoData.XRP[0].total_supply}
                               </h6>
                             </div>
                           </div>
@@ -779,7 +841,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {/* {cryptoData.DOGE[0].quote.USD.market_cap} USD */}
+                                {cryptoData.DOGE[0].quote.USD.market_cap} USD
                               </h6>
                             </div>
                           </div>
@@ -805,7 +867,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {/* {cryptoData.DOGE[0].quote.USD.volume_24h} USD */}
+                                {cryptoData.DOGE[0].quote.USD.volume_24h} USD
                               </h6>
                             </div>
                           </div>
@@ -832,7 +894,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {/* {cryptoData.DOGE[0].circulating_supply} */}
+                                {cryptoData.DOGE[0].circulating_supply}
                               </h6>
                             </div>
                           </div>
@@ -858,7 +920,7 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {/* {cryptoData.DOGE[0].total_supply} */}
+                                {cryptoData.DOGE[0].total_supply}
                               </h6>
                             </div>
                           </div>
@@ -871,6 +933,7 @@ const Prediction = () => {
             </div>
 
             {/* ==========  about section  ============= */}
+
             <div className="">
               {symbolData.symbol === "BTCUSD" && (
                 <div className="flex flex-col gap-5 m-5">
@@ -946,201 +1009,229 @@ const Prediction = () => {
 
           <img src={divider} alt="SVG" className="h-[1400px] w-1" />
           {/* ============= Mini card section ====================== */}
-          <div className="flex flex-col mb-2 mt-2 gap-5">
-            <div className="flex flex-row justify-between  mb-10">
-              <p className="text-lg font-medium">Related Coins</p>
-              <button>
-                <img src={three_dots} alt="SVG" className="h-6 w-5" />
+          {cryptoData && (
+            <div className="flex flex-col mb-2 mt-2 gap-5">
+              <div className="flex flex-row justify-between  mb-10">
+                <p className="text-lg font-medium">Related Coins</p>
+                <button>
+                  <img src={three_dots} alt="SVG" className="h-6 w-5" />
+                </button>
+              </div>
+
+              <button
+                className={`bg-[#242731] rounded-2xl w-[299px] h-[176px] ${
+                  symbolData.symbol === "BTCUSD"
+                    ? "border border-solid border-[#355DFF]"
+                    : ""
+                }`}
+                onClick={() => handleMiniChartClick("BTCUSD")}
+              >
+                <div className="flex mb-40 gap-12 flex-row m-3">
+                  <div className="flex gap-2 ">
+                    <img src={BTC_logo} alt="SVG" className="h-12 w-12" />
+                    <div className="flex flex-col items-start ">
+                      <h6 className="text-lg font-medium ">Bitcoin</h6>
+                      <h6 className="text-xs font-medium text-[#808191]">
+                        BTC
+                      </h6>
+                    </div>
+                  </div>
+                  {/* <div className="flex flex-col items-end"> */}
+                  {/* <h6 className="text-sm font-semibold text-[#4FBF67]">2.5%</h6> */}
+                  {/* <img src={upGreenIcon} alt="SVG" className="h-6 w-16" />
+                    <h6 className="text-base font-semibold">18,245.4 USD</h6> */}
+                  {/* </div> */}
+
+                  <div className="flex flex-col items-end w-[150px]">
+                    <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
+                    {cryptoData.BTC[0]?.quote?.USD?.price && (
+                      <h6 className="text-base font-semibold">
+                        {Number(cryptoData.BTC[0].quote.USD.price)
+                          .toLocaleString("en-US", {
+                            style: "currency",
+                            currency: "USD",
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          })
+                          .replace("$", "")}{" "}
+                        USD
+                      </h6>
+                    )}
+                  </div>
+                </div>
+              </button>
+
+              <button
+                className={`bg-[#242731] rounded-2xl w-[299px] h-[176px] ${
+                  symbolData.symbol === "ETHUSD"
+                    ? "border border-solid border-[#355DFF]"
+                    : ""
+                }`}
+                onClick={() => handleMiniChartClick("ETHUSD")}
+              >
+                <div className="flex mb-40 gap-10 flex-row m-5">
+                  <div className="flex gap-2 ">
+                    <img src={E_logo} alt="SVG" className="h-12 w-12" />
+                    <div className="flex flex-col items-start ">
+                      <h6 className="text-lg font-medium ">Ethereum</h6>
+                      <h6 className="text-xs font-medium text-[#808191]">
+                        ETH
+                      </h6>
+                    </div>
+                  </div>
+                  {/* <div className="flex flex-col items-end ">
+                    <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
+                    <h6 className="text-base font-semibold">0.56687654</h6>
+                  </div> */}
+
+                  <div className="flex flex-col items-end w-[150px]">
+                    <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
+                    {cryptoData.ETH[0]?.quote?.USD?.price && (
+                      <h6 className="text-base font-semibold">
+                        {Number(cryptoData.ETH[0].quote.USD.price)
+                          .toLocaleString("en-US", {
+                            style: "currency",
+                            currency: "USD",
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          })
+                          .replace("$", "")}{" "}
+                        USD
+                      </h6>
+                    )}
+                  </div>
+                </div>
+              </button>
+
+              <button
+                className={`bg-[#242731] rounded-2xl w-[299px] h-[176px] ${
+                  symbolData.symbol === "SOL"
+                    ? "border border-solid border-[#355DFF]"
+                    : ""
+                }`}
+                onClick={() => handleMiniChartClick("SOL")}
+              >
+                <div className="flex gap-12 mb-40 flex-row m-3 ">
+                  <div className="flex gap-2 ">
+                    <img src={solana_logo} alt="SVG" className="h-12 w-12" />
+                    <div className="flex flex-col items-start">
+                      <h6 className="text-lg font-medium">Solana</h6>
+                      <h6 className="text-xs font-medium text-[#808191]">
+                        SOL
+                      </h6>
+                    </div>
+                  </div>
+                  {/* <div className="flex flex-col items-end "> */}
+                  {/* <h6 className="text-sm font-semibold text-[#4FBF67]">2.5%</h6> */}
+                  {/* <img src={upGreenIcon} alt="SVG" className="h-6 w-16" />
+                    <h6 className="text-base font-semibold">18,245.4 USD</h6> */}
+                  {/* </div> */}
+
+                  <div className="flex flex-col items-end w-[150px]">
+                    <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
+                    {cryptoData.SOL[0]?.quote?.USD?.price && (
+                      <h6 className="text-base font-semibold">
+                        {Number(cryptoData.SOL[0].quote.USD.price)
+                          .toLocaleString("en-US", {
+                            style: "currency",
+                            currency: "USD",
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          })
+                          .replace("$", "")}{" "}
+                        USD
+                      </h6>
+                    )}
+                  </div>
+                </div>
+              </button>
+
+              <button
+                className={`bg-[#242731] rounded-2xl w-[299px] h-[176px] ${
+                  symbolData.symbol === "XRP"
+                    ? "border border-solid border-[#355DFF]"
+                    : ""
+                }`}
+                onClick={() => handleMiniChartClick("XRP")}
+              >
+                <div className="flex mb-40 gap-20 flex-row m-3 ">
+                  <div className="flex gap-2">
+                    <img src={UBQ_logo} alt="SVG" className="h-12 w-12" />
+                    <div className="flex flex-col items-start">
+                      <h6 className="text-lg font-medium ">XRP</h6>
+                      <h6 className="text-xs font-medium text-[#808191]">
+                        XRP
+                      </h6>
+                    </div>
+                  </div>
+                  {/* <div className="flex flex-col items-end  "> */}
+                  {/* <h6 className="text-sm font-semibold text-[#FF7A68]">2.5%</h6> */}
+                  {/* <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
+                    <h6 className="text-base font-semibold">18,245 USD</h6> */}
+                  {/* </div> */}
+
+                  <div className="flex flex-col items-end w-[150px]">
+                    <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
+                    {cryptoData.XRP[0]?.quote?.USD?.price && (
+                      <h6 className="text-base font-semibold">
+                        {Number(cryptoData.XRP[0].quote.USD.price)
+                          .toLocaleString("en-US", {
+                            style: "currency",
+                            currency: "USD",
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          })
+                          .replace("$", "")}{" "}
+                        USD
+                      </h6>
+                    )}
+                  </div>
+                </div>
+              </button>
+
+              <button
+                className={`bg-[#242731] rounded-2xl w-[299px] h-[176px] ${
+                  symbolData.symbol === "DOGE"
+                    ? "border border-solid border-[#355DFF]"
+                    : ""
+                }`}
+                onClick={() => handleMiniChartClick("DOGE")}
+              >
+                <div className="flex mb-40 gap-10 flex-row m-3">
+                  <div className="flex gap-2 ">
+                    <img src={tbx_logo} alt="SVG" className="h-12 w-12" />
+                    <div className="flex flex-col items-start ">
+                      <h6 className="text-lg font-medium ">Dogecoin</h6>
+                      <h6 className="text-xs font-medium text-[#808191]">
+                        DOGE
+                      </h6>
+                    </div>
+                  </div>
+                  {/* <div className="flex flex-col items-end ">
+                    <h6 className="text-sm font-semibold text-[#4FBF67]">2.5%</h6>
+                    <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
+                    <h6 className="text-base font-semibold">18,245 USD</h6>
+                  </div> */}
+                  <div className="flex flex-col items-end w-[150px]">
+                    <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
+                    {cryptoData.DOGE[0]?.quote?.USD?.price && (
+                      <h6 className="text-base font-semibold">
+                        {Number(cryptoData.XRP[0].quote.USD.price)
+                          .toLocaleString("en-US", {
+                            style: "currency",
+                            currency: "USD",
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          })
+                          .replace("$", "")}{" "}
+                        USD
+                      </h6>
+                    )}
+                  </div>
+                </div>
               </button>
             </div>
-
-            <button
-              className={`bg-[#242731] rounded-2xl w-[299px] h-[176px] ${
-                symbolData.symbol === "BTCUSD"
-                  ? "border border-solid border-[#355DFF]"
-                  : ""
-              }`}
-              onClick={() => handleMiniChartClick("BTCUSD")}
-            >
-              <div className="flex mb-40 gap-12 flex-row m-3">
-                <div className="flex gap-2 ">
-                  <img src={BTC_logo} alt="SVG" className="h-12 w-12" />
-                  <div className="flex flex-col items-start ">
-                    <h6 className="text-lg font-medium ">Bitcoin</h6>
-                    <h6 className="text-xs font-medium text-[#808191]">BTC</h6>
-                  </div>
-                </div>
-                {/* <div className="flex flex-col items-end"> */}
-                {/* <h6 className="text-sm font-semibold text-[#4FBF67]">2.5%</h6> */}
-                {/* <img src={upGreenIcon} alt="SVG" className="h-6 w-16" />
-                  <h6 className="text-base font-semibold">18,245.4 USD</h6> */}
-                {/* </div> */}
-
-                {/* <div className="flex flex-col items-end w-[150px]">
-                  <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
-                  {cryptoData.BTC[0]?.quote?.USD?.price && (
-                    <h6 className="text-base font-semibold">
-                      {Number(cryptoData.BTC[0].quote.USD.price)
-                        .toLocaleString("en-US", {
-                          style: "currency",
-                          currency: "USD",
-                          minimumFractionDigits: 2,
-                          maximumFractionDigits: 2,
-                        })
-                        .replace("$", "")}{" "}
-                      USD
-                    </h6>
-                  )}
-                </div> */}
-              </div>
-            </button>
-
-            <button
-              className={`bg-[#242731] rounded-2xl w-[299px] h-[176px] ${
-                symbolData.symbol === "ETHUSD"
-                  ? "border border-solid border-[#355DFF]"
-                  : ""
-              }`}
-              onClick={() => handleMiniChartClick("ETHUSD")}
-            >
-              <div className="flex mb-40 gap-10 flex-row m-5">
-                <div className="flex gap-2 ">
-                  <img src={E_logo} alt="SVG" className="h-12 w-12" />
-                  <div className="flex flex-col items-start ">
-                    <h6 className="text-lg font-medium ">Ethereum</h6>
-                    <h6 className="text-xs font-medium text-[#808191]">ETH</h6>
-                  </div>
-                </div>
-                {/* <div className="flex flex-col items-end ">
-                  <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
-                  <h6 className="text-base font-semibold">0.56687654</h6>
-                </div> */}
-
-                {/* <div className="flex flex-col items-end w-[150px]">
-                  <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
-                  {cryptoData.ETH[0]?.quote?.USD?.price && (
-                    <h6 className="text-base font-semibold">
-                      {Number(cryptoData.ETH[0].quote.USD.price)
-                        .toLocaleString("en-US", {
-                          style: "currency",
-                          currency: "USD",
-                          minimumFractionDigits: 2,
-                          maximumFractionDigits: 2,
-                        })
-                        .replace("$", "")}{" "}
-                      USD
-                    </h6>
-                  )}
-                </div> */}
-              </div>
-            </button>
-
-            <button
-              className={`bg-[#242731] rounded-2xl w-[299px] h-[176px] ${
-                symbolData.symbol === "SOL"
-                  ? "border border-solid border-[#355DFF]"
-                  : ""
-              }`}
-              onClick={() => handleMiniChartClick("SOL")}
-            >
-              <div className="flex gap-12 mb-40 flex-row m-3 ">
-                <div className="flex gap-2 ">
-                  <img src={solana_logo} alt="SVG" className="h-12 w-12" />
-                  <div className="flex flex-col items-start">
-                    <h6 className="text-lg font-medium">Solana</h6>
-                    <h6 className="text-xs font-medium text-[#808191]">SOL</h6>
-                  </div>
-                </div>
-                {/* <div className="flex flex-col items-end "> */}
-                {/* <h6 className="text-sm font-semibold text-[#4FBF67]">2.5%</h6> */}
-                {/* <img src={upGreenIcon} alt="SVG" className="h-6 w-16" />
-                  <h6 className="text-base font-semibold">18,245.4 USD</h6> */}
-                {/* </div> */}
-
-                {/* <div className="flex flex-col items-end w-[150px]">
-                  <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
-                  {cryptoData.SOL[0]?.quote?.USD?.price && (
-                    <h6 className="text-base font-semibold">
-                      {Number(cryptoData.SOL[0].quote.USD.price)
-                        .toLocaleString("en-US", {
-                          style: "currency",
-                          currency: "USD",
-                          minimumFractionDigits: 2,
-                          maximumFractionDigits: 2,
-                        })
-                        .replace("$", "")}{" "}
-                      USD
-                    </h6>
-                  )}
-                </div> */}
-              </div>
-            </button>
-
-            <button
-              className={`bg-[#242731] rounded-2xl w-[299px] h-[176px] ${
-                symbolData.symbol === "XRP"
-                  ? "border border-solid border-[#355DFF]"
-                  : ""
-              }`}
-              onClick={() => handleMiniChartClick("XRP")}
-            >
-              <div className="flex mb-40 gap-20 flex-row m-3 ">
-                <div className="flex gap-2">
-                  <img src={UBQ_logo} alt="SVG" className="h-12 w-12" />
-                  <div className="flex flex-col items-start">
-                    <h6 className="text-lg font-medium ">XRP</h6>
-                    <h6 className="text-xs font-medium text-[#808191]">XRP</h6>
-                  </div>
-                </div>
-                {/* <div className="flex flex-col items-end  "> */}
-                {/* <h6 className="text-sm font-semibold text-[#FF7A68]">2.5%</h6> */}
-                {/* <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
-                  <h6 className="text-base font-semibold">18,245 USD</h6> */}
-                {/* </div> */}
-
-                {/* <div className="flex flex-col items-end w-[150px]">
-                  <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
-                  {cryptoData.XRP[0]?.quote?.USD?.price && (
-                    <h6 className="text-base font-semibold">
-                      {Number(cryptoData.XRP[0].quote.USD.price)
-                        .toLocaleString("en-US", {
-                          style: "currency",
-                          currency: "USD",
-                          minimumFractionDigits: 2,
-                          maximumFractionDigits: 2,
-                        })
-                        .replace("$", "")}{" "}
-                      USD
-                    </h6>
-                  )}
-                </div> */}
-              </div>
-            </button>
-
-            <button
-              className={`bg-[#242731] rounded-2xl w-[299px] h-[176px] ${
-                symbolData.symbol === "DOGE"
-                  ? "border border-solid border-[#355DFF]"
-                  : ""
-              }`}
-              onClick={() => handleMiniChartClick("DOGE")}
-            >
-              <div className="flex mb-40 gap-10 flex-row m-3">
-                <div className="flex gap-2 ">
-                  <img src={tbx_logo} alt="SVG" className="h-12 w-12" />
-                  <div className="flex flex-col items-start ">
-                    <h6 className="text-lg font-medium ">Dogecoin</h6>
-                    <h6 className="text-xs font-medium text-[#808191]">DOGE</h6>
-                  </div>
-                </div>
-                <div className="flex flex-col items-end ">
-                  {/* <h6 className="text-sm font-semibold text-[#4FBF67]">2.5%</h6> */}
-                  <img src={downRedIcon} alt="SVG" className="h-6 w-16" />
-                  <h6 className="text-base font-semibold">18,245 USD</h6>
-                </div>
-              </div>
-            </button>
-          </div>
+          )}
         </div>
       </div>
     </PageLayout>
