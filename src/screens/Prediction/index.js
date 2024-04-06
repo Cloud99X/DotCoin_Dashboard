@@ -17,6 +17,7 @@ import divider from "../../assets/svg/Divider.svg";
 import upGreenIcon from "../../assets/svg/upGreenIcon.svg";
 import downRedIcon from "../../assets/svg/downRedIcon.svg";
 import axios from "axios";
+import { AdvancedRealTimeChart } from "react-ts-tradingview-widgets";
 
 const Prediction = () => {
   const [symbolData, setSymbolData] = useState({
@@ -51,15 +52,15 @@ const Prediction = () => {
   return (
     <PageLayout activeMenu={"Prediction"}>
       <div className="flex items-center mb-10">
-        <div className="flex justify-center gap-20 mb-20 mt-10 w-full h-[1120px]">
-          <div className="bg-[#242731] flex flex-col gap-8 text-white mr-10 font-bold rounded-2xl">
-            <div className="mb-20">
+        <div className="flex justify-center gap-20 mb-2 mt-10 w-full h-fit">
+          <div className="bg-[#242731] flex flex-col gap-8 text-white mr-10 font-bold rounded-2xl pb-10">
+            <div className="mb-2">
               {/* BTC main part */}
               {cryptoData && (
                 <>
                   {symbolData.symbol === "BTCUSD" && (
                     <div className="flex flex-col">
-                      <div className="flex flex-row items-center gap-20 m-5">
+                      <div className="flex flex-row items-center gap-20 m-5 justify-between">
                         <div className="flex items-center gap-2">
                           <img src={BTC_logo} alt="SVG" className="h-14 w-14" />
                           <div className="flex flex-col">
@@ -68,8 +69,13 @@ const Prediction = () => {
                               BTC
                             </h4>
                           </div>
+                          <img
+                            src={two_lines}
+                            alt="SVG"
+                            className="h-5 w-5 ml-10"
+                          />
                         </div>
-                        <img src={two_lines} alt="SVG" className="h-5 w-5" />
+
                         <button className="flex items-center gap-2 justify-center flex-row w-28 h-12 border border-solid border-[#808191] rounded-xl">
                           <img
                             src={upload_logo}
@@ -108,47 +114,20 @@ const Prediction = () => {
                           %
                         </h6>
                       </div>
-
-                      {/* {cryptoData.BTC &&
-                    cryptoData.BTC[0] &&
-                    cryptoData.BTC[0].quote.USD.price &&
-                    cryptoData.BTC[0].quote.USD.percent_change_24h !==
-                      undefined && (
-                      <div className="flex items-center gap-3">
-                        <h1 className="text-5xl text-[#ffffff] font-semibold ml-5">
-                          {Number(cryptoData.BTC[0].quote.USD.price)
-                            .toLocaleString("en-US", {
-                              style: "currency",
-                              currency: "USD",
-                              minimumFractionDigits: 2,
-                              maximumFractionDigits: 2,
-                            })
-                            .replace("$", "")}{" "}
-                          USD
-                        </h1>
-                        <h6
-                          className={`text-sm font-medium ${
-                            cryptoData.BTC[0].quote.USD.percent_change_24h >= 0
-                              ? "text-green-500"
-                              : "text-red-500"
-                          }`}
-                        >
-                          {cryptoData.BTC[0].quote.USD.percent_change_24h >= 0
-                            ? "+"
-                            : "-"}
-                          {Math.abs(
-                            cryptoData.BTC[0].quote.USD.percent_change_24h
-                          ).toFixed(2)}
-                          %
-                        </h6>
+                      <div className="mt-6">
+                        <AdvancedRealTimeChart
+                          theme="dark"
+                          symbol="BTCUSDT"
+                          timezone="UTC"
+                          allow_symbol_change={false}
+                        />
                       </div>
-                    )} */}
                     </div>
                   )}
                   {/* ETH main part */}
                   {symbolData.symbol === "ETHUSD" && (
                     <div className="flex flex-col">
-                      <div className="flex items-center gap-20 m-5">
+                      <div className="flex items-center gap-20 m-5 justify-between">
                         <div className="flex items-center gap-2">
                           <img src={E_logo} alt="SVG" className="h-14 w-14" />
                           <div className="flex flex-col">
@@ -157,8 +136,13 @@ const Prediction = () => {
                               ETH
                             </h4>
                           </div>
+                          <img
+                            src={two_lines}
+                            alt="SVG"
+                            className="h-5 w-5 ml-5"
+                          />
                         </div>
-                        <img src={two_lines} alt="SVG" className="h-5 w-5" />
+
                         <button className="flex items-center gap-2 justify-center flex-row w-28 h-12 border border-solid border-[#808191] rounded-xl">
                           <img
                             src={upload_logo}
@@ -196,12 +180,20 @@ const Prediction = () => {
                           %
                         </h6>
                       </div>
+                      <div className="mt-6">
+                        <AdvancedRealTimeChart
+                          theme="dark"
+                          symbol="ETHUSDT"
+                          timezone="UTC"
+                          allow_symbol_change={false}
+                        />
+                      </div>
                     </div>
                   )}
                   {/* Solana main part */}
                   {symbolData.symbol === "SOL" && (
                     <div className="flex flex-col">
-                      <div className="flex items-center gap-20 m-5">
+                      <div className="flex items-center gap-20 m-5 justify-between">
                         <div className="flex items-center gap-2">
                           <img
                             src={solana_logo}
@@ -214,8 +206,13 @@ const Prediction = () => {
                               ETH
                             </h4>
                           </div>
+                          <img
+                            src={two_lines}
+                            alt="SVG"
+                            className="h-5 w-5 ml-5"
+                          />
                         </div>
-                        <img src={two_lines} alt="SVG" className="h-5 w-5" />
+
                         <button className="flex items-center gap-2 justify-center flex-row w-28 h-12 border border-solid border-[#808191] rounded-xl">
                           <img
                             src={upload_logo}
@@ -253,12 +250,20 @@ const Prediction = () => {
                           %
                         </h6>
                       </div>
+                      <div className="mt-6">
+                        <AdvancedRealTimeChart
+                          theme="dark"
+                          symbol="SOLUSDT"
+                          timezone="UTC"
+                          allow_symbol_change={false}
+                        />
+                      </div>
                     </div>
                   )}
                   {/* Ubiq main part */}
                   {symbolData.symbol === "XRP" && (
                     <div className="flex flex-col">
-                      <div className="flex items-center gap-20 m-5">
+                      <div className="flex items-center gap-20 m-5 justify-between">
                         <div className="flex items-center gap-2">
                           <img src={UBQ_logo} alt="SVG" className="h-14 w-14" />
                           <div className="flex flex-col">
@@ -267,8 +272,13 @@ const Prediction = () => {
                               ETH
                             </h4>
                           </div>
+                          <img
+                            src={two_lines}
+                            alt="SVG"
+                            className="h-5 w-5 ml-5"
+                          />
                         </div>
-                        <img src={two_lines} alt="SVG" className="h-5 w-5" />
+
                         <button className="flex items-center gap-2 justify-center flex-row w-28 h-12 border border-solid border-[#808191] rounded-xl">
                           <img
                             src={upload_logo}
@@ -306,12 +316,20 @@ const Prediction = () => {
                           %
                         </h6>
                       </div>
+                      <div className="mt-6">
+                        <AdvancedRealTimeChart
+                          theme="dark"
+                          symbol="XRPUSDT"
+                          timezone="UTC"
+                          allow_symbol_change={false}
+                        />
+                      </div>
                     </div>
                   )}
                   {/* TBX main part */}
                   {symbolData.symbol === "DOGE" && (
                     <div className="flex flex-col">
-                      <div className="flex items-center gap-20 m-5">
+                      <div className="flex items-center gap-20 m-5 justify-between">
                         <div className="flex items-center gap-2">
                           <img src={tbx_logo} alt="SVG" className="h-14 w-14" />
                           <div className="flex flex-col">
@@ -320,8 +338,13 @@ const Prediction = () => {
                               ETH
                             </h4>
                           </div>
+                          <img
+                            src={two_lines}
+                            alt="SVG"
+                            className="h-5 w-5 ml-5"
+                          />
                         </div>
-                        <img src={two_lines} alt="SVG" className="h-5 w-5" />
+
                         <button className="flex items-center gap-2 justify-center flex-row w-28 h-12 border border-solid border-[#808191] rounded-xl">
                           <img
                             src={upload_logo}
@@ -359,6 +382,14 @@ const Prediction = () => {
                           %
                         </h6>
                       </div>
+                      <div className="mt-6">
+                        <AdvancedRealTimeChart
+                          theme="dark"
+                          symbol="DOGEUSDT"
+                          timezone="UTC"
+                          allow_symbol_change={false}
+                        />
+                      </div>
                     </div>
                   )}
                 </>
@@ -367,14 +398,14 @@ const Prediction = () => {
 
             {/* ============ values section ============= */}
             {/* BTC values */}
-            <div className="mt-60">
+            <div className="mt-6">
               {cryptoData && (
                 <>
                   {symbolData.symbol === "BTCUSD" && (
                     <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
                       <div className="flex flex-row  border-b border-solid border-[#808191]">
-                        <div className="flex items-center justify-center w-80 h-28 ">
-                          <div className="flex flex-row gap-5 w-[250px]">
+                        <div className="flex items-center justify-center w-[500px] h-28 ">
+                          <div className="flex flex-row gap-5 w-[400px]">
                             <img
                               src={ghost_circle_icon}
                               alt="SVG"
@@ -399,8 +430,8 @@ const Prediction = () => {
                           </div>
                         </div>
 
-                        <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                          <div className="flex flex-row gap-5 w-[250px]">
+                        <div className="flex items-center justify-center w-[500px] h-28 border-l border-solid border-[#808191]">
+                          <div className="flex flex-row gap-5 w-[400px]">
                             <img
                               src={ghost_circle_icon2}
                               alt="SVG"
@@ -426,8 +457,8 @@ const Prediction = () => {
                         </div>
                       </div>
                       <div className="flex flex-row">
-                        <div className="flex items-center justify-center w-80 h-28 ">
-                          <div className="flex flex-row gap-5 w-[250px]">
+                        <div className="flex items-center justify-center w-[500px] h-28 ">
+                          <div className="flex flex-row gap-5 w-[400px]">
                             <img
                               src={ghost_circle_icon3}
                               alt="SVG"
@@ -452,8 +483,8 @@ const Prediction = () => {
                           </div>
                         </div>
 
-                        <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                          <div className="flex flex-row gap-5 w-[250px]">
+                        <div className="flex items-center justify-center w-[500px] h-28 border-l border-solid border-[#808191]">
+                          <div className="flex flex-row gap-5 w-[400px]">
                             <img
                               src={ghost_circle_icon4}
                               alt="SVG"
@@ -485,8 +516,8 @@ const Prediction = () => {
                   {symbolData.symbol === "ETHUSD" && (
                     <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
                       <div className="flex flex-row  border-b border-solid border-[#808191]">
-                        <div className="flex items-center justify-center w-80 h-28 ">
-                          <div className="flex flex-row gap-5 w-[250px]">
+                        <div className="flex items-center justify-center w-[500px] h-28 ">
+                          <div className="flex flex-row gap-5 w-[400px]">
                             <img
                               src={ghost_circle_icon}
                               alt="SVG"
@@ -511,8 +542,8 @@ const Prediction = () => {
                           </div>
                         </div>
 
-                        <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                          <div className="flex flex-row gap-5 w-[250px]">
+                        <div className="flex items-center justify-center w-[500px] h-28 border-l border-solid border-[#808191]">
+                          <div className="flex flex-row gap-5 w-[400px]">
                             <img
                               src={ghost_circle_icon2}
                               alt="SVG"
@@ -538,8 +569,8 @@ const Prediction = () => {
                         </div>
                       </div>
                       <div className="flex flex-row">
-                        <div className="flex items-center justify-center w-80 h-28 ">
-                          <div className="flex flex-row gap-5 w-[250px]">
+                        <div className="flex items-center justify-center w-[500px] h-28 ">
+                          <div className="flex flex-row gap-5 w-[400px]">
                             <img
                               src={ghost_circle_icon3}
                               alt="SVG"
@@ -564,8 +595,8 @@ const Prediction = () => {
                           </div>
                         </div>
 
-                        <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                          <div className="flex flex-row gap-5 w-[250px]">
+                        <div className="flex items-center justify-center w-[500px] h-28 border-l border-solid border-[#808191]">
+                          <div className="flex flex-row gap-5 w-[400px]">
                             <img
                               src={ghost_circle_icon4}
                               alt="SVG"
@@ -597,8 +628,8 @@ const Prediction = () => {
                   {symbolData.symbol === "SOL" && (
                     <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
                       <div className="flex flex-row  border-b border-solid border-[#808191]">
-                        <div className="flex items-center justify-center w-80 h-28 ">
-                          <div className="flex flex-row gap-5 w-[250px]">
+                        <div className="flex items-center justify-center w-[500px] h-28 ">
+                          <div className="flex flex-row gap-5 w-[400px]">
                             <img
                               src={ghost_circle_icon}
                               alt="SVG"
@@ -623,8 +654,8 @@ const Prediction = () => {
                           </div>
                         </div>
 
-                        <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                          <div className="flex flex-row gap-5 w-[250px]">
+                        <div className="flex items-center justify-center w-[500px] h-28 border-l border-solid border-[#808191]">
+                          <div className="flex flex-row gap-5 w-[400px]">
                             <img
                               src={ghost_circle_icon2}
                               alt="SVG"
@@ -650,8 +681,8 @@ const Prediction = () => {
                         </div>
                       </div>
                       <div className="flex flex-row">
-                        <div className="flex items-center justify-center w-80 h-28 ">
-                          <div className="flex flex-row gap-5 w-[250px]">
+                        <div className="flex items-center justify-center w-[500px] h-28 ">
+                          <div className="flex flex-row gap-5 w-[400px]">
                             <img
                               src={ghost_circle_icon3}
                               alt="SVG"
@@ -676,8 +707,8 @@ const Prediction = () => {
                           </div>
                         </div>
 
-                        <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                          <div className="flex flex-row gap-5 w-[250px]">
+                        <div className="flex items-center justify-center w-[500px] h-28 border-l border-solid border-[#808191]">
+                          <div className="flex flex-row gap-5 w-[400px]">
                             <img
                               src={ghost_circle_icon4}
                               alt="SVG"
@@ -709,8 +740,8 @@ const Prediction = () => {
                   {symbolData.symbol === "XRP" && (
                     <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
                       <div className="flex flex-row  border-b border-solid border-[#808191]">
-                        <div className="flex items-center justify-center w-80 h-28 ">
-                          <div className="flex flex-row gap-5 w-[250px]">
+                        <div className="flex items-center justify-center w-[500px] h-28 ">
+                          <div className="flex flex-row gap-5 w-[400px]">
                             <img
                               src={ghost_circle_icon}
                               alt="SVG"
@@ -735,8 +766,8 @@ const Prediction = () => {
                           </div>
                         </div>
 
-                        <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                          <div className="flex flex-row gap-5 w-[250px]">
+                        <div className="flex items-center justify-center w-[500px] h-28 border-l border-solid border-[#808191]">
+                          <div className="flex flex-row gap-5 w-[400px]">
                             <img
                               src={ghost_circle_icon2}
                               alt="SVG"
@@ -762,8 +793,8 @@ const Prediction = () => {
                         </div>
                       </div>
                       <div className="flex flex-row">
-                        <div className="flex items-center justify-center w-80 h-28 ">
-                          <div className="flex flex-row gap-5 w-[250px]">
+                        <div className="flex items-center justify-center w-[500px] h-28 ">
+                          <div className="flex flex-row gap-5 w-[400px]">
                             <img
                               src={ghost_circle_icon3}
                               alt="SVG"
@@ -788,8 +819,8 @@ const Prediction = () => {
                           </div>
                         </div>
 
-                        <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                          <div className="flex flex-row gap-5 w-[250px]">
+                        <div className="flex items-center justify-center w-[500px] h-28 border-l border-solid border-[#808191]">
+                          <div className="flex flex-row gap-5 w-[400px]">
                             <img
                               src={ghost_circle_icon4}
                               alt="SVG"
@@ -821,8 +852,8 @@ const Prediction = () => {
                   {symbolData.symbol === "DOGE" && (
                     <div className="flex flex-col item-center border-t border-b border-solid border-[#808191]">
                       <div className="flex flex-row  border-b border-solid border-[#808191]">
-                        <div className="flex items-center justify-center w-80 h-28 ">
-                          <div className="flex flex-row gap-5 w-[250px]">
+                        <div className="flex items-center justify-center w-[500px] h-28 ">
+                          <div className="flex flex-row gap-5 w-[400px]">
                             <img
                               src={ghost_circle_icon}
                               alt="SVG"
@@ -847,8 +878,8 @@ const Prediction = () => {
                           </div>
                         </div>
 
-                        <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                          <div className="flex flex-row gap-5 w-[250px]">
+                        <div className="flex items-center justify-center w-[500px] h-28 border-l border-solid border-[#808191]">
+                          <div className="flex flex-row gap-5 w-[400px]">
                             <img
                               src={ghost_circle_icon2}
                               alt="SVG"
@@ -874,8 +905,8 @@ const Prediction = () => {
                         </div>
                       </div>
                       <div className="flex flex-row">
-                        <div className="flex items-center justify-center w-80 h-28 ">
-                          <div className="flex flex-row gap-5 w-[250px]">
+                        <div className="flex items-center justify-center w-[500px] h-28 ">
+                          <div className="flex flex-row gap-5 w-[400px]">
                             <img
                               src={ghost_circle_icon3}
                               alt="SVG"
@@ -900,8 +931,8 @@ const Prediction = () => {
                           </div>
                         </div>
 
-                        <div className="flex items-center justify-center w-80 h-28 border-l border-solid border-[#808191]">
-                          <div className="flex flex-row gap-5 w-[250px]">
+                        <div className="flex items-center justify-center w-[500px] h-28 border-l border-solid border-[#808191]">
+                          <div className="flex flex-row gap-5 w-[400px]">
                             <img
                               src={ghost_circle_icon4}
                               alt="SVG"
