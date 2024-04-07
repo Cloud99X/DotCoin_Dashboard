@@ -5,6 +5,8 @@ import ETH_Logo from "../../assets/svg/ethereum.svg"
 import SOL_Logo from "../../assets/svg/solana-sol-logo.svg"
 import XRP_Logo from "../../assets/svg/XRP.svg"
 import DOGE_Logo from "../../assets/svg/dogecoin.svg"
+
+
 const Dotcoin = () => {
     const [symbolData] = useState({
         symbol: "BTCUSD",
@@ -204,12 +206,14 @@ line.delete(lowerTL[1])
                                                 onClick={handleCopyClick}>
                                                 Copy API Key
                                             </button>
+                                            <a href="https://www.tradingview.com/markets/cryptocurrencies/" target="_blank" rel="noopener noreferrer" className="inline-block">
                                             <button className="bg-[#355DFF] hover:bg-blue-700 text-white font-bold w-[200px] h-16 rounded-lg">
                                                 Trading View
-                                            </button>
+                                                </button></a>
                                         </div>
                                     </div>
                                     <div style={{ display: 'flex', gap: '10px' }}>
+                                        <a href="https://www.tradingview.com/chart/RFvvVkLV/?symbol=BINANCE%3ABTCUSDT" target="_blank" rel="noopener noreferrer" className="inline-block">
                                         <button className="bg-[#1F2128] text-white w-[134px] h-16 rounded-lg flex flex-col items-start justify-center px-4">
                                             <div className="flex items-center">
                                                 <img src={BTC_Logo} alt="BTC Logo" className="w-10 h-10 mr-2" />
@@ -220,7 +224,8 @@ line.delete(lowerTL[1])
                                                     
                                                 </div>
                                             </div>
-                                        </button>
+                                        </button></a>
+                                        <a href="https://www.tradingview.com/chart/RFvvVkLV/?symbol=BINANCE%3AETHUSDT" target="_blank" rel="noopener noreferrer" className="inline-block">
                                         <button className="bg-[#1F2128] text-white w-[134px] h-16 rounded-lg flex flex-col items-start justify-center px-4">
                                             <div className="flex items-center">
                                                 <img src={ETH_Logo} alt="BTC Logo" className="w-10 h-10 mr-2" />
@@ -232,6 +237,8 @@ line.delete(lowerTL[1])
                                                 </div>
                                             </div>
                                         </button>
+                                        </a>
+                                        <a href="https://www.tradingview.com/chart/RFvvVkLV/?symbol=BINANCE%3AETHUSDT" target="_blank" rel="noopener noreferrer" className="inline-block">
                                         <button className="bg-[#1F2128] text-white w-[134px] h-16 rounded-lg flex flex-col items-start justify-center px-4">
                                             <div className="flex items-center">
                                                 <img src={SOL_Logo} alt="BTC Logo" className="w-10 h-10 mr-2" />
@@ -243,6 +250,8 @@ line.delete(lowerTL[1])
                                                 </div>
                                             </div>
                                         </button>
+                                        </a>
+                                        <a href="https://www.tradingview.com/chart/RFvvVkLV/?symbol=BINANCE%3AETHUSDT" target="_blank" rel="noopener noreferrer" className="inline-block">
                                         <button className="bg-[#1F2128] text-white w-[134px] h-16 rounded-lg flex flex-col items-start justify-center px-4">
                                             <div className="flex items-center">
                                                 <img src={XRP_Logo} alt="BTC Logo" className="w-10 h-10 mr-2" />
@@ -254,6 +263,8 @@ line.delete(lowerTL[1])
                                                 </div>
                                             </div>
                                         </button>
+                                        </a>
+                                        <a href="https://www.tradingview.com/chart/RFvvVkLV/?symbol=BINANCE%3AETHUSDT" target="_blank" rel="noopener noreferrer" className="inline-block">
                                         <button className="bg-[#1F2128] text-white w-[134px] h-16 rounded-lg flex flex-col items-start justify-center px-4">
                                             <div className="flex items-center">
                                                 <img src={DOGE_Logo} alt="BTC Logo" className="w-10 h-10 mr-2" />
@@ -265,12 +276,8 @@ line.delete(lowerTL[1])
                                                 </div>
                                             </div>
                                         </button>
+                                        </a>
                                     </div>
-
-
-
-
-
                                 </div>
                             )}
                         </div>
