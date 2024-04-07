@@ -9,6 +9,9 @@ import SignUp from "./screens/SignUp";
 import ForgotPassword from "./screens/ForgotPassword";
 import Markets from "./screens/Markets";
 import Prediction from "./screens/Prediction";
+import Dotcoin from "./screens/Dotcoin";
+
+
 
 function App() {
   return (
@@ -80,6 +83,15 @@ function App() {
             </Page>
           }
         />
+        <Route
+          path="/Dotcoin"
+          element={
+            <Page headerHide footerHide>
+              <Dotcoin />
+            </Page>
+          }
+        />
+
       </Routes>
     </Router>
   );

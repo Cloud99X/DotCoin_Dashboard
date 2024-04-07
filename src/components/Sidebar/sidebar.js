@@ -27,7 +27,7 @@ const Sidebar = ({ activeMenu }) => {
       name: "Dotcoin AI",
       logo: DocumentSVG,
       activeLogo: ActiveDocumentSVG,
-      url: "/",
+      url: "/Dotcoin",
     },
     {
       name: "Settings",
