@@ -17,11 +17,8 @@ import divider from "../../assets/svg/Divider.svg";
 import upGreenIcon from "../../assets/svg/upGreenIcon.svg";
 import downRedIcon from "../../assets/svg/downRedIcon.svg";
 import axios from "axios";
-<<<<<<< Updated upstream
 import { AdvancedRealTimeChart } from "react-ts-tradingview-widgets";
-=======
 import Chart from "chart.js/auto";
->>>>>>> Stashed changes
 
 const Prediction = () => {
   const [symbolData, setSymbolData] = useState({
@@ -137,17 +134,10 @@ const Prediction = () => {
 
   return (
     <PageLayout activeMenu={"Prediction"}>
-<<<<<<< Updated upstream
-      <div className="flex items-center mb-10">
-        <div className="flex justify-center gap-20 mb-2 mt-10 w-full h-fit">
-          <div className="bg-[#242731] flex flex-col gap-8 text-white mr-10 font-bold rounded-2xl pb-10">
-            <div className="mb-2">
-=======
       <div className="flex items-center mb-10 absolute ml-5">
         <div className="flex justify-center gap-20 mb-20 mt-10 w-full h-[1120px]">
-          <div className="bg-[#242731] flex flex-col gap-8 text-white mr-10 font-bold rounded-2xl">
+          <div className="bg-[#242731] flex flex-col gap-8 w-[750px] text-white mr-10 font-bold rounded-2xl">
             <div className="mb-20">
->>>>>>> Stashed changes
               {/* BTC main part */}
               {cryptoData && (
                 <>
@@ -213,6 +203,7 @@ const Prediction = () => {
                           symbol="BTCUSDT"
                           timezone="UTC"
                           allow_symbol_change={false}
+                          autosize={true}
                         />
                       </div>
                     </div>
