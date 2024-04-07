@@ -8,13 +8,13 @@ const Header = () => {
   return (
     <div className="pt-5 flex items-center justify-between">
       <div className="flex items-center">
-        <input
+        {/* <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="search"
           className="dark-mode rounded-sm py-1 min-w-[300px] border border-[#d1d1d6] text-sm"
         />
-        <HiSearch color="#808191" size={20} />
+        <HiSearch color="#808191" size={20} /> */}
       </div>
       <div className="flex gap-5 items-center">
         <HiBell color="#808191" size={20} />

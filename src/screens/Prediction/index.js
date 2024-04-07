@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import PageLayout from "../../components/PageLayout/PageLayout";
 import BTC_logo from "../../assets/svg/BTC.svg";
 import two_lines from "../../assets/svg/dark.svg";
@@ -17,7 +17,11 @@ import divider from "../../assets/svg/Divider.svg";
 import upGreenIcon from "../../assets/svg/upGreenIcon.svg";
 import downRedIcon from "../../assets/svg/downRedIcon.svg";
 import axios from "axios";
+<<<<<<< Updated upstream
 import { AdvancedRealTimeChart } from "react-ts-tradingview-widgets";
+=======
+import Chart from "chart.js/auto";
+>>>>>>> Stashed changes
 
 const Prediction = () => {
   const [symbolData, setSymbolData] = useState({
@@ -26,6 +30,10 @@ const Prediction = () => {
 
   const [cryptoData, setCryptoData] = useState();
   const [isLoading, setIsLoading] = useState(false);
+
+  const [historicalData, setHistoricalData] = useState([]);
+  const chartRef = useRef(null);
+  const canvasRef = useRef(null);
 
   //
   const handleMiniChartClick = (symbol) => {
@@ -49,12 +57,97 @@ const Prediction = () => {
     getData();
   }, []);
 
+  useEffect(() => {
+    const fetchHistoricalData = async () => {
+      try {
+        const response = await fetch(
+          "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=365"
+        );
+        const data = await response.json();
+        setHistoricalData(data.prices);
+      } catch (error) {
+        console.error("Error fetching historical data:", error);
+      }
+    };
+
+    fetchHistoricalData();
+  }, []);
+
+  useEffect(() => {
+    if (historicalData.length > 0 && canvasRef.current) {
+      if (chartRef.current) {
+        chartRef.current.destroy();
+      }
+
+      const ctx = canvasRef.current.getContext("2d");
+      chartRef.current = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: historicalData.map((entry) =>
+            new Date(entry[0]).toLocaleDateString()
+          ), // Convert timestamps to dates
+          datasets: [
+            {
+              label: "Bitcoin Price (USD)",
+              data: historicalData.map((entry) => entry[1]), // Extract USD prices
+              fill: false,
+              borderColor: "#3DBAA2",
+              borderWidth: 1,
+              pointRadius: 0, // Set point radius to 0 to remove pointers
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              display: false, // Hide x-axis
+            },
+            y: {
+              display: false, // Hide y-axis
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+          },
+          plugins: {
+            legend: {
+              display: false, // Hide legend
+            },
+          },
+        },
+      });
+    }
+  }, [historicalData]);
+
+  const [number, setNumber] = useState(0);
+
+  const handleIncrement = () => {
+    setNumber((prevNumber) => prevNumber + 1);
+  };
+
+  const handleDecrement = () => {
+    setNumber((prevNumber) => Math.max(0, prevNumber - 1)); // Ensure number doesn't go below 0
+  };
+
+  const handleChange = (event) => {
+    const value = parseInt(event.target.value);
+    if (!isNaN(value)) {
+      setNumber(value);
+    }
+  };
+
   return (
     <PageLayout activeMenu={"Prediction"}>
+<<<<<<< Updated upstream
       <div className="flex items-center mb-10">
         <div className="flex justify-center gap-20 mb-2 mt-10 w-full h-fit">
           <div className="bg-[#242731] flex flex-col gap-8 text-white mr-10 font-bold rounded-2xl pb-10">
             <div className="mb-2">
+=======
+      <div className="flex items-center mb-10 absolute ml-5">
+        <div className="flex justify-center gap-20 mb-20 mt-10 w-full h-[1120px]">
+          <div className="bg-[#242731] flex flex-col gap-8 text-white mr-10 font-bold rounded-2xl">
+            <div className="mb-20">
+>>>>>>> Stashed changes
               {/* BTC main part */}
               {cryptoData && (
                 <>
@@ -1028,9 +1121,19 @@ const Prediction = () => {
               )}
             </div>
 
-            <div className="flex justify-center">
+            <div className="flex flex-row justify-center">
+              <div>
+                <button onClick={handleDecrement}>-</button>
+                <input
+                  type="number"
+                  value={number}
+                  onChange={handleChange}
+                  style={{ width: "50px" }}
+                />
+                <button onClick={handleIncrement}>+</button>
+              </div>
               <button
-                className="bg-[#355DFF] hover:bg-blue-700 text-white font-bold w-5/6 h-16 rounded-lg "
+                className="bg-[#355DFF] hover:bg-blue-700 text-white font-bold w-[200px] h-16 rounded-lg "
                 onClick={() => handleMiniChartClick("ETHUSD")}
               >
                 Predict
@@ -1041,7 +1144,7 @@ const Prediction = () => {
           <img src={divider} alt="SVG" className="h-[1400px] w-1" />
           {/* ============= Mini card section ====================== */}
           {cryptoData && (
-            <div className="flex flex-col mb-2 mt-2 gap-5">
+            <div className="flex flex-col mb-2 mt-20 gap-5">
               <div className="flex flex-row justify-between  mb-10">
                 <p className="text-lg font-medium">Related Coins</p>
                 <button>
@@ -1057,7 +1160,7 @@ const Prediction = () => {
                 }`}
                 onClick={() => handleMiniChartClick("BTCUSD")}
               >
-                <div className="flex mb-40 gap-12 flex-row m-3">
+                <div className="flex gap-12 flex-row m-3">
                   <div className="flex gap-2 ">
                     <img src={BTC_logo} alt="SVG" className="h-12 w-12" />
                     <div className="flex flex-col items-start ">
@@ -1067,12 +1170,6 @@ const Prediction = () => {
                       </h6>
                     </div>
                   </div>
-                  {/* <div className="flex flex-col items-end"> */}
-                  {/* <h6 className="text-sm font-semibold text-[#4FBF67]">2.5%</h6> */}
-                  {/* <img src={upGreenIcon} alt="SVG" className="h-6 w-16" />
-                    <h6 className="text-base font-semibold">18,245.4 USD</h6> */}
-                  {/* </div> */}
-
                   <div className="flex flex-col items-end w-[150px]">
                     <h6
                       className={`text-sm font-semibold flex items-center ${
@@ -1115,6 +1212,9 @@ const Prediction = () => {
                       </h6>
                     )}
                   </div>
+                </div>
+                <div className="w-[280px] h-[72px] ml-2">
+                  <canvas ref={canvasRef} width="" height=""></canvas>
                 </div>
               </button>
 
