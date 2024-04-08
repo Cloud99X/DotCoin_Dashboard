@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import cn from "classnames";
 import styles from "./Learn.module.sass";
 import { Link } from "react-router-dom";
@@ -49,7 +49,7 @@ const SlickArrow = ({ currentSlide, slideCount, children, ...props }) => (
 
 const Learn = ({ scrollToRef }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-
+  const containerRefs = useRef([]);
   const settings = {
     infinite: true,
     speed: 500,
@@ -85,13 +85,124 @@ const Learn = ({ scrollToRef }) => {
       },
     ],
   };
+  useEffect(() => {
+    // First TradingView widget
+    const script1 = document.createElement("script");
+    script1.src =
+      "https://s3.tradingview.com/external-embedding/embed-widget-timeline.js";
+    script1.async = true;
+    script1.innerHTML = `
+      {
+        "feedMode": "symbol",
+        "symbol": "FOREXCOM:ETHUSD",
+        "isTransparent": false,
+        "displayMode": "regular",
+        "width": 500,
+        "height": 700,
+        "colorTheme": "light",
+        "locale": "en"
+      }
+    `;
+
+    containerRefs.current[0].appendChild(script1);
+
+    // Second TradingView widget
+    const script2 = document.createElement("script");
+    script2.src =
+      "https://s3.tradingview.com/external-embedding/embed-widget-timeline.js";
+    script2.async = true;
+    script2.innerHTML = `
+      {
+        "feedMode": "symbol",
+        "symbol": "BINANCE:XRPUSDT",
+        "isTransparent": false,
+        "displayMode": "regular",
+        "width": 350,
+        "height": 350,
+        "colorTheme": "light",
+        "locale": "en"
+      }
+    `;
+
+    containerRefs.current[1].appendChild(script2);
+
+    // Third TradingView widget
+    const script3 = document.createElement("script");
+    script3.src =
+      "https://s3.tradingview.com/external-embedding/embed-widget-timeline.js";
+    script3.async = true;
+    script3.innerHTML = `
+      {
+        "feedMode": "symbol",
+        "symbol": "BINANCE:LINKUSDT",
+        "isTransparent": false,
+        "displayMode": "regular",
+        "width": 350,
+        "height": 350,
+        "colorTheme": "light",
+        "locale": "en"
+      }
+    `;
+
+    containerRefs.current[2].appendChild(script3);
+
+    // Fourth TradingView widget
+    const script4 = document.createElement("script");
+    script4.src =
+      "https://s3.tradingview.com/external-embedding/embed-widget-timeline.js";
+    script4.async = true;
+    script4.innerHTML = `
+      {
+        "feedMode": "symbol",
+        "symbol": "KUCOIN:SOLUSDT",
+        "isTransparent": false,
+        "displayMode": "regular",
+        "width": 350,
+        "height": 350,
+        "colorTheme": "light",
+        "locale": "en"
+      }
+    `;
+
+    containerRefs.current[3].appendChild(script4);
+
+    const script5 = document.createElement("script");
+    script5.src =
+      "https://s3.tradingview.com/external-embedding/embed-widget-timeline.js";
+    script5.async = true;
+    script5.innerHTML = `
+      {
+        "feedMode": "symbol",
+        "symbol": "BINANCE:BTCUSDT",
+        "isTransparent": false,
+        "displayMode": "regular",
+        "width": 350,
+        "height": 350,
+        "colorTheme": "light",
+        "locale": "en"
+      }
+    `;
+
+    containerRefs.current[4].appendChild(script5);
+
+   
+
+    return () => {
+      containerRefs.current[0].removeChild(script1);
+      containerRefs.current[1].removeChild(script2);
+      containerRefs.current[2].removeChild(script3);
+      containerRefs.current[3].removeChild(script4);
+      containerRefs.current[4].removeChild(script5);
+
+    };
+  }, []);
 
   return (
     <div className={cn("section", styles.section)} ref={scrollToRef}>
       <div className={cn("container", styles.container)}>
         <div className={styles.head}>
           <div className={styles.wrap}>
-            <h2 className={cn("h2", styles.title)}>Learn crypto</h2>
+            <h2 className={cn("h2", styles.title)}>News</h2>
             <div className={styles.nav}>
               {navigation.map((x, index) => (
                 <button
@@ -114,12 +225,12 @@ const Learn = ({ scrollToRef }) => {
           </Link>
         </div>
         <div className={styles.wrapper}>
-          <Slider className={cn("learn-slider", styles.slider)} {...settings}>
+          {/* <Slider className={cn("learn-slider", styles.slider)} {...settings}>
             {items.map((x, index) =>
               index < 1 ? (
                 <Link className={styles.item} to={x.url} key={index}>
                   <div className={styles.preview}>
-                    <img srcSet={`${x.image2x} 2x`} src={x.image} alt="Card" />
+                    <img srcSet={${x.image2x} 2x} src={x.image} alt="Card" />
                     {x.play && <Play small />}
                   </div>
                   <div className={styles.line}>
@@ -136,7 +247,7 @@ const Learn = ({ scrollToRef }) => {
               ) : (
                 <Link className={styles.item} to={x.url} key={index}>
                   <div className={styles.preview}>
-                    <img srcSet={`${x.image2x} 2x`} src={x.image} alt="Card" />
+                    <img srcSet={${x.image2x} 2x} src={x.image} alt="Card" />
                     {x.play && <Play small />}
                   </div>
                   <div className={styles.details}>
@@ -147,10 +258,73 @@ const Learn = ({ scrollToRef }) => {
                 </Link>
               )
             )}
-          </Slider>
+          </Slider> */}
+        </div>
+        {/* <div className="tradingview-widget-container">
+          <div className="tradingview-widget-container__widget"></div>
+          <div className="tradingview-widget-copyright">
+            <a
+              href="https://www.tradingview.com/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <span className="blue-text">
+                Track all markets on TradingView
+              </span>
+            </a>
+          </div>
+        </div> */}
+
+        <div className="section" ref={scrollToRef} style={{display:'flex', marginLeft:-40}}>
+  
+    
+            <div
+              className="Learn_wrapper__MsFvy"
+              ref={(ref) => (containerRefs.current[0] = ref)}
+              style={{marginRight:10}}
+            ></div>
+
+          <div
+            className="container"
+            style={{marginLeft:-20}}
+          >
+            <div style={{display:'flex', marginLeft:-60}}>
+               <div
+              className="Learn_wrapper__MsFvy"
+              ref={(ref) => (containerRefs.current[2] = ref)}
+              style={{marginRight:10}}
+            ></div>
+            <div
+              className="Learn_wrapper__MsFvy"
+              ref={(ref) => (containerRefs.current[3] = ref)}
+              style={{marginRight:10}}
+            ></div>
+            </div>
+
+            <div style={{display:'flex',marginLeft:-60}}>
+
+            <div
+              className="Learn_wrapper__MsFvy"
+              ref={(ref) => (containerRefs.current[1] = ref)}
+              style={{marginRight:10}}
+            ></div>
+
+            <div
+              className="Learn_wrapper__MsFvy"
+              ref={(ref) => (containerRefs.current[4] = ref)}
+              style={{marginRight:10}}
+            ></div>
+
+            </div>
+         
+          </div>
+
+         
+        </div>
+     
         </div>
       </div>
-    </div>
+  
   );
 };
 
