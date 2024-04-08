@@ -11,6 +11,7 @@ import Markets from "./screens/Markets";
 import Prediction from "./screens/Prediction";
 import Dotcoin from "./screens/Dotcoin";
 import LearnCrypto from "./screens//LearnCryptoDetails";
+import PredictionModel from "./screens/PredictionModel";
 
 function App() {
   return (
@@ -79,6 +80,14 @@ function App() {
           element={
             <Page headerHide footerHide>
               <Prediction />
+            </Page>
+          }
+        />
+        <Route
+          path="/prediction-model"
+          element={
+            <Page headerHide footerHide>
+              <PredictionModel />
             </Page>
           }
         />

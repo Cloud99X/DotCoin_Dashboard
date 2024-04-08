@@ -24,6 +24,12 @@ const Sidebar = ({ activeMenu }) => {
       url: "/prediction",
     },
     {
+      name: "Prediction Model",
+      logo: ChartSVG,
+      activeLogo: ActiveChartSVG,
+      url: "/prediction-model",
+    },
+    {
       name: "Dotcoin AI",
       logo: DocumentSVG,
       activeLogo: ActiveDocumentSVG,
