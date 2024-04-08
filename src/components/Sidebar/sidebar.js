@@ -50,7 +50,12 @@ const Sidebar = ({ activeMenu }) => {
   //
   return (
     <div className="flex flex-col px-5 space-y-20 min-w-[200px] border-r">
-      <img src="/images/logo-dark.svg" alt="BitCloud" className="pt-5" />
+      <img
+        src="/images/logo-dotcoin.svg"
+        alt="BitCloud"
+        className="pt-5 cursor-pointer"
+        onClick={() => handleMenuClick("/")}
+      />
       <div>
         {SidebarMenu.map((menu, index) => (
           <div

@@ -10,8 +10,7 @@ import ForgotPassword from "./screens/ForgotPassword";
 import Markets from "./screens/Markets";
 import Prediction from "./screens/Prediction";
 import Dotcoin from "./screens/Dotcoin";
-
-
+import LearnCrypto from "./screens//LearnCryptoDetails";
 
 function App() {
   return (
@@ -91,7 +90,14 @@ function App() {
             </Page>
           }
         />
-
+        <Route
+          path="/dotcoin-ai"
+          element={
+            <Page>
+              <LearnCrypto />
+            </Page>
+          }
+        />
       </Routes>
     </Router>
   );

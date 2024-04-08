@@ -16,7 +16,7 @@ const navigation = [
     url: "/market",
   },
   {
-    title: "Dotcoin AI",
+    title: "Dotcoin AI Bot",
     url: "/dotcoin-ai",
   },
 ];
@@ -34,8 +34,8 @@ const Header = ({ headerWide }) => {
         >
           <Image
             className={styles.picDesktop}
-            src="/images/logo-light.svg"
-            srcDark="/images/logo-dark.svg"
+            src="/images/logo-dotcoin.svg"
+            srcDark="/images/logo-dotcoin.svg"
             alt="BitCloud"
           />
           <img
