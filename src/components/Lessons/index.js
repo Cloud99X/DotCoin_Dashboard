@@ -3,6 +3,7 @@ import cn from "classnames";
 import styles from "./Lessons.module.sass";
 import Card from "./Card";
 import Loader from "../Loader";
+import { FundamentalData } from "react-ts-tradingview-widgets";
 
 const items = [
   {
@@ -62,10 +63,34 @@ const Lessons = ({ classSection }) => {
             built in React Native.
           </div>
         </div>
-        <div className={styles.list}>
+        {/* <div className={styles.list}>
           {items.map((x, index) => (
             <Card className={styles.card} item={x} key={index} />
           ))}
+        </div> */}
+        <div className="flex justify-between items-center mb-20">
+          <div>
+            <FundamentalData colorTheme="dark" height={400} symbol="BTCUSDT" />
+          </div>
+          <div>
+            <FundamentalData colorTheme="dark" height={400} symbol="ETHUSDT" />
+          </div>
+        </div>
+        <div className="flex justify-between items-center mb-20">
+          <div>
+            <FundamentalData colorTheme="dark" height={400} symbol="SOLUSDT" />
+          </div>
+          <div>
+            <FundamentalData colorTheme="dark" height={400} symbol="XRPUSDT" />
+          </div>
+        </div>
+        <div className="flex justify-between items-center">
+          <div>
+            <FundamentalData colorTheme="dark" height={400} symbol="DOGEUSDT" />
+          </div>
+          <div>
+            <FundamentalData colorTheme="dark" height={400} symbol="ADAUSDT" />
+          </div>
         </div>
         <div className={styles.btns}>
           <button className={cn("button-stroke button-small", styles.button)}>

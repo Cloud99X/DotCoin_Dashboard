@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import styles from "./Main.module.sass";
 import ScrollButton from "../../../components/ScrollButton";
 import Cards from "./Cards";
+import { SingleTicker } from "react-ts-tradingview-widgets";
 
 const Main = ({ scrollToRef }) => {
   return (
@@ -11,11 +12,13 @@ const Main = ({ scrollToRef }) => {
       <div className={cn("container", styles.container)}>
         <div className={styles.wrap}>
           <h1 className={cn("h1", styles.title)}>
-            Buy & sell <br></br>crypto in minutes
+            Analyze and
+            <br />
+            Predict in minutes
           </h1>
           <div className={styles.text}>
-            Trade Bitcoin, Ethereum, USDT, and the top altcoins on the legendary
-            crypto asset exchange.
+            Bitcoin, Ethereum, USDT, and All Top Crypto Currencies A Market
+            Prediction Analysis System with Predictive AI & Trading View.
           </div>
           <Link className={cn("button", styles.button)} to="/sign-up">
             Get started now
@@ -34,7 +37,28 @@ const Main = ({ scrollToRef }) => {
             alt="Cards"
           />
         </div>
-        <Cards className={styles.cards} />
+        {/* <Cards className={styles.cards} /> */}
+        <div className="flex mb-10 justify-between items-center gap-5">
+          <div>
+            <SingleTicker
+              colorTheme="dark"
+              autosize={true}
+              symbol="BTCUSD"
+              largeChartUrl=""
+            />
+          </div>
+          <div>
+            <SingleTicker colorTheme="dark" autosize={true} symbol="ETHUSD" />
+          </div>
+          <div>
+            <SingleTicker colorTheme="dark" autosize={true} symbol="SOLUSD" />
+          </div>
+          <div>
+            <SingleTicker colorTheme="dark" autosize={true} symbol="XRPUSD" />
+          </div>
+
+          {/* <SingleTicker colorTheme="dark" autosize={true} symbol="DOGEUSD" /> */}
+        </div>
       </div>
     </div>
   );

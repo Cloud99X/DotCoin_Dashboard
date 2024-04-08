@@ -15,8 +15,8 @@ const Home = () => {
       <Main scrollToRef={scrollToRef} />
       <Trend />
       <Learn scrollToRef={scrollToRef} />
-      <Popular classSection="section-bg section-mb0" />
-      <Download />
+      {/* <Popular classSection="section-bg section-mb0" /> */}
+      {/* <Download /> */}
       <News classSection="section-bg" />
       <Steps />
     </>
