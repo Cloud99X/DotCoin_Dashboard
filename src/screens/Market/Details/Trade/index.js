@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useEffect} from "react";
 import cn from "classnames";
 import styles from "./Trade.module.sass";
 import { Link } from "react-router-dom";
@@ -177,9 +177,149 @@ const data = [
   },
 ];
 
+
+
 const Trade = () => {
+
+
+  useEffect(() => {
+    const widgets = document.getElementsByClassName('tradingview-widget-container__widget');
+
+    if (widgets.length >= 4) {
+      const script2 = document.createElement('script');
+      script2.src = 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
+      script2.async = true;
+      script2.innerHTML = JSON.stringify({
+        "symbol": "BINANCE:XRPUSDT",
+        "width": "300",
+        "height": "220",
+        "locale": "en",
+        "dateRange": "1M",
+        "colorTheme": "dark",
+        "isTransparent": false,
+        "autosize": false,
+        "largeChartUrl": "",
+        "chartOnly": false
+      });
+      widgets[0].appendChild(script2);
+
+      const script3 = document.createElement('script');
+      script3.src = 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
+      script3.async = true;
+      script3.innerHTML = JSON.stringify({
+        "symbol": "KUCOIN:SOLUSDT",
+        "width": "300",
+        "height": "220",
+        "locale": "en",
+        "dateRange": "1M",
+        "colorTheme": "dark",
+        "isTransparent": false,
+        "autosize": false,
+        "largeChartUrl": "",
+        "chartOnly": false
+      });
+      widgets[1].appendChild(script3);
+
+      const script4 = document.createElement('script');
+      script4.src = 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
+      script4.async = true;
+      script4.innerHTML = JSON.stringify({
+        "symbol": "BINANCE:BTCUSDT",
+        "width": "300",
+        "height": "220",
+        "locale": "en",
+        "dateRange": "1M",
+        "colorTheme": "dark",
+        "isTransparent": false,
+        "autosize": false,
+        "largeChartUrl": "",
+        "chartOnly": false
+      });
+      widgets[2].appendChild(script4);
+
+      const script5 = document.createElement('script');
+      script5.src = 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
+      script5.async = true;
+      script5.innerHTML = JSON.stringify({
+        "symbol": "BINANCE:LINKUSDT",
+        "width": "300",
+        "height": "220",
+        "locale": "en",
+        "dateRange": "1M",
+        "colorTheme": "dark",
+        "isTransparent": false,
+        "autosize": false,
+        "largeChartUrl": "",
+        "chartOnly": false
+      });
+      widgets[3].appendChild(script5);
+
+      return () => {
+        widgets[0].innerHTML = '';
+        widgets[1].innerHTML = '';
+        widgets[2].innerHTML = '';
+        widgets[3].innerHTML = '';
+      };
+    }
+  }, []);
+
+
   return (
+   
     <div className={styles.trade}>
+       
+
+   
+       <div style={{top:-350, display:'flex'}}>
+
+       <div className="tradingview-widget-container">
+        <div className="tradingview-widget-container__widget"></div>
+        <div className="tradingview-widget-copyright">
+          <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+   
+          </a>
+        </div>
+        </div>
+
+
+
+    <div className="tradingview-widget-container">
+      <div className="tradingview-widget-container__widget"></div>
+      <div className="tradingview-widget-copyright">
+        <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+        </a>
+      </div>
+    </div>
+
+    <div className="tradingview-widget-container">
+        <div className="tradingview-widget-container__widget"></div>
+        <div className="tradingview-widget-copyright">
+          <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+            
+          </a>
+        </div>
+        </div>
+
+
+        <div className="tradingview-widget-container">
+        <div className="tradingview-widget-container__widget"></div>
+        <div className="tradingview-widget-copyright">
+          <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+        
+          </a>
+        </div>
+        </div>
+       </div>
+      
+
+       <br></br>
+       <br></br>
+       <br></br>
+       <br></br>
+
+
+
+
       <div className={styles.table}>
         <div className={styles.row}>
           <div className={styles.col}>
