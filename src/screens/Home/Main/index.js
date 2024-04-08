@@ -16,7 +16,7 @@ const Main = ({ scrollToRef }) => {
       "symbol": "BINANCE:BTCUSDT",
       "width": 300,
       "isTransparent": false,
-      "colorTheme": "light",
+      "colorTheme": "dark",
       "locale": "en"
     });
     document.getElementsByClassName('tradingview-widget-container__widget')[0].appendChild(script1);
@@ -28,7 +28,7 @@ const Main = ({ scrollToRef }) => {
       "symbol": "BINANCE:XRPUSDT",
       "width": 300,
       "isTransparent": false,
-      "colorTheme": "light",
+      "colorTheme": "dark",
       "locale": "en"
     });
     document.getElementsByClassName('tradingview-widget-container__widget')[1].appendChild(script2);
@@ -40,7 +40,7 @@ const Main = ({ scrollToRef }) => {
       "symbol": "KUCOIN:SOLUSDT",
       "width": 300,
       "isTransparent": false,
-      "colorTheme": "light",
+      "colorTheme": "dark",
       "locale": "en"
     });
     document.getElementsByClassName('tradingview-widget-container__widget')[2].appendChild(script3);
@@ -52,7 +52,7 @@ const Main = ({ scrollToRef }) => {
       "symbol": "BINANCE:LINKUSDT",
       "width": 300,
       "isTransparent": false,
-      "colorTheme": "light",
+      "colorTheme": "dark",
       "locale": "en"
     });
     document.getElementsByClassName('tradingview-widget-container__widget')[3].appendChild(script4);

@@ -99,7 +99,7 @@ const Learn = ({ scrollToRef }) => {
         "displayMode": "regular",
         "width": 500,
         "height": 700,
-        "colorTheme": "light",
+        "colorTheme": "dark",
         "locale": "en"
       }
     `;
@@ -119,7 +119,7 @@ const Learn = ({ scrollToRef }) => {
         "displayMode": "regular",
         "width": 350,
         "height": 350,
-        "colorTheme": "light",
+        "colorTheme": "dark",
         "locale": "en"
       }
     `;
@@ -139,7 +139,7 @@ const Learn = ({ scrollToRef }) => {
         "displayMode": "regular",
         "width": 350,
         "height": 350,
-        "colorTheme": "light",
+        "colorTheme": "dark",
         "locale": "en"
       }
     `;
@@ -159,7 +159,7 @@ const Learn = ({ scrollToRef }) => {
         "displayMode": "regular",
         "width": 350,
         "height": 350,
-        "colorTheme": "light",
+        "colorTheme": "dark",
         "locale": "en"
       }
     `;
@@ -178,7 +178,7 @@ const Learn = ({ scrollToRef }) => {
         "displayMode": "regular",
         "width": 350,
         "height": 350,
-        "colorTheme": "light",
+        "colorTheme": "dark",
         "locale": "en"
       }
     `;
