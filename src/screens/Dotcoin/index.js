@@ -5,6 +5,7 @@ import ETH_Logo from "../../assets/svg/ethereum.svg"
 import SOL_Logo from "../../assets/svg/solana-sol-logo.svg"
 import XRP_Logo from "../../assets/svg/XRP.svg"
 import DOGE_Logo from "../../assets/svg/dogecoin.svg"
+import divider from "../../assets/svg/Divider.svg";
 
 
 const Dotcoin = () => {
@@ -191,7 +192,7 @@ line.delete(lowerTL[1])
         <PageLayout activeMenu={"Dotcoin AI"}>
             <div className="flex items-center mb-10 absolute ml-5">
                 <div className="flex justify-center gap-20 mb-20 mt-10 w-full h-[1120px]">
-                    <div className="bg-[#242731] flex flex-col gap-8 w-[750px] text-white mr-10 font-bold rounded-2xl">
+                    <div className="bg-[#242731] flex flex-col gap-8 w-[750px] h-[650px] text-white mr-10 font-bold rounded-2xl">
                         <div className="">
                             {symbolData.symbol === "BTCUSD" && (
                                 <div className="flex flex-col gap-5 m-5">
@@ -282,6 +283,35 @@ line.delete(lowerTL[1])
                             )}
                         </div>
                     </div>
+                    <img src={divider} alt="SVG" className="h-[1400px] w-1" />
+                    <div>
+                        
+                        <div className="flex flex-col gap-3 mt-10 ml--10">
+                        
+                            <h6 className="text-lg font-medium">Instructions</h6>
+                            <div className="text-left text-sm font-normal w-[282px] text-[#808191]">
+                                <div>1. Sign in to TradingView: Go to the TradingView website and sign in to your account. If you don't have an account, you'll need to create one.</div>
+                                <div className="mb-2"></div> 
+                                <div>2. Access the Pine Editor: Once logged in, navigate to the Pine Editor. You can find this by clicking on your username in the top-right corner, then selecting "Pine Editor" from the dropdown menu.</div>
+                                <div className="mb-2"></div>
+                                <div>3. Import Your Key Script: In the Pine Editor, you can either create a new script from scratch or import an existing script. If you're creating a new script, click on the "New" button. If you're importing a script, click on the "Import" button and select the file containing your Pine Script code.</div>
+                                <div className="mb-2"></div>
+                                <div>4. Write Your Script: If you're creating a new script, you can start writing your Pine Script code in the editor window. If you're importing a script, the code will be loaded into the editor automatically.</div>
+                                <div className="mb-2"></div>
+                                <div>5. Save Your Script: Once you've finished writing or importing your script, click on the "Save" button to save your changes. Give your script a name and optionally provide a description.</div>
+                                <div className="mb-2"></div>
+                                <div>6. Add Script to Chart: After saving your script, you can add it to a chart by clicking on the "Indicators" button at the top of the chart window. In the search bar, type the name of your script, and it should appear in the list of available indicators. Click on it to add it to the chart.</div>
+                                <div className="mb-2"></div>
+                                <div>7. Adjust Settings (if necessary): Depending on the parameters of your script, you may need to adjust settings such as timeframe, inputs, or appearance. You can do this by clicking on the cog icon next to the indicator on the chart and adjusting the settings in the popup window.</div>
+                                <div className="mb-2"></div>
+                                <div>8. Apply and Save: Once you've configured the settings to your liking, click on the "Apply" button to apply the indicator to the chart. You can also save the chart layout if you want to use it again in the future.</div>
+                                <div className="mb-2"></div>
+                                <div>That's it! Your custom Pine Script indicator should now be applied to the TradingView chart, and you can use it to analyze the market.</div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
 
