@@ -106,7 +106,7 @@ const Panel = () => {
 
   return (
     <div className={styles.panel}>
-      {/* <div className={styles.body}>
+      <div className={styles.body}>
         <div className={styles.list}>
           {currency.map((x, index) => (
             <Link className={styles.item} key={index} to={x.url}>
@@ -199,7 +199,7 @@ const Panel = () => {
           setValue={setSorting}
           options={navigation}
         />
-      </div> */}
+      </div>
     </div>
   );
 };
