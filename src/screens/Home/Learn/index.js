@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import Icon from "../../../components/Icon";
 import Play from "../../../components/Play";
+import { Timeline } from "react-ts-tradingview-widgets";
 
 const navigation = ["All", "Bitcoin", "Blockchain", "Tutorial"];
 
@@ -91,7 +92,8 @@ const Learn = ({ scrollToRef }) => {
       <div className={cn("container", styles.container)}>
         <div className={styles.head}>
           <div className={styles.wrap}>
-            <h2 className={cn("h2", styles.title)}>Learn crypto</h2>
+            <h2 className={cn("h2", styles.title)}>News</h2>
+
             <div className={styles.nav}>
               {navigation.map((x, index) => (
                 <button
@@ -113,7 +115,7 @@ const Learn = ({ scrollToRef }) => {
             View more
           </Link>
         </div>
-        <div className={styles.wrapper}>
+        {/* <div className={styles.wrapper}>
           <Slider className={cn("learn-slider", styles.slider)} {...settings}>
             {items.map((x, index) =>
               index < 1 ? (
@@ -148,6 +150,18 @@ const Learn = ({ scrollToRef }) => {
               )
             )}
           </Slider>
+        </div> */}
+        <div className="w-[1120px] h-[724px]">
+          <Timeline
+            colorTheme="dark"
+            feedMode="market"
+            market="crypto"
+            // symbol="BTCUSD"
+            // symbol="ETHUSD" 
+            height={724}
+            width="100%"
+            isTransparent={true}
+          ></Timeline>
         </div>
       </div>
     </div>
