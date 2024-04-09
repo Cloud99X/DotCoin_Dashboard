@@ -210,335 +210,350 @@ line.delete(lowerTL[1])
 
   return (
     <PageLayout activeMenu={"Dotcoin AI"}>
-      <div className="flex items-center mb-10 absolute ml-5">
-        <div className="flex justify-center gap-20 mb-20 mt-10 w-full">
-          <div className="bg-[#242731] flex flex-col gap-8 w-[800px] text-white mr-10 font-bold rounded-2xl">
-            <div className="">
-              {symbolData.symbol === "BTCUSD" && (
-                <div className="flex flex-col gap-5 m-5">
-                  <h6 className="text-lg font-medium">
-                    <textarea
-                      style={textAreaStyle}
-                      value={pineScriptCode}
-                      readOnly
-                    />
-                  </h6>
-                  <div className="flex justify-center">
-                    <div className="flex space-x-10">
-                      <button
-                        className="bg-[#355DFF] hover:bg-blue-700 text-white font-bold w-[150px] h-16 rounded-lg"
-                        onClick={handleCopyClick}
-                      >
-                        Copy API Key
+      <div className="flex justify-between gap-20 mb-20 w-full pr-20">
+        <div className="bg-[#242731] flex flex-col gap-8 h-fit text-white font-bold rounded-2xl">
+          <div className="">
+            {symbolData.symbol === "BTCUSD" && (
+              <div className="flex flex-col gap-5 m-5">
+                <h6 className="text-lg font-medium">
+                  <textarea
+                    style={textAreaStyle}
+                    value={pineScriptCode}
+                    readOnly
+                  />
+                </h6>
+                <div className="flex justify-center">
+                  <div className="flex space-x-10">
+                    <button
+                      className="bg-[#355DFF] hover:bg-blue-700 text-white font-bold w-[150px] h-16 rounded-lg"
+                      onClick={handleCopyClick}
+                    >
+                      Copy API Key
+                    </button>
+                    <a
+                      href="https://drive.google.com/file/d/1ZiWN0oBaii8qaCNIYa0NhbgaTJYmPA1O/view"
+                      target="_blank"
+                      className="bg-[#355DFF] hover:bg-blue-700 text-white font-bold w-[150px] h-16 rounded-lg text-center flex items-center justify-center"
+                    >
+                      Download API
+                    </a>
+                    <button
+                      className="bg-[#355DFF] hover:bg-blue-700 text-white font-bold w-[150px] h-16 rounded-lg text-center flex items-center justify-center"
+                      onClick={downloadZip}
+                    >
+                      Download API Zip File
+                    </button>
+                    <a
+                      href="https://www.tradingview.com/markets/cryptocurrencies/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block"
+                    >
+                      <button className="bg-[#355DFF] hover:bg-blue-700 text-white font-bold w-[150px] h-16 rounded-lg">
+                        Trading View
                       </button>
+                    </a>
+                  </div>
+                </div>
+                <div className="mb-2"></div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "10px",
+                    justifyContent: "center",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: "30px",
+                      marginBottom: "20px",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <div className="w-[300px] h-[500px]">
+                      {/* widget*/}
+                      <TechnicalAnalysis
+                        colorTheme="dark"
+                        symbol="BTCUSDT"
+                        interval="30m"
+                        autosize
+                      />
+                    </div>
+                    <div className="w-[300px] h-[500px">
+                      {/* widget*/}
+                      <TechnicalAnalysis
+                        colorTheme="dark"
+                        symbol="ETHUSDT"
+                        interval="30m"
+                        autosize
+                      />
+                    </div>
+                    <div className="w-[300px] h-[500px">
+                      {/* widget*/}
+                      <TechnicalAnalysis
+                        colorTheme="dark"
+                        symbol="SOLUSDT"
+                        interval="30m"
+                        autosize
+                      />
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: "30px",
+                        marginTop: "20px",
+                      }}
+                    >
                       <a
-                        href="https://drive.google.com/file/d/1ZiWN0oBaii8qaCNIYa0NhbgaTJYmPA1O/view"
-                        target="_blank"
-                        className="bg-[#355DFF] hover:bg-blue-700 text-white font-bold w-[150px] h-16 rounded-lg text-center flex items-center justify-center"
-                      >
-                        Download API
-                      </a>
-                      <button
-                        className="bg-[#355DFF] hover:bg-blue-700 text-white font-bold w-[150px] h-16 rounded-lg text-center flex items-center justify-center"
-                        onClick={downloadZip}
-                      >
-                        Download API Zip File
-                      </button>
-                      <a
-                        href="https://www.tradingview.com/markets/cryptocurrencies/"
+                        href="https://www.tradingview.com/chart/RFvvVkLV/?symbol=BINANCE%3ABTCUSDT"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-block"
                       >
-                        <button className="bg-[#355DFF] hover:bg-blue-700 text-white font-bold w-[150px] h-16 rounded-lg">
-                          Trading View
+                        <button className="bg-[#1F2128] text-white w-[300px] h-16 rounded-lg flex flex-col items-start justify-center px-4">
+                          <div className="flex items-center">
+                            <img
+                              src={BTC_Logo}
+                              alt="BTC Logo"
+                              className="w-10 h-10 mr-2"
+                            />
+                            <div>
+                              <div className="text-left text-sm font-normal w-[300px] text-[#fff]">
+                                <span className="font-medium">BTC</span>
+                              </div>
+                            </div>
+                          </div>
+                        </button>
+                      </a>
+                      <a
+                        href="https://www.tradingview.com/chart/RFvvVkLV/?symbol=BINANCE%3AETHUSDT"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block"
+                      >
+                        <button className="bg-[#1F2128] text-white w-[300px] h-16 rounded-lg flex flex-col items-start justify-center px-4">
+                          <div className="flex items-center">
+                            <img
+                              src={ETH_Logo}
+                              alt="BTC Logo"
+                              className="w-10 h-10 mr-2"
+                            />
+                            <div>
+                              <div className="text-left text-sm font-normal w-[300px] text-[#fff]">
+                                <span className="font-medium">ETH</span>
+                              </div>
+                            </div>
+                          </div>
+                        </button>
+                      </a>
+                      <a
+                        href="https://www.tradingview.com/chart/RFvvVkLV/?symbol=BINANCE%3AETHUSDT"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block"
+                      >
+                        <button className="bg-[#1F2128] text-white w-[300px] h-16 rounded-lg flex flex-col items-start justify-center px-4">
+                          <div className="flex items-center">
+                            <img
+                              src={SOL_Logo}
+                              alt="BTC Logo"
+                              className="w-10 h-10 mr-2"
+                            />
+                            <div>
+                              <div className="text-left text-sm font-normal w-[300px] text-[#fff]">
+                                <span className="font-medium">SOL</span>
+                              </div>
+                            </div>
+                          </div>
                         </button>
                       </a>
                     </div>
                   </div>
                   <div className="mb-2"></div>
                   <div
-                    style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: "30px",
+                      justifyContent: "center",
+                    }}
                   >
-                    <div
-                      style={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        gap: "10px",
-                        marginBottom: "20px",
-                      }}
-                    >
-                      <div className="w-[230px] h-[500px]">
-                        {/* widget*/}
-                        <TechnicalAnalysis
-                          colorTheme="dark"
-                          symbol="BTCUSDT"
-                          interval="30m"
-                          autosize
-                        />
-                      </div>
-                      <div className="w-[230px] h-[500px">
-                        {/* widget*/}
-                        <TechnicalAnalysis
-                          colorTheme="dark"
-                          symbol="ETHUSDT"
-                          interval="30m"
-                          autosize
-                        />
-                      </div>
-                      <div className="w-[230px] h-[500px">
-                        {/* widget*/}
-                        <TechnicalAnalysis
-                          colorTheme="dark"
-                          symbol="SOLUSDT"
-                          interval="30m"
-                          autosize
-                        />
-                      </div>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexWrap: "wrap",
-                          gap: "10px",
-                        }}
-                      >
-                        <a
-                          href="https://www.tradingview.com/chart/RFvvVkLV/?symbol=BINANCE%3ABTCUSDT"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-block"
-                        >
-                          <button className="bg-[#1F2128] text-white w-[230px] h-16 rounded-lg flex flex-col items-start justify-center px-4">
-                            <div className="flex items-center">
-                              <img
-                                src={BTC_Logo}
-                                alt="BTC Logo"
-                                className="w-10 h-10 mr-2"
-                              />
-                              <div>
-                                <div className="text-left text-sm font-normal w-[282px] text-[#fff]">
-                                  <span className="font-medium">BTC</span>
-                                </div>
-                              </div>
-                            </div>
-                          </button>
-                        </a>
-                        <a
-                          href="https://www.tradingview.com/chart/RFvvVkLV/?symbol=BINANCE%3AETHUSDT"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-block"
-                        >
-                          <button className="bg-[#1F2128] text-white w-[230px] h-16 rounded-lg flex flex-col items-start justify-center px-4">
-                            <div className="flex items-center">
-                              <img
-                                src={ETH_Logo}
-                                alt="BTC Logo"
-                                className="w-10 h-10 mr-2"
-                              />
-                              <div>
-                                <div className="text-left text-sm font-normal w-[282px] text-[#fff]">
-                                  <span className="font-medium">ETH</span>
-                                </div>
-                              </div>
-                            </div>
-                          </button>
-                        </a>
-                        <a
-                          href="https://www.tradingview.com/chart/RFvvVkLV/?symbol=BINANCE%3AETHUSDT"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-block"
-                        >
-                          <button className="bg-[#1F2128] text-white w-[230px] h-16 rounded-lg flex flex-col items-start justify-center px-4">
-                            <div className="flex items-center">
-                              <img
-                                src={SOL_Logo}
-                                alt="BTC Logo"
-                                className="w-10 h-10 mr-2"
-                              />
-                              <div>
-                                <div className="text-left text-sm font-normal w-[282px] text-[#fff]">
-                                  <span className="font-medium">SOL</span>
-                                </div>
-                              </div>
-                            </div>
-                          </button>
-                        </a>
-                      </div>
+                    <div className="w-[300px] h-[500px]">
+                      {/* widget*/}
+                      <TechnicalAnalysis
+                        colorTheme="dark"
+                        symbol="XRPUSDT"
+                        interval="30m"
+                        autosize
+                      />
                     </div>
-                    <div className="mb-2"></div>
-                    <div
-                      style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}
-                    >
-                      <div className="w-[230px] h-[500px]">
-                        {/* widget*/}
-                        <TechnicalAnalysis
-                          colorTheme="dark"
-                          symbol="XRPUSDT"
-                          interval="30m"
-                          autosize
-                        />
-                      </div>
-                      <div className="w-[230px] h-[500px]">
-                        {/* widget*/}
-                        <TechnicalAnalysis
-                          colorTheme="dark"
-                          symbol="DOGEUSDT"
-                          interval="30m"
-                          autosize
-                        />
-                      </div>
-                      <div className="w-[230px] h-[500px]">
-                        {/* widget*/}
-                        <TechnicalAnalysis
-                          colorTheme="dark"
-                          symbol="ADAUSDT"
-                          interval="30m"
-                          autosize
-                        />
-                      </div>
+                    <div className="w-[300px] h-[500px]">
+                      {/* widget*/}
+                      <TechnicalAnalysis
+                        colorTheme="dark"
+                        symbol="DOGEUSDT"
+                        interval="30m"
+                        autosize
+                      />
                     </div>
-                    <div
-                      style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}
-                    >
-                      <a
-                        href="https://www.tradingview.com/chart/RFvvVkLV/?symbol=BINANCE%3AETHUSDT"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block"
-                      >
-                        <button className="bg-[#1F2128] text-white w-[230px] h-16 rounded-lg flex flex-col items-start justify-center px-4">
-                          <div className="flex items-center">
-                            <img
-                              src={XRP_Logo}
-                              alt="BTC Logo"
-                              className="w-10 h-10 mr-2"
-                            />
-                            <div>
-                              <div className="text-left text-sm font-normal w-[282px] text-[#fff]">
-                                <span className="font-medium">XRP</span>
-                              </div>
-                            </div>
-                          </div>
-                        </button>
-                      </a>
-                      <a
-                        href="https://www.tradingview.com/chart/RFvvVkLV/?symbol=BINANCE%3AETHUSDT"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block"
-                      >
-                        <button className="bg-[#1F2128] text-white w-[230px] h-16 rounded-lg flex flex-col items-start justify-center px-4">
-                          <div className="flex items-center">
-                            <img
-                              src={DOGE_Logo}
-                              alt="BTC Logo"
-                              className="w-10 h-10 mr-2"
-                            />
-                            <div>
-                              <div className="text-left text-sm font-normal w-[282px] text-[#fff]">
-                                <span className="font-medium">DOGE</span>
-                              </div>
-                            </div>
-                          </div>
-                        </button>
-                      </a>
-                      <a
-                        href="https://www.tradingview.com/chart/RFvvVkLV/?symbol=BINANCE%3AETHUSDT"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block"
-                      >
-                        <button className="bg-[#1F2128] text-white w-[230px] h-16 rounded-lg flex flex-col items-start justify-center px-4">
-                          <div className="flex items-center">
-                            <img
-                              src={ADA_Logo}
-                              alt="BTC Logo"
-                              className="w-10 h-10 mr-2"
-                            />
-                            <div>
-                              <div className="text-left text-sm font-normal w-[282px] text-[#fff]">
-                                <span className="font-medium">ADA</span>
-                              </div>
-                            </div>
-                          </div>
-                        </button>
-                      </a>
+                    <div className="w-[300px] h-[500px]">
+                      {/* widget*/}
+                      <TechnicalAnalysis
+                        colorTheme="dark"
+                        symbol="ADAUSDT"
+                        interval="30m"
+                        autosize
+                      />
                     </div>
                   </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: "30px",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <a
+                      href="https://www.tradingview.com/chart/RFvvVkLV/?symbol=BINANCE%3AETHUSDT"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block"
+                    >
+                      <button className="bg-[#1F2128] text-white w-[300px] h-16 rounded-lg flex flex-col items-start justify-center px-4">
+                        <div className="flex items-center">
+                          <img
+                            src={XRP_Logo}
+                            alt="BTC Logo"
+                            className="w-10 h-10 mr-2"
+                          />
+                          <div>
+                            <div className="text-left text-sm font-normal w-[300px] text-[#fff]">
+                              <span className="font-medium">XRP</span>
+                            </div>
+                          </div>
+                        </div>
+                      </button>
+                    </a>
+                    <a
+                      href="https://www.tradingview.com/chart/RFvvVkLV/?symbol=BINANCE%3ADOGEUSDT"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block"
+                    >
+                      <button className="bg-[#1F2128] text-white w-[300px] h-16 rounded-lg flex flex-col items-start justify-center px-4">
+                        <div className="flex items-center">
+                          <img
+                            src={DOGE_Logo}
+                            alt="BTC Logo"
+                            className="w-10 h-10 mr-2"
+                          />
+                          <div>
+                            <div className="text-left text-sm font-normal w-[300px] text-[#fff]">
+                              <span className="font-medium">DOGE</span>
+                            </div>
+                          </div>
+                        </div>
+                      </button>
+                    </a>
+                    <a
+                      href="https://www.tradingview.com/chart/RFvvVkLV/?symbol=BINANCE%3AETHUSDT"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block"
+                    >
+                      <button className="bg-[#1F2128] text-white w-[300px] h-16 rounded-lg flex flex-col items-start justify-center px-4">
+                        <div className="flex items-center">
+                          <img
+                            src={ADA_Logo}
+                            alt="BTC Logo"
+                            className="w-10 h-10 mr-2"
+                          />
+                          <div>
+                            <div className="text-left text-sm font-normal w-[300px] text-[#fff]">
+                              <span className="font-medium">ADA</span>
+                            </div>
+                          </div>
+                        </div>
+                      </button>
+                    </a>
+                  </div>
                 </div>
-              )}
-            </div>
+              </div>
+            )}
           </div>
+        </div>
 
-          <img src={divider} alt="SVG" className="h-[1400px] w-1" />
+        <img src={divider} alt="SVG" className="w-1 h-[1700px]" />
 
-          <div className="flex flex-col gap-3 mt-10 ml--10">
-            <h6 className="text-lg font-medium">Instructions</h6>
-            <div className="text-left text-sm font-normal w-[282px] text-[#808191]">
-              <div>
-                1. Sign in to TradingView: Go to the TradingView website and
-                sign in to your account. If you don't have an account, you'll
-                need to create one.
-              </div>
-              <div className="mb-2"></div>
-              <div>
-                2. Access the Pine Editor: Once logged in, navigate to the Pine
-                Editor. You can find this by clicking on your username in the
-                top-right corner, then selecting "Pine Editor" from the dropdown
-                menu.
-              </div>
-              <div className="mb-2"></div>
-              <div>
-                3. Import Your Key Script: In the Pine Editor, you can either
-                create a new script from scratch or import an existing script.
-                If you're creating a new script, click on the "New" button. If
-                you're importing a script, click on the "Import" button and
-                select the file containing your Pine Script code.
-              </div>
-              <div className="mb-2"></div>
-              <div>
-                4. Write Your Script: If you're creating a new script, you can
-                start writing your Pine Script code in the editor window. If
-                you're importing a script, the code will be loaded into the
-                editor automatically.
-              </div>
-              <div className="mb-2"></div>
-              <div>
-                5. Save Your Script: Once you've finished writing or importing
-                your script, click on the "Save" button to save your changes.
-                Give your script a name and optionally provide a description.
-              </div>
-              <div className="mb-2"></div>
-              <div>
-                6. Add Script to Chart: After saving your script, you can add it
-                to a chart by clicking on the "Indicators" button at the top of
-                the chart window. In the search bar, type the name of your
-                script, and it should appear in the list of available
-                indicators. Click on it to add it to the chart.
-              </div>
-              <div className="mb-2"></div>
-              <div>
-                7. Adjust Settings (if necessary): Depending on the parameters
-                of your script, you may need to adjust settings such as
-                timeframe, inputs, or appearance. You can do this by clicking on
-                the cog icon next to the indicator on the chart and adjusting
-                the settings in the popup window.
-              </div>
-              <div className="mb-2"></div>
-              <div>
-                8. Apply and Save: Once you've configured the settings to your
-                liking, click on the "Apply" button to apply the indicator to
-                the chart. You can also save the chart layout if you want to use
-                it again in the future.
-              </div>
-              <div className="mb-2"></div>
-              <div>
-                That's it! Your custom Pine Script indicator should now be
-                applied to the TradingView chart, and you can use it to analyze
-                the market.
-              </div>
+        <div className="flex flex-col gap-3">
+          <h6 className="text-lg font-medium">Instructions</h6>
+          <div className="text-left text-sm font-normal w-[400px] text-[#808191]">
+            <div>
+              1. Sign in to TradingView: Go to the TradingView website and sign
+              in to your account. If you don't have an account, you'll need to
+              create one.
+            </div>
+            <div className="mb-2"></div>
+            <div>
+              2. Access the Pine Editor: Once logged in, navigate to the Pine
+              Editor. You can find this by clicking on your username in the
+              top-right corner, then selecting "Pine Editor" from the dropdown
+              menu.
+            </div>
+            <div className="mb-2"></div>
+            <div>
+              3. Import Your Key Script: In the Pine Editor, you can either
+              create a new script from scratch or import an existing script. If
+              you're creating a new script, click on the "New" button. If you're
+              importing a script, click on the "Import" button and select the
+              file containing your Pine Script code.
+            </div>
+            <div className="mb-2"></div>
+            <div>
+              4. Write Your Script: If you're creating a new script, you can
+              start writing your Pine Script code in the editor window. If
+              you're importing a script, the code will be loaded into the editor
+              automatically.
+            </div>
+            <div className="mb-2"></div>
+            <div>
+              5. Save Your Script: Once you've finished writing or importing
+              your script, click on the "Save" button to save your changes. Give
+              your script a name and optionally provide a description.
+            </div>
+            <div className="mb-2"></div>
+            <div>
+              6. Add Script to Chart: After saving your script, you can add it
+              to a chart by clicking on the "Indicators" button at the top of
+              the chart window. In the search bar, type the name of your script,
+              and it should appear in the list of available indicators. Click on
+              it to add it to the chart.
+            </div>
+            <div className="mb-2"></div>
+            <div>
+              7. Adjust Settings (if necessary): Depending on the parameters of
+              your script, you may need to adjust settings such as timeframe,
+              inputs, or appearance. You can do this by clicking on the cog icon
+              next to the indicator on the chart and adjusting the settings in
+              the popup window.
+            </div>
+            <div className="mb-2"></div>
+            <div>
+              8. Apply and Save: Once you've configured the settings to your
+              liking, click on the "Apply" button to apply the indicator to the
+              chart. You can also save the chart layout if you want to use it
+              again in the future.
+            </div>
+            <div className="mb-2"></div>
+            <div>
+              That's it! Your custom Pine Script indicator should now be applied
+              to the TradingView chart, and you can use it to analyze the
+              market.
             </div>
           </div>
         </div>
