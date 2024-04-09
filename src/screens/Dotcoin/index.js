@@ -350,7 +350,7 @@ line.delete(lowerTL[1])
                         </button>
                       </a>
                       <a
-                        href="https://www.tradingview.com/chart/RFvvVkLV/?symbol=BINANCE%3AETHUSDT"
+                        href=" https://www.tradingview.com/chart/RFvvVkLV/?symbol=BINANCE%3ASOLUSDT"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-block"
@@ -418,7 +418,7 @@ line.delete(lowerTL[1])
                     }}
                   >
                     <a
-                      href="https://www.tradingview.com/chart/RFvvVkLV/?symbol=BINANCE%3AETHUSDT"
+                      href=" https://www.tradingview.com/chart/RFvvVkLV/?symbol=BINANCE%3AXRPUSDT"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block"
@@ -460,7 +460,7 @@ line.delete(lowerTL[1])
                       </button>
                     </a>
                     <a
-                      href="https://www.tradingview.com/chart/RFvvVkLV/?symbol=BINANCE%3AETHUSDT"
+                      href="https://www.tradingview.com/chart/RFvvVkLV/?symbol=BITFINEX%3AADAUST"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block"
