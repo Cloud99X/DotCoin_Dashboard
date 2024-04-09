@@ -8,6 +8,7 @@ import DOGE_Logo from "../../assets/svg/dogecoin.svg";
 import divider from "../../assets/svg/Divider.svg";
 import ADA_Logo from "../../assets/svg/ada.svg";
 import { TechnicalAnalysis } from "react-ts-tradingview-widgets";
+import zipFile from "../../PineScript_-_DotCoin.zip";
 
 const Dotcoin = () => {
   const [symbolData] = useState({
@@ -191,21 +192,19 @@ line.delete(lowerTL[1])
   };
 
   const downloadZip = () => {
-    const zipFileUrl = process.env.PUBLIC_URL + "/PineScript_-_DotCoin.zip";
-    // Replace 'your_zip_file_name.zip' with the actual name of your zip file
+    // Create a link element
+    const link = document.createElement("a");
+    link.href = zipFile;
+    link.download = "PineScript_-_DotCoin.zip"; // Set the desired file name
 
-    fetch(zipFileUrl)
-      .then((response) => response.blob())
-      .then((blob) => {
-        const url = window.URL.createObjectURL(new Blob([blob]));
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "PineScript_-_DotCoin.zip"; // Specify the desired name of the downloaded file
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-      })
-      .catch((error) => console.error("Error downloading zip file:", error));
+    // Append the link to the body
+    document.body.appendChild(link);
+
+    // Trigger the download
+    link.click();
+
+    // Clean up
+    document.body.removeChild(link);
   };
 
   return (
