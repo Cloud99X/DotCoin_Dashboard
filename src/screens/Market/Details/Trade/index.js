@@ -1,122 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import cn from "classnames";
 import styles from "./Trade.module.sass";
 import { Link } from "react-router-dom";
-import Icon from "../../../../components/Icon";
-import { AreaChart, Area, ResponsiveContainer } from "recharts";
+import Icon from "../../../../components/Icon.js";
+import { AreaChart, Area, ResponsiveContainer, XAxis, YAxis, Tooltip } from "recharts";
+import axios from "axios"; 
 
-const items = [
-  {
-    title: "Bitcoin",
-    currency: "BTC",
-    price: "$36,201.34",
-    positiveDay: "+6.04%",
-    negativeWeek: "-1.71%",
-    image: "/images/content/currency/bitcoin.svg",
-    marketcap: "$328,564,656,654",
-    volume: "$328,564,656,654",
-    url: "/exchange",
-  },
-  {
-    title: "Ethereum",
-    currency: "ETH",
-    price: "$2,605.95",
-    positiveDay: "+6.04%",
-    positiveWeek: "+0.05%",
-    image: "/images/content/currency/ethereum.svg",
-    marketcap: "$328,564,656,654",
-    volume: "$328,564,656,654",
-    url: "/exchange",
-  },
-  {
-    title: "EOS",
-    currency: "EOS.IO",
-    price: "$426.32",
-    positiveDay: "+6.04%",
-    positiveWeek: "+0.05%",
-    image: "/images/content/currency/eos.svg",
-    marketcap: "$328,564,656,654",
-    volume: "$328,564,656,654",
-    url: "/exchange",
-  },
-  {
-    title: "Tether",
-    currency: "USDT",
-    price: "$1.00",
-    positiveDay: "+6.04%",
-    negativeWeek: "-1.71%",
-    image: "/images/content/currency/tether.svg",
-    marketcap: "$328,564,656,654",
-    volume: "$328,564,656,654",
-    url: "/exchange",
-  },
-  {
-    title: "Cardano",
-    currency: "ADA",
-    price: "$1.86",
-    positiveDay: "+6.04%",
-    negativeWeek: "-1.71%",
-    image: "/images/content/currency/cardano.svg",
-    marketcap: "$328,564,656,654",
-    volume: "$328,564,656,654",
-    url: "/exchange",
-  },
-  {
-    title: "Dogecoin",
-    currency: "DOGE",
-    price: "$0.4139",
-    negativeDay: "-0.56",
-    positiveWeek: "+0.05%",
-    image: "/images/content/currency/dogecoin.svg",
-    marketcap: "$328,564,656,654",
-    volume: "$328,564,656,654",
-    url: "/exchange",
-  },
-  {
-    title: "XRP",
-    currency: "XRP",
-    price: "$1.05",
-    positiveDay: "+6.04%",
-    positiveWeek: "+0.05%",
-    image: "/images/content/currency/ripple.svg",
-    marketcap: "$328,564,656,654",
-    volume: "$328,564,656,654",
-    url: "/exchange",
-  },
-  {
-    title: "Polkadot",
-    currency: "DOT",
-    price: "$27.72",
-    negativeDay: "-0.56",
-    positiveWeek: "+0.05%",
-    image: "/images/content/currency/polkadot.svg",
-    marketcap: "$328,564,656,654",
-    volume: "$328,564,656,654",
-    url: "/exchange",
-  },
-  {
-    title: "USD Coin",
-    currency: "USDC",
-    price: "$1.00",
-    positiveDay: "+6.04%",
-    positiveWeek: "+0.05%",
-    image: "/images/content/currency/usd-coin.svg",
-    marketcap: "$328,564,656,654",
-    volume: "$328,564,656,654",
-    url: "/exchange",
-  },
-  {
-    title: "Uniswap",
-    currency: "UNI",
-    price: "$28.67",
-    positiveDay: "+6.04%",
-    negativeWeek: "-1.71%",
-    image: "/images/content/currency/uniswap.svg",
-    marketcap: "$328,564,656,654",
-    volume: "$328,564,656,654",
-    url: "/exchange",
-  },
-];
+
 
 const data = [
   {
@@ -177,9 +67,107 @@ const data = [
   },
 ];
 
+const calculatePriceChangePercentage = (price1, price2) => {
+  if (!price1 || !price2) return "0.00%"; 
+  const change = (price2 - price1) / price1 * 100;
+  return `${change.toFixed(2)}%`;
+};
+
+const calculateMarketDrop = (volume, marketCapChange) => {
+  // Implement 
+  return `${Math.abs(marketCapChange).toFixed(2)}%`; 
+};
+
+const desiredCurrencies = [
+  "bitcoin",
+  "ethereum",
+  "ripple",
+  "dogecoin",
+  "eos", 
+  "tether", 
+  "cardano", 
+  "polkadot", 
+  "usd-coin", 
+  "uniswap", 
+];
 const Trade = () => {
+  const [items, setItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [historicalData, setHistoricalData] = useState([]);
+  const apiKey = "CG-vokvos3N2QsQ1Xm53YzypLsf";
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://api.coingecko.com/api/v3/coins/markets",
+          {
+            params: {
+              vs_currency: "usd",
+              ids: desiredCurrencies.join(","), 
+              per_page: desiredCurrencies.length, 
+              order: "market_cap_desc", 
+              sparkline: true, 
+            },
+            headers: {
+              "X-CMC_PRO_API_KEY": apiKey,
+            },
+          }
+        );
+        const formattedData = response.data.map((currency) => ({
+          title: currency.name,
+          currency: currency.symbol.toUpperCase(),
+          price: `$${currency.current_price}`,
+          priceChange24h: currency.price_change_24h, 
+          priceChangePercentage24h:
+            currency.price_change_percentage_24h > 0
+              ? `+${currency.price_change_percentage_24h.toFixed(2)}%`
+              : `${currency.price_change_percentage_24h.toFixed(2)}%`,
+          // Calculate 7-day change percentage from sparkline data
+          priceChangePercentage7d: calculatePriceChangePercentage(
+            currency.sparkline_in_7d.price[0],
+            currency.sparkline_in_7d.price[6]
+          ),
+          marketDrop: calculateMarketDrop( 
+            currency.total_volume,
+            currency.market_cap_change_percentage_24h 
+          ),
+          volume24h: `$${currency.total_volume.toLocaleString("en-US")}`, 
+          image: `/images/content/currency/${currency.symbol.toLowerCase()}.svg`,
+          marketcap: `$${currency.market_cap.toLocaleString("en-US")}`, 
+          url: `/exchange/${currency.id}`,
+          historicalPrices: currency.sparkline_in_7d.price
+          .slice(-7) // Slice the last 7 days
+          .map((price, index) => ({
+            day: `Day ${index + 1}`, // Change here to represent the day
+            price: price,
+          })),
+        }));
+        setItems(formattedData);
+      
+      const data = items.map((item) => ({
+        name: item.title,
+        data: item.sparkline_in_7d.price.map((price, index) => ({
+          x: index + 1, 
+          y: price,
+        })),
+      }));        
+
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+ 
   return (
     <div className={styles.trade}>
+      
       <div className={styles.table}>
         <div className={styles.row}>
           <div className={styles.col}>
@@ -194,13 +182,15 @@ const Trade = () => {
           <div className={styles.col}>24h %</div>
           <div className={styles.col}>7d %</div>
           <div className={styles.col}>
-            Marketcap <Icon name="coin" size="20" />
+            Marketcap 
           </div>
           <div className={styles.col}>
-            Volume (24h) <Icon name="chart" size="20" />
+            Volume (24h) 
           </div>
           <div className={styles.col}>Chart</div>
         </div>
+      
+
         {items.map((x, index) => (
           <div className={styles.row} key={index}>
             <div className={styles.col}>
@@ -228,21 +218,16 @@ const Trade = () => {
             </div>
             <div className={styles.col}>
               <div className={styles.label}>24h</div>
-              {x.positiveDay && (
-                <div className={styles.positive}>{x.positiveDay}</div>
-              )}
-              {x.negativeDay && (
-                <div className={styles.negative}>{x.negativeDay}</div>
-              )}
+              <span style={{ color: x.priceChangePercentage24h.includes('+') ? 'green' : 'red' }}>
+                {x.priceChangePercentage24h}
+              </span>
+
             </div>
             <div className={styles.col}>
               <div className={styles.label}>7d</div>
-              {x.positiveWeek && (
-                <div className={styles.positive}>{x.positiveWeek}</div>
-              )}
-              {x.negativeWeek && (
-                <div className={styles.negative}>{x.negativeWeek}</div>
-              )}
+              <span style={{ color: x.priceChangePercentage7d.includes('-') ? 'red' : 'green' }}>
+                {x.priceChangePercentage7d > 0 ? `+${x.priceChangePercentage7d}` : `${x.priceChangePercentage7d}`}
+              </span>
             </div>
             <div className={styles.col}>
               <div className={styles.label}>Marketcap</div>
@@ -250,55 +235,26 @@ const Trade = () => {
             </div>
             <div className={styles.col}>
               <div className={styles.label}>Volume (24h)</div>
-              {x.volume}
+              {x.volume24h}
             </div>
             <div className={styles.col}>
               <div className={styles.chart}>
-                <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart
-                    width={500}
-                    height={400}
-                    data={data}
-                    margin={{
-                      top: 3,
-                      right: 0,
-                      left: 0,
-                      bottom: 3,
-                    }}
-                  >
-                    <defs>
-                      <linearGradient
-                        id="colorPrice"
-                        x1="0"
-                        y1="0"
-                        x2="0"
-                        y2="1"
-                      >
-                        <stop
-                          offset="5%"
-                          stopColor="#45B36B"
-                          stopOpacity={0.6}
-                        />
-                        <stop
-                          offset="95%"
-                          stopColor="#45B36B"
-                          stopOpacity={0}
-                        />
-                      </linearGradient>
-                    </defs>
-                    <Area
-                      type="monotone"
-                      dataKey="price"
-                      stroke="#58BD7D"
-                      fillOpacity={1}
-                      fill="url(#colorPrice)"
+              <ResponsiveContainer width={200} height={50}>
+                  <AreaChart data={x.historicalPrices}>
+                    <Area 
+                      type="monotone" 
+                      dataKey="price" 
+                      stroke="#8884d8" 
+                      fill={x.priceChangePercentage24h.includes('+') ? 'green' : 'red'} 
+                      fillOpacity={0.5} 
                     />
+                    <XAxis dataKey="day" tick={null} />
+                    <YAxis type="number" domain={['dataMin', 'dataMax']} tick={null} />
+                    <Tooltip />
                   </AreaChart>
                 </ResponsiveContainer>
               </div>
-              <Link className={cn("button-small", styles.button)} to={x.url}>
-                Buy
-              </Link>
+
             </div>
           </div>
         ))}
