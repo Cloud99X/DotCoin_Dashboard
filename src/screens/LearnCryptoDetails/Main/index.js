@@ -24,7 +24,7 @@ const Main = () => {
       <div className={cn("container", styles.container)}>
         <div className={styles.head}>
           <h1 className={cn("h1", styles.title)}>
-            A beginner’s guide to trading view
+            A beginner’s guide to DotCoin
           </h1>
           <Breadcrumbs className={styles.breadcrumbs} items={breadcrumbs} />
         </div>
@@ -32,6 +32,23 @@ const Main = () => {
           className={styles.player}
           image="/images/content/video-bg.jpg"
         />
+
+        {/* <div className = {styles.content}>
+        <h3>01 AI Market Analysis Prediction System</h3>
+
+        
+        
+        </div>
+        <Player
+          className={styles.player}
+          image="/images/content/video-bg.jpg"
+        />
+
+       */}
+
+
+        
+
       </div>
     </div>
   );

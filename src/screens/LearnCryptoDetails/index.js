@@ -8,7 +8,7 @@ const LearnCrypto = () => {
     <>
       <Main />
       <Article />
-      <Catalog />
+      {/* <Catalog /> */}
     </>
   );
 };
