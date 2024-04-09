@@ -4,32 +4,32 @@ import styles from "./Steps.module.sass";
 
 const items = [
   {
-    title: "Download",
+    title: "Signup",
     image2x: "/images/content/step-1@2x.png",
     image: "/images/content/step-1.png",
     content:
       "Stacks is a production-ready library of stackable content blocks built in React Native.",
   },
   {
-    title: "Connect wallet",
+    title: "Select your Top Crypto Currency for Predection",
     image2x: "/images/content/step-2@2x.png",
     image: "/images/content/step-2.png",
     content:
-      "Stacks is a production-ready library of stackable content blocks built in React Native.",
+      "Stacks is a production-ready library of stackable content blocks built in React Native.",
   },
   {
-    title: "Start trading",
+    title: "Use PineScript Predective AI",
     image2x: "/images/content/step-3@2x.png",
     image: "/images/content/step-3.png",
     content:
-      "Stacks is a production-ready library of stackable content blocks built in React Native.",
+      "Stacks is a production-ready library of stackable content blocks built in React Native.",
   },
   {
-    title: "Earn money",
+    title: "Connect to Trading View  ",
     image2x: "/images/content/step-4@2x.png",
     image: "/images/content/step-4.png",
     content:
-      "Stacks is a production-ready library of stackable content blocks built in React Native.",
+      "Stacks is a production-ready library of stackable content blocks built in React Native",
   },
 ];
 
