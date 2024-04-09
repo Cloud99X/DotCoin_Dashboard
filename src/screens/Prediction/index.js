@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import PageLayout from "../../components/PageLayout/PageLayout";
 import BTC_logo from "../../assets/svg/BTC.svg";
 import two_lines from "../../assets/svg/dark.svg";
@@ -18,7 +18,7 @@ import upGreenIcon from "../../assets/svg/upGreenIcon.svg";
 import downRedIcon from "../../assets/svg/downRedIcon.svg";
 import axios from "axios";
 import { AdvancedRealTimeChart } from "react-ts-tradingview-widgets";
-import Chart from "chart.js/auto";
+import CoinChart from "./CoinChart";
 
 const Prediction = () => {
   const [symbolData, setSymbolData] = useState({
@@ -26,11 +26,8 @@ const Prediction = () => {
   });
 
   const [cryptoData, setCryptoData] = useState();
+  // eslint-disable-next-line
   const [isLoading, setIsLoading] = useState(false);
-
-  const [historicalData, setHistoricalData] = useState([]);
-  const chartRef = useRef(null);
-  const canvasRef = useRef(null);
 
   //
   const handleMiniChartClick = (symbol) => {
@@ -54,72 +51,21 @@ const Prediction = () => {
     getData();
   }, []);
 
-  useEffect(() => {
-    const fetchHistoricalData = async () => {
-      try {
-        const response = await fetch(
-          "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=365"
-        );
-        const data = await response.json();
-        setHistoricalData(data.prices);
-      } catch (error) {
-        console.error("Error fetching historical data:", error);
-      }
-    };
-
-    fetchHistoricalData();
-  }, []);
-
-  useEffect(() => {
-    if (historicalData.length > 0 && canvasRef.current) {
-      if (chartRef.current) {
-        chartRef.current.destroy();
-      }
-
-      const ctx = canvasRef.current.getContext("2d");
-      chartRef.current = new Chart(ctx, {
-        type: "line",
-        data: {
-          labels: historicalData.map((entry) =>
-            new Date(entry[0]).toLocaleDateString()
-          ), // Convert timestamps to dates
-          datasets: [
-            {
-              label: "Bitcoin Price (USD)",
-              data: historicalData.map((entry) => entry[1]), // Extract USD prices
-              fill: false,
-              borderColor: "#3DBAA2",
-              borderWidth: 1,
-              pointRadius: 0, // Set point radius to 0 to remove pointers
-            },
-          ],
-        },
-        options: {
-          scales: {
-            x: {
-              display: false, // Hide x-axis
-            },
-            y: {
-              display: false, // Hide y-axis
-            },
-            responsive: true,
-            maintainAspectRatio: false,
-          },
-          plugins: {
-            legend: {
-              display: false, // Hide legend
-            },
-          },
-        },
-      });
-    }
-  }, [historicalData]);
-
   const [value, setValue] = useState(0);
 
   const handleChange = (event) => {
     setValue(event.target.value);
   };
+
+  function formatNumberToTwoDecimalPlaces(number) {
+    // Ensure number is a valid number
+    if (isNaN(number)) {
+      return "Invalid number";
+    }
+
+    // Use the toFixed method to format to two decimal places
+    return parseFloat(number).toFixed(2);
+  }
 
   return (
     <PageLayout activeMenu={"Prediction"}>
@@ -147,7 +93,6 @@ const Prediction = () => {
                             className="h-5 w-5 ml-10"
                           />
                         </div>
-
                         <button className="flex items-center gap-2 justify-center flex-row w-28 h-12 border border-solid border-[#808191] rounded-xl">
                           <img
                             src={upload_logo}
@@ -501,7 +446,11 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.BTC[0].quote.USD.market_cap} USD
+                                {/* {cryptoData.BTC[0].quote.USD.market_cap} USD */}
+                                {formatNumberToTwoDecimalPlaces(
+                                  cryptoData.BTC[0].quote.USD.market_cap
+                                )}{" "}
+                                USD
                               </h6>
                             </div>
                           </div>
@@ -527,7 +476,11 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.BTC[0].quote.USD.volume_24h} USD
+                                {/* {cryptoData.BTC[0].quote.USD.volume_24h} USD */}
+                                {formatNumberToTwoDecimalPlaces(
+                                  cryptoData.BTC[0].quote.USD.volume_24h
+                                )}{" "}
+                                USD
                               </h6>
                             </div>
                           </div>
@@ -554,7 +507,11 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.BTC[0].circulating_supply}
+                                {/* {cryptoData.BTC[0].circulating_supply} */}
+                                {formatNumberToTwoDecimalPlaces(
+                                  cryptoData.BTC[0].circulating_supply
+                                )}{" "}
+                                USD
                               </h6>
                             </div>
                           </div>
@@ -613,7 +570,11 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.ETH[0].quote.USD.market_cap} USD
+                                {/* {cryptoData.ETH[0].quote.USD.market_cap} USD */}
+                                {formatNumberToTwoDecimalPlaces(
+                                  cryptoData.ETH[0].quote.USD.market_cap
+                                )}{" "}
+                                USD
                               </h6>
                             </div>
                           </div>
@@ -639,7 +600,11 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.ETH[0].quote.USD.volume_24h} USD
+                                {/* {cryptoData.ETH[0].quote.USD.volume_24h} USD */}
+                                {formatNumberToTwoDecimalPlaces(
+                                  cryptoData.ETH[0].quote.USD.volume_24h
+                                )}{" "}
+                                USD
                               </h6>
                             </div>
                           </div>
@@ -666,7 +631,11 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.ETH[0].circulating_supply}
+                                {/* {cryptoData.ETH[0].circulating_supply} */}
+                                {formatNumberToTwoDecimalPlaces(
+                                  cryptoData.ETH[0].circulating_supply
+                                )}{" "}
+                                USD
                               </h6>
                             </div>
                           </div>
@@ -692,7 +661,11 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.ETH[0].total_supply}
+                                {/* {cryptoData.ETH[0].total_supply} */}
+                                {formatNumberToTwoDecimalPlaces(
+                                  cryptoData.ETH[0].total_supply
+                                )}{" "}
+                                USD
                               </h6>
                             </div>
                           </div>
@@ -725,7 +698,11 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.SOL[0].quote.USD.market_cap} USD
+                                {/* {cryptoData.SOL[0].quote.USD.market_cap} USD */}
+                                {formatNumberToTwoDecimalPlaces(
+                                  cryptoData.SOL[0].quote.USD.market_cap
+                                )}{" "}
+                                USD
                               </h6>
                             </div>
                           </div>
@@ -751,7 +728,11 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.SOL[0].quote.USD.volume_24h} USD
+                                {/* {cryptoData.SOL[0].quote.USD.volume_24h} USD */}
+                                {formatNumberToTwoDecimalPlaces(
+                                  cryptoData.SOL[0].quote.USD.volume_24h
+                                )}{" "}
+                                USD
                               </h6>
                             </div>
                           </div>
@@ -778,7 +759,11 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.SOL[0].circulating_supply}
+                                {/* {cryptoData.SOL[0].circulating_supply} */}
+                                {formatNumberToTwoDecimalPlaces(
+                                  cryptoData.SOL[0].circulating_supply
+                                )}{" "}
+                                USD
                               </h6>
                             </div>
                           </div>
@@ -804,7 +789,11 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.SOL[0].total_supply}
+                                {/* {cryptoData.SOL[0].total_supply} */}
+                                {formatNumberToTwoDecimalPlaces(
+                                  cryptoData.SOL[0].total_supply
+                                )}{" "}
+                                USD
                               </h6>
                             </div>
                           </div>
@@ -837,7 +826,11 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.XRP[0].quote.USD.market_cap} USD
+                                {/* {cryptoData.XRP[0].quote.USD.market_cap} USD */}
+                                {formatNumberToTwoDecimalPlaces(
+                                  cryptoData.XRP[0].quote.USD.market_cap
+                                )}{" "}
+                                USD
                               </h6>
                             </div>
                           </div>
@@ -863,7 +856,11 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.XRP[0].quote.USD.volume_24h} USD
+                                {/* {cryptoData.XRP[0].quote.USD.volume_24h} USD */}
+                                {formatNumberToTwoDecimalPlaces(
+                                  cryptoData.XRP[0].quote.USD.volume_24h
+                                )}{" "}
+                                USD
                               </h6>
                             </div>
                           </div>
@@ -890,7 +887,11 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.XRP[0].circulating_supply}
+                                {/* {cryptoData.XRP[0].circulating_supply} */}
+                                {formatNumberToTwoDecimalPlaces(
+                                  cryptoData.XRP[0].circulating_supply
+                                )}{" "}
+                                USD
                               </h6>
                             </div>
                           </div>
@@ -916,7 +917,11 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.XRP[0].total_supply}
+                                {/* {cryptoData.XRP[0].total_supply} */}
+                                {formatNumberToTwoDecimalPlaces(
+                                  cryptoData.XRP[0].total_supply
+                                )}{" "}
+                                USD
                               </h6>
                             </div>
                           </div>
@@ -949,7 +954,11 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.DOGE[0].quote.USD.market_cap} USD
+                                {/* {cryptoData.DOGE[0].quote.USD.market_cap} USD */}
+                                {formatNumberToTwoDecimalPlaces(
+                                  cryptoData.DOGE[0].quote.USD.market_cap
+                                )}{" "}
+                                USD
                               </h6>
                             </div>
                           </div>
@@ -975,7 +984,11 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.DOGE[0].quote.USD.volume_24h} USD
+                                {/* {cryptoData.DOGE[0].quote.USD.volume_24h} USD */}
+                                {formatNumberToTwoDecimalPlaces(
+                                  cryptoData.DOGE[0].quote.USD.volume_24h
+                                )}{" "}
+                                USD
                               </h6>
                             </div>
                           </div>
@@ -1002,7 +1015,11 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.DOGE[0].circulating_supply}
+                                {/* {cryptoData.DOGE[0].circulating_supply} */}
+                                {formatNumberToTwoDecimalPlaces(
+                                  cryptoData.DOGE[0].circulating_supply
+                                )}{" "}
+                                USD
                               </h6>
                             </div>
                           </div>
@@ -1028,7 +1045,11 @@ const Prediction = () => {
                               </div>
 
                               <h6 className="text-lg font-medium">
-                                {cryptoData.DOGE[0].total_supply}
+                                {/* {cryptoData.DOGE[0].total_supply} */}
+                                {formatNumberToTwoDecimalPlaces(
+                                 cryptoData.DOGE[0].total_supply
+                                )}{" "}
+                                USD
                               </h6>
                             </div>
                           </div>
@@ -1197,8 +1218,8 @@ const Prediction = () => {
                     )}
                   </div>
                 </div>
-                <div className="w-[280px] h-[72px] ml-2">
-                  <canvas ref={canvasRef} width="" height=""></canvas>
+                <div className="w-[280px] h-[72px]  ml-16">
+                  <CoinChart symbol="bitcoin" />
                 </div>
               </button>
 
@@ -1267,6 +1288,9 @@ const Prediction = () => {
                         USD
                       </h6>
                     )}
+                  </div>
+                  <div className="w-[280px] h-[72px] mt-16 ml-10 items-center absolute">
+                    <CoinChart symbol="ethereum" />
                   </div>
                 </div>
               </button>
@@ -1337,6 +1361,9 @@ const Prediction = () => {
                       </h6>
                     )}
                   </div>
+                  <div className="w-[280px] h-[72px] mt-16 ml-10 items-center absolute">
+                    <CoinChart symbol="solana" />
+                  </div>
                 </div>
               </button>
 
@@ -1401,6 +1428,9 @@ const Prediction = () => {
                       </h6>
                     )}
                   </div>
+                  <div className="w-[280px] h-[72px] mt-16 ml-10 items-center absolute">
+                    <CoinChart symbol="ripple" />
+                  </div>
                 </div>
               </button>
 
@@ -1462,6 +1492,9 @@ const Prediction = () => {
                         USD
                       </h6>
                     )}
+                  </div>
+                  <div className="w-[280px] h-[72px] mt-16 ml-10 items-center absolute">
+                    <CoinChart symbol="dogecoin" />
                   </div>
                 </div>
               </button>
