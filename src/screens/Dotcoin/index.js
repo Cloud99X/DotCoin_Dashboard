@@ -10,6 +10,7 @@ import ADA_Logo from "../../assets/svg/ada.svg";
 import { TechnicalAnalysis } from "react-ts-tradingview-widgets";
 import zipFile from "../../PineScript_-_DotCoin.zip";
 
+
 const Dotcoin = () => {
   const [symbolData] = useState({
     symbol: "BTCUSD",
@@ -481,6 +482,8 @@ line.delete(lowerTL[1])
                       </button>
                     </a>
                   </div>
+=======
+   
                 </div>
               </div>
             )}
