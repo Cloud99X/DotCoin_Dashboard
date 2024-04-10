@@ -71,11 +71,12 @@ const Footer = () => {
         <div className={cn("container", styles.container)}>
           <div className={styles.col}>
             <Link className={styles.logo} to="/">
-              <img
+              {/* <img
                 className={styles.picDesktop}
                 src="images/logo.svg"
                 alt="BitCloud"
-              />
+              /> */}
+              <img src="/images/logo-dotcoin.svg" alt="dotcoin" />
               <Image
                 className={styles.picMobile}
                 src="/images/logo-light.svg"
@@ -83,7 +84,7 @@ const Footer = () => {
                 alt="BitCloud"
               />
             </Link>
-            <div className={cn(styles.item, { [styles.active]: visible })}>
+            {/* <div className={cn(styles.item, { [styles.active]: visible })}>
               <div
                 className={styles.category}
                 onClick={() => setVisible(!visible)}
@@ -103,7 +104,7 @@ const Footer = () => {
                   </NavLink>
                 ))}
               </div>
-            </div>
+            </div> */}
           </div>
           <div className={styles.col}>
             <div className={styles.category}>contact</div>
@@ -136,9 +137,9 @@ const Footer = () => {
       <div className={styles.foot}>
         <div className={cn("container", styles.container)}>
           <div className={styles.copyright}>
-            Copyright © 2021 UI8 LLC. All rights reserved
+            Copyright c 2024 DotCoin all rights reserved
           </div>
-          <div className={styles.socials}>
+          {/* <div className={styles.socials}>
             {socials.map((x, index) => (
               <a
                 className={styles.social}
@@ -150,7 +151,7 @@ const Footer = () => {
                 <Icon name={x.title} size={x.size} />
               </a>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

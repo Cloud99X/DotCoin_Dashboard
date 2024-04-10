@@ -157,7 +157,7 @@ const Learn = ({ scrollToRef }) => {
             feedMode="market"
             market="crypto"
             // symbol="BTCUSD"
-            // symbol="ETHUSD" 
+            // symbol="ETHUSD"
             height={724}
             width="100%"
             isTransparent={true}
