@@ -1,71 +1,14 @@
 import React, { useState, useEffect } from "react";
 import cn from "classnames";
 import styles from "./Trade.module.sass";
-import { Link } from "react-router-dom";
+
 import Icon from "../../../../components/Icon.js";
 import { AreaChart, Area, ResponsiveContainer, XAxis, YAxis, Tooltip } from "recharts";
 import axios from "axios"; 
 
 
 
-const data = [
-  {
-    name: "1",
-    price: 1000,
-  },
-  {
-    name: "2",
-    price: 2300,
-  },
-  {
-    name: "3",
-    price: 2000,
-  },
-  {
-    name: "4",
-    price: 2780,
-  },
-  {
-    name: "5",
-    price: 1890,
-  },
-  {
-    name: "6",
-    price: 2390,
-  },
-  {
-    name: "7",
-    price: 2490,
-  },
-  {
-    name: "8",
-    price: 3000,
-  },
-  {
-    name: "9",
-    price: 2500,
-  },
-  {
-    name: "10",
-    price: 2000,
-  },
-  {
-    name: "11",
-    price: 2780,
-  },
-  {
-    name: "12",
-    price: 1890,
-  },
-  {
-    name: "13",
-    price: 2390,
-  },
-  {
-    name: "14",
-    price: 1490,
-  },
-];
+
 
 const calculatePriceChangePercentage = (price1, price2) => {
   if (!price1 || !price2) return "0.00%"; 
@@ -94,8 +37,9 @@ const Trade = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [historicalData, setHistoricalData] = useState([]);
-  const apiKey = "CG-vokvos3N2QsQ1Xm53YzypLsf";
+  const coingeckoApiKey = "CG-vokvos3N2QsQ1Xm53YzypLsf";
+  const pollingInterval = 2000; // 2 seconds (adjust based on rate limit)
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -111,7 +55,7 @@ const Trade = () => {
               sparkline: true, 
             },
             headers: {
-              "X-CMC_PRO_API_KEY": apiKey,
+              "x-access-token": coingeckoApiKey,
             },
           }
         );
@@ -161,8 +105,11 @@ const Trade = () => {
       }
     };
 
-    fetchData();
+    const timer = setInterval(fetchData, pollingInterval);
+
+    return () => clearInterval(timer);
   }, []);
+
 
  
   return (
