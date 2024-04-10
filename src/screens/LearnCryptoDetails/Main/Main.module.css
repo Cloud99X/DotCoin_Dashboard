@@ -1,0 +1,152 @@
+.main {
+  padding-top: 80px;
+}
+@media only screen and (max-width: 1179px) {
+  .main {
+    margin-bottom: 80px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .main {
+    margin-bottom: 32px;
+    padding-top: 40px;
+  }
+}
+
+.head {
+  max-width: 730px;
+  margin: 0 auto 80px;
+  text-align: center;
+}
+@media only screen and (max-width: 767px) {
+  .head {
+    margin-bottom: 32px;
+  }
+}
+
+.title {
+  margin-bottom: 24px;
+}
+
+.breadcrumbs {
+  justify-content: center;
+}
+
+.content h1 {
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+@media only screen and (max-width: 767px) {
+  .content h1 {
+    font-size: 48px;
+    line-height: 1.1666666667;
+  }
+}
+.content h2 {
+  font-size: 48px;
+  line-height: 1.1666666667;
+  letter-spacing: -0.02em;
+}
+@media only screen and (max-width: 767px) {
+  .content h2 {
+    font-size: 40px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+}
+.content h3 {
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+@media only screen and (max-width: 767px) {
+  .content h3 {
+    font-size: 32px;
+    line-height: 1.25;
+  }
+}
+.content h4 {
+  font-size: 32px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+.content h1,
+.content h2,
+.content h3,
+.content h4 {
+  position: relative;
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 700;
+}
+.content h1:after,
+.content h2:after,
+.content h3:after,
+.content h4:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 166px;
+  height: 2px;
+  background: #E6E8EC;
+}
+:global(.dark-mode) .content h1:after,
+:global(.dark-mode) .content h2:after,
+:global(.dark-mode) .content h3:after,
+:global(.dark-mode) .content h4:after {
+  background: #353945;
+}
+
+.content h1:not(:first-child),
+.content h2:not(:first-child),
+.content h3:not(:first-child),
+.content h4:not(:first-child) {
+  margin-top: 80px;
+}
+@media only screen and (max-width: 767px) {
+  .content h1:not(:first-child),
+  .content h2:not(:first-child),
+  .content h3:not(:first-child),
+  .content h4:not(:first-child) {
+    margin-top: 40px;
+  }
+}
+.content p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #777E90;
+}
+.content p:not(:last-child) {
+  margin-bottom: 32px;
+}
+.content figure {
+  margin: 0 -76px;
+}
+@media only screen and (max-width: 1023px) {
+  .content figure {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+.content figure img {
+  width: 100%;
+  border-radius: 16px;
+}
+@media only screen and (max-width: 767px) {
+  .content figure img {
+    min-height: 360px;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+.content figure:not(:first-child) {
+  margin-top: 80px;
+}
+@media only screen and (max-width: 767px) {
+  .content figure:not(:first-child) {
+    margin-top: 40px;
+  }
+}/*# sourceMappingURL=Main.module.css.map */

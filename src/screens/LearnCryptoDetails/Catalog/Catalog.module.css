@@ -1,0 +1,50 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -32px -16px 0;
+}
+@media only screen and (max-width: 767px) {
+  .list {
+    display: block;
+    margin: 0;
+  }
+}
+
+.card {
+  flex: 0 0 calc(33.333% - 32px);
+  width: calc(33.333% - 32px);
+  margin: 32px 16px 0;
+}
+@media only screen and (max-width: 1179px) {
+  .card {
+    flex: 0 0 calc(50% - 32px);
+    width: calc(50% - 32px);
+  }
+}
+@media only screen and (max-width: 767px) {
+  .card {
+    width: 100%;
+    margin: 0;
+  }
+  .card:not(:last-child) {
+    margin-bottom: 32px;
+  }
+}
+.card:nth-child(n+4) {
+  display: none;
+}
+@media only screen and (max-width: 1179px) {
+  .card:nth-child(n+4) {
+    display: block;
+  }
+}
+@media only screen and (max-width: 1179px) {
+  .card:nth-child(n+5) {
+    display: none;
+  }
+}
+
+.btns {
+  margin-top: 32px;
+  text-align: center;
+}/*# sourceMappingURL=Catalog.module.css.map */

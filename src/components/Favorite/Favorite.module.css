@@ -1,0 +1,43 @@
+.button {
+  position: relative;
+}
+.button svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s;
+}
+.button svg:nth-child(2) {
+  z-index: 2;
+  opacity: 0;
+}
+.button:hover {
+  box-shadow: inset 0 0 0 2px #23262F;
+  background: #23262F;
+}
+:global(.dark-mode) .button:hover {
+  box-shadow: 0 0 0 2px #353945 inset;
+}
+
+.button:hover svg {
+  fill: #FCFCFD;
+}
+.button.active {
+  box-shadow: inset 0 0 0 2px #23262F;
+  background: #23262F;
+  color: #23262F;
+}
+.button.active svg {
+  fill: #FCFCFD;
+}
+.button.active svg:first-child {
+  opacity: 0;
+}
+.button.active svg:nth-child(2) {
+  opacity: 1;
+}
+:global(.dark-mode) .button.active {
+  background: #353945;
+  box-shadow: 0 0 0 2px #353945 inset;
+}/*# sourceMappingURL=Favorite.module.css.map */

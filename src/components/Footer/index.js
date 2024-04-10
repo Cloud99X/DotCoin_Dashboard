@@ -71,11 +71,12 @@ const Footer = () => {
         <div className={cn("container", styles.container)}>
           <div className={styles.col}>
             <Link className={styles.logo} to="/">
-              <img
+              {/* <img
                 className={styles.picDesktop}
                 src="images/logo.svg"
                 alt="BitCloud"
-              />
+              /> */}
+              <img src="/images/logo-dotcoin.svg" alt="dotcoin" />
               <Image
                 className={styles.picMobile}
                 src="/images/logo-light.svg"
@@ -136,7 +137,7 @@ const Footer = () => {
       <div className={styles.foot}>
         <div className={cn("container", styles.container)}>
           <div className={styles.copyright}>
-          Copyright c 2024 DotCoin all rights reserved
+            Copyright c 2024 DotCoin all rights reserved
           </div>
           {/* <div className={styles.socials}>
             {socials.map((x, index) => (
